@@ -103,7 +103,7 @@
             font-size: 1.3rem;
         }
         
-        /* Artwork Status Badge */
+        /* Artwork Status Badge - Now unchangeable by visitors */
         .artwork-status {
             position: absolute;
             top: 15px;
@@ -114,9 +114,9 @@
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            pointer-events: none; /* Disables clicking */
+            user-select: none; /* Prevents text selection */
         }
         .artwork-status.sold {
             background: #1A1A2E;
@@ -406,10 +406,11 @@
             100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
         
-        /* Responsive Styles */
+        /* Responsive Styles - Enhanced for mobile */
         @media (max-width: 900px) {
             .gallery {
                 column-count: 2;
+                padding: 20px;
             }
             .modal-content {
                 flex-direction: column;
@@ -420,16 +421,23 @@
             .artist-section {
                 flex-direction: column;
                 padding: 0 20px;
+                gap: 30px;
             }
             .footer-container {
                 grid-template-columns: 1fr 1fr;
+            }
+            .hero {
+                padding: 80px 20px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
             }
         }
         
         @media (max-width: 600px) {
             .gallery {
                 column-count: 1;
-                padding: 20px;
+                padding: 15px;
             }
             .hero h1 {
                 font-size: 2rem;
@@ -439,9 +447,47 @@
             }
             .footer-container {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
             .achievements-list {
                 grid-template-columns: 1fr;
+            }
+            .artist-section {
+                margin: 40px auto;
+            }
+            .achievements {
+                padding: 40px 20px;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+            .artwork-status {
+                padding: 4px 12px;
+                font-size: 11px;
+            }
+            .floating-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Cool new animations for mobile */
+        @media (max-width: 600px) {
+            .artwork {
+                animation: fadeInUp 0.6s ease-out;
+            }
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
         }
     </style>
@@ -464,17 +510,17 @@
     <!-- Gallery Preview -->
     <div class="gallery">
         <div class="artwork" data-artwork-id="1">
-            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <div class="artwork-status sold">Sold</div>
             <img src="Image/silence-of-the-sword.webp" alt="Silence of the Sword" onclick="openArtworkModal(1)">
             <h2>Silence of the Sword</h2>
         </div>
         <div class="artwork" data-artwork-id="2">
-            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <div class="artwork-status">Available</div>
             <img src="Image/the-bloom-truck.webp" alt="The Bloom Truck" onclick="openArtworkModal(2)">
             <h2>The Bloom Truck</h2>
         </div>
         <div class="artwork" data-artwork-id="3">
-            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <div class="artwork-status sold">Sold</div>
             <img src="Image/window-flower.webp" alt="Bloom by the Window" onclick="openArtworkModal(3)">
             <h2>Bloom by the Window</h2>
         </div>
@@ -658,7 +704,7 @@
             image: "Image/silence-of-the-sword.webp",
           medium: "Acrylics",
           size: "100cm x 100cm",
-          description: "This painting shows a knight sitting quietly in a field of yellow flowers, with his sword resting by his side. The sky is glowing with warm sunset colors, and everything feels peaceful. It’s a moment of calm after a long battle a reminder that even the strongest need rest, and sometimes silence can be more powerful than action.",
+          description: "This painting shows a knight sitting quietly in a field of yellow flowers, with his sword resting by his side. The sky is glowing with warm sunset colors, and everything feels peaceful. It's a moment of calm after a long battle a reminder that even the strongest need rest, and sometimes silence can be more powerful than action.",
           year: "2025",
           status: "Sold"
         },
@@ -676,7 +722,7 @@
           image: "Image/window-flower.webp",
           medium: "Acrylics",
           size: "80cm x 60cm",
-          description: "This painting shows a cactus in full bloom, sitting on a windowsill with soft sunlight pouring in. The rich green of the cactus and the bright pink flowers bring life and color into the cozy space. It’s a peaceful moment that reminds us how beauty can grow even in tough places, especially when there’s light.",
+          description: "This painting shows a cactus in full bloom, sitting on a windowsill with soft sunlight pouring in. The rich green of the cactus and the bright pink flowers bring life and color into the cozy space. It's a peaceful moment that reminds us how beauty can grow even in tough places, especially when there's light.",
           year: "2025",
           status: "Sold"
         }
@@ -720,23 +766,6 @@
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }, 300);
-      }
-      
-      // Toggle artwork status
-      function toggleStatus(element) {
-        const artworkDiv = element.closest('.artwork');
-        const artworkId = artworkDiv.getAttribute('data-artwork-id');
-        const artwork = artworks[artworkId];
-        
-        if (element.textContent === "Available") {
-          element.textContent = "Sold";
-          element.classList.add('sold');
-          artwork.status = "Sold";
-        } else {
-          element.textContent = "Available";
-          element.classList.remove('sold');
-          artwork.status = "Available";
-        }
       }
       
       // Close modal when clicking outside
@@ -810,5 +839,4 @@
       });
     </script>
 </body>
-
 </html>
