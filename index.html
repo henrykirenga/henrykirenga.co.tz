@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Base Styles */
         body {
             font-family: 'Lato', sans-serif;
             background: #F5F5F5;
@@ -13,6 +14,8 @@
             padding: 0;
             line-height: 1.6;
         }
+        
+        /* Navigation - Mobile Friendly */
         nav {
             background: #1A1A2E;
             padding: 15px;
@@ -20,7 +23,32 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+        
+        .nav-logo {
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            display: flex;
+            transition: all 0.3s ease;
+        }
+        
         nav a {
             color: white;
             margin: 0 15px;
@@ -29,49 +57,60 @@
             font-size: 18px;
             transition: color 0.3s;
             position: relative;
+            padding: 5px 0;
         }
+        
         nav a:hover {
             color: #D4AF37;
         }
+        
         nav a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             background-color: #D4AF37;
             transition: width 0.3s ease;
         }
+        
         nav a:hover::after {
             width: 100%;
         }
+        
+        /* Hero Section - Responsive */
         .hero {
             text-align: center;
-            padding: 100px 20px;
+            padding: 80px 20px;
             background: #1A1A2E;
             color: white;
             background-image: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.8)), url('Image/artist-bg.jpg');
             background-size: cover;
             background-position: center;
         }
+        
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+        
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             margin-bottom: 20px;
         }
+        
+        /* Gallery Grid - Responsive Columns */
         .gallery {
             column-count: 3;
             column-gap: 15px;
-            padding: 40px;
+            padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
+        
         .artwork {
             break-inside: avoid;
             margin-bottom: 20px;
@@ -81,11 +120,14 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             position: relative;
+            animation: fadeInUp 0.6s ease-out;
         }
+        
         .artwork:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
+        
         .artwork img {
             width: 100%;
             border-radius: 5px;
@@ -93,37 +135,40 @@
             cursor: pointer;
             transition: transform 0.3s ease;
         }
+        
         .artwork img:hover {
             transform: scale(1.02);
         }
+        
         .artwork h2 {
             font-family: 'Playfair Display', serif;
             color: #1A1A2E;
             margin: 10px 0;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 1.3vw, 1.3rem);
         }
         
-        /* Artwork Status Badge - Now unchangeable by visitors */
+        /* Artwork Status Badge */
         .artwork-status {
             position: absolute;
             top: 15px;
             right: 15px;
             background: #D4AF37;
             color: #162A4E;
-            padding: 5px 15px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: clamp(0.7rem, 1vw, 0.8rem);
             font-weight: bold;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            pointer-events: none; /* Disables clicking */
-            user-select: none; /* Prevents text selection */
+            pointer-events: none;
+            user-select: none;
         }
+        
         .artwork-status.sold {
             background: #1A1A2E;
             color: white;
         }
         
-        /* Modal Styles */
+        /* Modal Styles - Responsive */
         .artwork-modal {
             display: none;
             position: fixed;
@@ -139,9 +184,11 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+        
         .artwork-modal.show {
             opacity: 1;
         }
+        
         .modal-content {
             background: white;
             max-width: 1000px;
@@ -149,79 +196,90 @@
             border-radius: 10px;
             overflow: hidden;
             display: flex;
+            flex-direction: column;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
+        
         .modal-image-container {
-            flex: 1;
-            padding: 30px;
+            padding: 20px;
             background: #f9f9f9;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+        
         .modal-image {
             max-width: 100%;
-            max-height: 70vh;
+            max-height: 60vh;
             object-fit: contain;
             border-radius: 5px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
+        
         .modal-details {
-            flex: 1;
-            padding: 40px;
+            padding: 25px;
         }
+        
         .modal-title {
             font-family: 'Playfair Display', serif;
             color: #1A1A2E;
             margin-top: 0;
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            margin-bottom: 15px;
         }
+        
         .modal-description {
-            margin: 20px 0;
+            margin: 15px 0;
             line-height: 1.7;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
             color: #555;
         }
+        
         .modal-meta {
-            margin: 25px 0;
+            margin: 20px 0;
         }
+        
         .modal-meta p {
-            margin: 12px 0;
-            font-size: 1.1rem;
+            margin: 10px 0;
+            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
         }
+        
         .modal-close {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             color: white;
             font-size: 30px;
             cursor: pointer;
             background: rgba(0,0,0,0.5);
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
         }
+        
         .modal-close:hover {
             background: #D4AF37;
             transform: rotate(90deg);
         }
+        
         .whatsapp-button {
             display: inline-block;
             background: #25D366;
             color: white;
-            padding: 12px 25px;
+            padding: 12px 20px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 15px;
             transition: all 0.3s;
             box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
         }
+        
         .whatsapp-button:hover {
             background: #128C7E;
             transform: translateY(-3px);
@@ -231,11 +289,12 @@
         /* View More Button */
         .view-more {
             text-align: center;
-            margin: 40px 0;
+            margin: 30px 0;
         }
+        
         .view-more a {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 12px 25px;
             background: #1A1A2E;
             color: white;
             text-decoration: none;
@@ -243,251 +302,289 @@
             font-weight: bold;
             transition: all 0.3s;
             border: 2px solid #1A1A2E;
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
         }
+        
         .view-more a:hover {
             background: transparent;
             color: #1A1A2E;
         }
         
-        /* Artist Statement Section */
+        /* Artist Statement Section - Responsive */
         .artist-section {
             display: flex;
+            flex-direction: column;
             max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 40px;
+            margin: 50px auto;
+            padding: 0 20px;
             align-items: center;
-            gap: 50px;
+            gap: 30px;
         }
+        
         .artist-image {
             flex: 1;
             transition: all 0.3s;
+            width: 100%;
+            max-width: 500px;
         }
+        
         .artist-image:hover {
             transform: scale(1.03);
         }
+        
         .artist-image img {
             width: 100%;
             border-radius: 10px;
             border: 3px solid #D4AF37;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
+        
         .artist-statement {
             flex: 2;
         }
+        
         .artist-statement h1 {
             font-family: 'Playfair Display', serif;
             color: #162A4E;
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
             margin-top: 0;
         }
+        
         .artist-statement p {
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
             line-height: 1.7;
             color: #555;
         }
         
-        /* Achievements Section */
+        /* Achievements Section - Responsive */
         .achievements {
             background: #f9f9f9;
-            padding: 60px 40px;
-            margin: 60px 0;
+            padding: 40px 20px;
+            margin: 40px 0;
         }
+        
         .achievements-container {
             max-width: 1000px;
             margin: 0 auto;
         }
+        
         .achievements h2 {
             font-family: 'Playfair Display', serif;
             color: #162A4E;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
+        
         .achievements-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
+        
         .achievement-item {
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-left: 4px solid #D4AF37;
             transition: all 0.3s;
         }
+        
         .achievement-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+        
         .achievement-item h3 {
             color: #1A1A2E;
             margin-top: 0;
+            font-size: clamp(1.1rem, 1.3vw, 1.3rem);
         }
         
-        /* Footer Styles */
+        .achievement-item p {
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
+            margin: 10px 0;
+        }
+        
+        /* Footer Styles - Responsive */
         .custom-footer {
             background: #1A1A2E;
             color: white;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
+        
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 30px;
         }
+        
         .footer-about h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: clamp(1.3rem, 2vw, 1.5rem);
             margin-top: 0;
             color: #D4AF37;
         }
+        
         .footer-links h3, .footer-contact h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: clamp(1.2rem, 1.8vw, 1.3rem);
             margin-top: 0;
             color: #D4AF37;
         }
+        
         .footer-links ul {
             list-style: none;
             padding: 0;
         }
+        
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
+        
         .footer-links a {
             color: white;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
         }
+        
         .footer-links a:hover {
             color: #D4AF37;
         }
+        
         .footer-contact p {
-            margin: 12px 0;
-        }
-        .copyright {
-            text-align: center;
-            padding: 20px;
-            background: #0d0d1a;
-            color: #aaa;
-            font-size: 0.9rem;
+            margin: 10px 0;
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
         }
         
-        /* Animated Floating Button */
+        .copyright {
+            text-align: center;
+            padding: 15px;
+            background: #0d0d1a;
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+        
+        /* Floating Button - Mobile Optimized */
         .floating-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background: #D4AF37;
             color: #162A4E;
-            padding: 15px 25px;
+            padding: 12px 20px;
             border-radius: 50px;
             text-decoration: none;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 1000;
             display: flex;
             align-items: center;
             font-weight: bold;
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
             animation: pulse 2s infinite;
             transition: all 0.3s;
         }
+        
         .floating-btn:hover {
             transform: scale(1.05);
             animation: none;
             background: #162A4E;
             color: #D4AF37;
         }
+        
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
             100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
         
-        /* Responsive Styles - Enhanced for mobile */
-        @media (max-width: 900px) {
-            .gallery {
-                column-count: 2;
-                padding: 20px;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            .modal-content {
-                flex-direction: column;
-            }
-            .modal-image-container {
-                padding: 20px;
-            }
-            .artist-section {
-                flex-direction: column;
-                padding: 0 20px;
-                gap: 30px;
-            }
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-            .hero {
-                padding: 80px 20px;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
         
-        @media (max-width: 600px) {
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
             .gallery {
-                column-count: 1;
-                padding: 15px;
+                column-count: 2;
+                padding: 30px;
             }
-            .hero h1 {
-                font-size: 2rem;
+            
+            .modal-content {
+                flex-direction: row;
             }
+            
+            .modal-image-container {
+                padding: 30px;
+            }
+            
             .modal-details {
-                padding: 20px;
+                padding: 40px;
             }
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .achievements-list {
-                grid-template-columns: 1fr;
-            }
+            
             .artist-section {
-                margin: 40px auto;
+                flex-direction: row;
+                padding: 0 40px;
+                gap: 50px;
             }
-            .achievements {
-                padding: 40px 20px;
+            
+            .footer-container {
+                grid-template-columns: 2fr 1fr 1fr;
             }
-            nav a {
-                margin: 0 10px;
-                font-size: 16px;
-            }
-            .artwork-status {
-                padding: 4px 12px;
-                font-size: 11px;
-            }
-            .floating-btn {
-                padding: 12px 20px;
-                font-size: 14px;
-                bottom: 20px;
-                right: 20px;
+            
+            .achievements-list {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
         }
-
-        /* Cool new animations for mobile */
-        @media (max-width: 600px) {
-            .artwork {
-                animation: fadeInUp 0.6s ease-out;
+        
+        @media (min-width: 992px) {
+            .gallery {
+                column-count: 3;
             }
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+        }
+        
+        @media (max-width: 767px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #1A1A2E;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                clip-path: circle(0px at 90% -10%);
+                -webkit-clip-path: circle(0px at 90% -10%);
+                transition: all 0.5s ease-out;
+            }
+            
+            .nav-links.active {
+                clip-path: circle(1000px at 90% -10%);
+                -webkit-clip-path: circle(1000px at 90% -10%);
+            }
+            
+            .nav-links a {
+                margin: 10px 0;
+                font-size: 1.1rem;
+            }
+            
+            .modal-image {
+                max-height: 50vh;
             }
         }
     </style>
@@ -495,10 +592,14 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" class="nav-logo">Henry Kirenga</a>
+        <button class="hamburger">☰</button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -601,7 +702,7 @@
     </div>
     
     <div class="copyright">
-        <p>© 2025 Henry Wilhelm Kirenga. All rights reserved.</p>
+        <p>© <span id="current-year"></span> Henry Wilhelm Kirenga. All rights reserved.</p>
     </div>
     
     <!-- Artwork Modal -->
@@ -634,7 +735,7 @@
     
     <!-- Commission Popup -->
     <div id="commission-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
-      <div style="background: white; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 30px; border-radius: 10px; position: relative; transform: translateY(20px); transition: transform 0.3s;">
+      <div style="background: white; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; padding: 25px; border-radius: 10px; position: relative; transform: translateY(20px); transition: transform 0.3s;">
         <!-- Close Button -->
         <button onclick="closePopup()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 20px; cursor: pointer;">✕</button>
         
@@ -689,19 +790,30 @@
       </div>
     </div>
 
-    <style>
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-    </style>
-
     <script>
+      // Set current year in footer
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+      // Mobile navigation toggle
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      
+      hamburger.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+      });
+      
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+              navLinks.classList.remove('active');
+          });
+      });
+      
       // Artwork data
       const artworks = {
         1: {
-          title: "silence of the sword",
-            image: "Image/silence-of-the-sword.webp",
+          title: "Silence of the Sword",
+          image: "Image/silence-of-the-sword.webp",
           medium: "Acrylics",
           size: "100cm x 100cm",
           description: "This painting shows a knight sitting quietly in a field of yellow flowers, with his sword resting by his side. The sky is glowing with warm sunset colors, and everything feels peaceful. It's a moment of calm after a long battle a reminder that even the strongest need rest, and sometimes silence can be more powerful than action.",
