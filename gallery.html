@@ -1,154 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Gallery | Henry Wilhelm Kirenga</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Henry Wilhelm Kirenga</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Lato', sans-serif;
-            background: linear-gradient(120deg, #f5e9d4 0%, #fffbe6 100%);
-            color: #333;
+        :root {
+            --primary-color: #1A1A2E;
+            --secondary-color: #D4AF37;
+            --text-color: #333333;
+            --light-bg: #F5F5F5;
+            --dark-bg: #1A1A2E;
+            --gradient-bg: linear-gradient(120deg, #f5e9d4 0%, #fffbe6 100%);
+        }
+        
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
             overflow-x: hidden;
         }
+        
+        /* Improved Navigation */
         nav {
-            background: #1A1A2E;
+            background: var(--primary-color);
             padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 12px rgba(26,26,46,0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(26,26,46,0.08);
         }
+        
+        .nav-logo {
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+        }
+        
         nav a {
             color: white;
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
             font-size: 18px;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            transition: all 0.3s;
             position: relative;
+            padding: 5px 0;
         }
+        
         nav a:hover {
-            color: #D4AF37;
-            text-shadow: 0 2px 8px #D4AF3744;
+            color: var(--secondary-color);
+            text-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
         }
+        
         nav a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
-            background-color: #D4AF37;
+            background-color: var(--secondary-color);
             transition: width 0.3s ease;
         }
+        
         nav a:hover::after {
             width: 100%;
         }
+        
+        /* Gallery Layout */
         .gallery {
-            column-count: 3;
-            column-gap: 30px;
-            padding: 40px 30px 20px 30px;
-            background: rgba(255,255,255,0.7);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px rgba(212,175,55,0.08);
-            margin: 30px auto 0 auto;
+            column-count: 1;
+            column-gap: 20px;
+            padding: 20px;
+            margin: 20px auto;
             max-width: 1400px;
-            will-change: transform;
         }
+        
         .artwork {
             break-inside: avoid;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             background: linear-gradient(120deg, #fff 80%, #f5e9d4 100%);
-            padding: 18px;
+            padding: 15px;
             border-radius: 12px;
-            box-shadow: 0 3px 18px rgba(212,175,55,0.10);
+            box-shadow: 0 3px 12px rgba(212,175,55,0.10);
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
             border: 1px solid #f5e9d4;
             will-change: transform;
         }
+        
         .artwork:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 8px 32px rgba(212,175,55,0.18);
-            border-color: #D4AF37;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(212,175,55,0.18);
+            border-color: var(--secondary-color);
         }
+        
         .artwork img {
             width: 100%;
             border-radius: 8px;
             margin-bottom: 12px;
             cursor: pointer;
-            box-shadow: 0 2px 12px rgba(26,26,46,0.08);
+            box-shadow: 0 2px 8px rgba(26,26,46,0.08);
             transition: box-shadow 0.3s, transform 0.3s;
             aspect-ratio: 1/1;
             object-fit: cover;
+            will-change: transform;
         }
+        
         .artwork img:hover {
-            box-shadow: 0 6px 24px rgba(212,175,55,0.18);
+            box-shadow: 0 6px 18px rgba(212,175,55,0.18);
             transform: scale(1.02);
         }
+        
         .artwork h2 {
             font-family: 'Playfair Display', serif;
-            color: #1A1A2E;
-            margin-top: 0;
-            font-size: 1.3em;
-            letter-spacing: 1px;
+            color: var(--primary-color);
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+            letter-spacing: 0.5px;
             text-transform: capitalize;
         }
+        
+        /* Protected Status Badge - Cannot be changed by visitors */
         .artwork-status {
             position: absolute;
             top: 15px;
             left: 15px;
-            right: auto;
-            background: linear-gradient(90deg, #D4AF37 60%, #fffbe6 100%);
-            color: #162A4E;
-            padding: 7px 16px;
+            background: linear-gradient(90deg, var(--secondary-color) 60%, #fffbe6 100%);
+            color: var(--primary-color);
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
-            box-shadow: 0 2px 8px rgba(212,175,55,0.12);
+            box-shadow: 0 2px 6px rgba(212,175,55,0.12);
             border: 1px solid #fffbe6;
             transition: all 0.3s;
             z-index: 2;
             pointer-events: none; /* Disable clicking */
             user-select: none; /* Prevent text selection */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE/Edge */
         }
+        
         .artwork-status.sold {
-            background: #1A1A2E;
+            background: var(--primary-color);
             color: white;
-            border: 1px solid #D4AF37;
+            border: 1px solid var(--secondary-color);
         }
+        
+        /* Filter Buttons */
         .filter-buttons {
             text-align: center;
-            margin: 40px 0 10px 0;
+            margin: 30px 0 10px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
+            padding: 0 15px;
         }
+        
         .filter-btn {
-            background: linear-gradient(90deg, #D4AF37 60%, #fffbe6 100%);
-            color: #162A4E;
+            background: linear-gradient(90deg, var(--secondary-color) 60%, #fffbe6 100%);
+            color: var(--primary-color);
             border: none;
-            padding: 12px 28px;
-            margin: 5px;
+            padding: 10px 20px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.1em;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 8px rgba(212,175,55,0.10);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 1em;
+            box-shadow: 0 2px 6px rgba(212,175,55,0.10);
+            transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            min-width: 120px;
         }
+        
         .filter-btn::before {
             content: '';
             position: absolute;
@@ -159,39 +215,44 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: 0.5s;
         }
+        
         .filter-btn:hover::before {
             left: 100%;
         }
+        
         .filter-btn:hover, .filter-btn.active {
-            background: #162A4E;
+            background: var(--primary-color);
             color: #fffbe6;
-            box-shadow: 0 4px 16px rgba(26,26,46,0.10);
+            box-shadow: 0 4px 12px rgba(26,26,46,0.15);
         }
-        /* Floating button */
+        
+        /* Floating Button */
         .floating-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(90deg, #D4AF37 60%, #fffbe6 100%);
-            color: #162A4E;
-            padding: 18px 28px;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, var(--secondary-color) 60%, #fffbe6 100%);
+            color: var(--primary-color);
+            padding: 14px 22px;
             border-radius: 50px;
             text-decoration: none;
-            box-shadow: 0 4px 18px rgba(212,175,55,0.18);
+            box-shadow: 0 4px 15px rgba(212,175,55,0.18);
             z-index: 1000;
             display: flex;
             align-items: center;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1em;
             animation: pulse 2s infinite;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.3s;
         }
+        
         .floating-btn:hover {
-            transform: scale(1.07);
+            transform: scale(1.05);
             animation: none;
-            background: #162A4E;
+            background: var(--primary-color);
             color: #fffbe6;
         }
+        
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
@@ -206,120 +267,112 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(212,175,55,0.12);
+            background: rgba(26,26,46,0.9);
             z-index: 1000;
             overflow-y: auto;
             padding: 20px;
             box-sizing: border-box;
-            backdrop-filter: blur(6px);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+        
         .artwork-modal.show {
             opacity: 1;
         }
+        
         .modal-close {
             position: fixed;
-            top: 30px;
-            right: 30px;
-            color: #1A1A2E;
-            font-size: 36px;
+            top: 20px;
+            right: 20px;
+            color: var(--primary-color);
+            font-size: 30px;
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
             transition: transform 0.3s;
-            background: rgba(255,255,255,0.8);
-            width: 50px;
-            height: 50px;
+            background: rgba(255,255,255,0.9);
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
+        
         .modal-close:hover {
             transform: rotate(90deg);
-            background: #D4AF37;
+            background: var(--secondary-color);
             color: white;
         }
-        .modal-content.fancy-modal {
+        
+        .modal-content {
             background: linear-gradient(120deg, #fff 60%, #f5e9d4 100%);
-            box-shadow: 0 8px 32px rgba(212,175,55,0.18);
-            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(212,175,55,0.18);
+            border-radius: 12px;
             overflow: hidden;
-            animation: modalFadeIn 0.5s cubic-bezier(.4,0,.2,1);
-            display: flex;
-            flex-direction: row;
-            max-width: 1200px;
-            margin: 50px auto;
+            animation: modalFadeIn 0.4s cubic-bezier(.4,0,.2,1);
+            max-width: 100%;
+            margin: 40px auto;
             position: relative;
         }
+        
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(40px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .no-frame {
-            background: none !important;
-            box-shadow: none !important;
-            padding: 0 !important;
+        
+        .modal-image-container {
+            width: 100%;
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 350px;
-            overflow: hidden;
-        }
-        .fancy-modal .modal-image {
-            border-radius: 0;
-            box-shadow: none;
             background: none;
+        }
+        
+        .modal-image {
+            border-radius: 8px;
             width: 100%;
-            max-width: none;
-            max-height: 80vh;
-            margin: 0;
+            max-height: 60vh;
             object-fit: contain;
             display: block;
-            transition: transform 0.3s;
         }
-        .fancy-modal .modal-image:hover {
-            transform: scale(1.02);
-        }
-        .fancy-modal .modal-details {
-            flex: 1;
-            padding: 48px 40px 48px 40px;
+        
+        .modal-details {
+            padding: 25px;
             background: none;
-            min-width: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
-        .fancy-modal .modal-title {
-            font-size: 2.2em;
-            color: #1A1A2E;
+        
+        .modal-title {
+            font-size: 1.8em;
+            color: var(--primary-color);
             margin-bottom: 10px;
             font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
-            text-transform: capitalize;
         }
-        .fancy-modal .modal-meta p {
-            font-size: 1.1em;
+        
+        .modal-meta p {
+            font-size: 1em;
             margin: 8px 0;
-            color: #333;
+            color: #555;
         }
-        .fancy-modal .modal-description {
-            font-size: 1.15em;
+        
+        .modal-description {
+            font-size: 1em;
             color: #444;
-            margin: 18px 0 0 0;
-            line-height: 1.7;
+            margin: 15px 0 0;
+            line-height: 1.6;
         }
-        .fancy-modal .whatsapp-button {
-            margin-top: 30px;
-            font-size: 1.1em;
+        
+        .whatsapp-button {
+            margin-top: 20px;
+            font-size: 1em;
             box-shadow: 0 2px 8px rgba(37,211,102,0.12);
             background: linear-gradient(90deg, #25D366 60%, #fffbe6 100%);
-            color: #162A4E;
+            color: var(--primary-color);
             border: none;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            padding: 15px 25px;
+            transition: all 0.3s;
+            padding: 12px 20px;
             border-radius: 8px;
             text-decoration: none;
             text-align: center;
@@ -330,125 +383,63 @@
             position: relative;
             overflow: hidden;
         }
-        .fancy-modal .whatsapp-button i {
-            margin-right: 10px;
-            font-size: 1.2em;
+        
+        .whatsapp-button i {
+            margin-right: 8px;
+            font-size: 1.1em;
         }
-        .fancy-modal .whatsapp-button::before {
+        
+        .whatsapp-button::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: 0.5s;
         }
-        .fancy-modal .whatsapp-button:hover::before {
+        
+        .whatsapp-button:hover::before {
             left: 100%;
         }
-        .fancy-modal .whatsapp-button:hover {
+        
+        .whatsapp-button:hover {
             background: #128C7E;
-            color: #fffbe6;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(37,211,102,0.3);
-        }
-        footer {
-            background: linear-gradient(90deg, #1A1A2E 80%, #1A1A2E 100%);
             color: white;
-            box-shadow: 0 -2px 12px rgba(26,26,46,0.08);
-            margin-top: 50px;
-        }
-        @media (max-width: 900px) {
-            .gallery {
-                column-count: 2;
-            }
-            .modal-content.fancy-modal {
-                flex-direction: column;
-            }
-            .no-frame {
-                min-width: 100%;
-            }
-            .fancy-modal .modal-details {
-                min-width: 100%;
-                padding: 32px 16px;
-            }
-        }
-        @media (max-width: 768px) {
-            .gallery {
-                column-count: 1;
-            }
-            .modal-close {
-                top: 15px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
-                font-size: 28px;
-            }
-            /* Enhanced mobile styles */
-            .artwork {
-                margin-bottom: 20px;
-                padding: 15px;
-            }
-            .artwork-status {
-                font-size: 12px;
-                padding: 5px 12px;
-            }
-            .filter-buttons {
-                margin: 30px 0 5px 0;
-            }
-            .filter-btn {
-                padding: 10px 20px;
-                font-size: 1em;
-            }
-        }
-        @media (max-width: 480px) {
-            .gallery {
-                column-count: 1;
-                padding: 10px;
-                margin: 15px auto;
-            }
-            .modal-content.fancy-modal {
-                padding: 10px;
-                margin: 20px auto;
-            }
-            .filter-btn {
-                padding: 8px 16px;
-                font-size: 0.9em;
-            }
-            .floating-btn {
-                padding: 15px 20px;
-                font-size: 1em;
-                bottom: 20px;
-                right: 20px;
-            }
-            /* More mobile optimizations */
-            nav a {
-                font-size: 16px;
-                margin: 0 10px;
-            }
-            .artwork h2 {
-                font-size: 1.2em;
-            }
-            .fancy-modal .modal-title {
-                font-size: 1.8em;
-            }
-            .fancy-modal .modal-meta p {
-                font-size: 1em;
-            }
-            .fancy-modal .modal-description {
-                font-size: 1em;
-            }
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
         }
         
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            margin-top: 40px;
+            padding: 30px 20px;
+            text-align: center;
         }
         
-        /* Performance optimizations */
-        .artwork img {
-            will-change: transform;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        footer p {
+            font-size: 0.9em;
         }
         
         /* Loading animation for images */
@@ -457,7 +448,7 @@
             background-size: 200% 100%;
             animation: loading 1.5s infinite;
             opacity: 0;
-            transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+            transition: opacity 0.7s;
         }
 
         .artwork img.loaded {
@@ -469,16 +460,104 @@
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
+        
+        /* Responsive Adjustments */
+        @media (min-width: 600px) {
+            .gallery {
+                column-count: 2;
+                column-gap: 25px;
+                padding: 25px;
+            }
+            
+            .artwork {
+                margin-bottom: 25px;
+                padding: 18px;
+            }
+            
+            .modal-content {
+                max-width: 90%;
+            }
+        }
+        
+        @media (min-width: 900px) {
+            .gallery {
+                column-count: 3;
+                column-gap: 30px;
+                padding: 30px;
+            }
+            
+            .modal-content {
+                display: flex;
+                max-width: 1000px;
+            }
+            
+            .modal-image-container {
+                width: 50%;
+                padding: 30px;
+            }
+            
+            .modal-details {
+                width: 50%;
+                padding: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                clip-path: circle(0px at 90% -10%);
+                -webkit-clip-path: circle(0px at 90% -10%);
+                transition: all 0.5s ease-out;
+            }
+            
+            .nav-links.active {
+                clip-path: circle(1000px at 90% -10%);
+                -webkit-clip-path: circle(1000px at 90% -10%);
+            }
+            
+            .nav-links a {
+                margin: 10px 0;
+                font-size: 1.1em;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9em;
+                min-width: 100px;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" class="nav-logo">Henry Kirenga</a>
+        <button class="hamburger">☰</button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
     
+    <!-- Filter Buttons -->
     <div class="filter-buttons">
         <button class="filter-btn active" onclick="filterGallery('all')">All</button>
         <button class="filter-btn" onclick="filterGallery('portraits')">Portraits</button>
@@ -489,11 +568,12 @@
         <button class="filter-btn" onclick="filterGallery('culture')">Culture</button>
     </div>
 
+    <!-- Gallery Grid -->
     <div class="gallery">
-        <!-- Gallery images auto-generated from Image/ folder -->
+        <!-- Gallery items (same as your original content) -->
         <div class="artwork abstract" data-artwork-id="1">
             <div class="artwork-status">Available</div>
-            <img src="Image/abstract.webp" alt="Balance in Motion" onclick="openArtworkModal(1)">
+            <img src="Image/abstract.webp" alt="Balance in Motion" loading="lazy" onclick="openArtworkModal(1)">
             <h2>Balance in Motion</h2>
         </div>
         <div class="artwork" data-artwork-id="2">
@@ -678,59 +758,28 @@
         </div>
         <div class="artwork wildlife" data-artwork-id="38">
             <div class="artwork-status">Available</div>
-            <img src="Image/zebra.webp" alt="zebra" onclick="openArtworkModal(38)">
+            <img src="Image/zebra.webp" alt="zebra" loading="lazy" onclick="openArtworkModal(38)">
             <h2>zebra</h2>
         </div>
-        
     </div>
     
     <!-- Footer -->
     <footer>
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; text-align: left;">
-            <div style="flex: 1; min-width: 300px; padding: 20px;">
-                <h3 style="font-family: 'Playfair Display', serif; color: #D4AF37;">Henry Wilhelm Kirenga</h3>
-                <p>Dar es Salaam's premier visual artist, celebrating African heritage through vibrant acrylic artworks and palette knife techniques.</p>
-            </div>
-            
-            <div style="flex: 1; min-width: 200px; padding: 20px;">
-                <h4 style="color: #D4AF37; margin-top: 0;">Quick Links</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
-                    <li><a href="gallery.html" style="color: white; text-decoration: none;">Gallery</a></li>
-                    <li><a href="about.html" style="color: white; text-decoration: none;">About</a></li>
-                    <li><a href="contact.html" style="color: white; text-decoration: none;">Contact</a></li>
-                    <li><a href="#" style="color: white; text-decoration: none;">Instagram</a></li>
-                </ul>
-            </div>
-            
-            <div style="flex: 1; min-width: 300px; padding: 20px;">
-                <h4 style="color: #D4AF37; margin-top: 0;">Contact Information</h4>
-                <p>Dar es Salaam, Tanzania</p>
-                <p>Email: henrywillhelm1002@gmail.com</p>
-                <p>Phone: +255 684 555 058</p>
-                
-                <a href="#" class="whatsapp-button" style="display: inline-block; margin-top: 15px;" onclick="openPopup(); return false;">
-                    Request Commission
-                </a>
-            </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
         </div>
-        
-        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <p>&copy; 2025 Henry Wilhelm Kirenga. All rights reserved.</p>
-            <div style="margin-top: 10px;">
-                <a href="privacy.html" style="color: #D4AF37; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
-                <a href="terms.html" style="color: #D4AF37; text-decoration: none; margin: 0 10px;">Terms of Service</a>
-                <a href="shipping.html" style="color: #D4AF37; text-decoration: none; margin: 0 10px;">Shipping Policy</a>
-            </div>
-        </div>
+        <p>&copy; <span id="current-year"></span> Henry Wilhelm Kirenga. All rights reserved.</p>
     </footer>
     
     <!-- Artwork Modal -->
     <div id="artwork-modal" class="artwork-modal">
         <div class="modal-close" onclick="closeArtworkModal()">&times;</div>
-        <div class="modal-content fancy-modal">
-            <div class="modal-image-container no-frame">
-                <img id="modal-artwork-image" class="modal-image" src="" alt="">
+        <div class="modal-content">
+            <div class="modal-image-container">
+                <img id="modal-artwork-image" class="modal-image" src="" alt="" loading="lazy">
             </div>
             <div class="modal-details">
                 <h2 id="modal-artwork-title" class="modal-title"></h2>
@@ -749,74 +798,13 @@
         </div>
     </div>
     
-    <!-- Commission Popup -->
-    <div id="commission-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
-      <div style="background: white; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 30px; border-radius: 10px; position: relative; transform: translateY(20px); transition: transform 0.3s;">
-        <!-- Close Button -->
-        <button onclick="closePopup()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 20px; cursor: pointer;">✕</button>
-        
-        <!-- Form Content -->
-        <div id="form-content">
-          <h2 style="font-family: 'Playfair Display'; color: #162A4E;">Commission Custom Artwork</h2>
-          <form id="commission-form" style="margin-top: 20px;" action="https://formspree.io/f/myzppjgn" method="POST">
-            <!-- Name -->
-            <div style="margin-bottom: 15px;">
-              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Full Name*</label>
-              <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-            </div>
-            
-            <!-- Email -->
-            <div style="margin-bottom: 15px;">
-              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Email*</label>
-              <input type="email" name="_replyto" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-            </div>
-            
-            <!-- Size Selection -->
-            <div style="margin-bottom: 15px;">
-              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Artwork Size*</label>
-              <select name="size" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                <option value="" disabled selected>Select size</option>
-                <option value="80x60">80cm x 60cm </option>
-                <option value="70x100">70cm x 100cm </option>
-                <option value="100x100">100cm x 100cm </option>
-                <option value="custom">Custom Size</option>
-              </select>
-            </div>
-            
-            <!-- Hidden field for Formspree -->
-            <input type="hidden" name="_subject" value="New Commission Request">
-            <input type="hidden" name="_next" value="#">
-            
-            <!-- Submit Button -->
-            <button type="submit" style="background: #D4AF37; color: #162A4E; border: none; padding: 12px 20px; font-weight: bold; border-radius: 5px; width: 100%; margin-top: 10px;">
-              Request Commission
-            </button>
-          </form>
-        </div>
-        
-        <!-- Loading Spinner -->
-        <div id="loading-spinner" style="display: none; text-align: center; padding: 30px;">
-          <div style="border: 4px solid #f3f3f3; border-top: 4px solid #D4AF37; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
-          <p style="margin-top: 15px;">Submitting your request...</p>
-        </div>
-        
-        <!-- Success Message -->
-        <div id="success-message" style="display: none; text-align: center; padding: 30px;">
-          <div style="font-size: 50px; color: #4CAF50;">✓</div>
-          <h3 style="font-family: 'Playfair Display'; color: #162A4E;">Request Sent!</h3>
-          <p>I'll contact you within 24 hours to discuss your commission.</p>
-          <button onclick="closePopup()" style="background: #37a5d4; color: #162A4E; border: none; padding: 10px 20px; margin-top: 20px; border-radius: 5px; cursor: pointer;">Close</button>
-        </div>
-      </div>
-    </div>
-
     <!-- Floating Commission Button -->
     <a href="#" class="floating-btn" onclick="openPopup(); return false;">
        <span style="margin-right: 10px;">🎨</span> Request Commission
     </a>
 
     <script>
-      // Artwork data - now includes all 38 artworks
+      // Artwork data (same as your original)
       const artworks = {
         1: {
           title: "Balance in Motion",
@@ -1203,6 +1191,24 @@
       // WhatsApp number
       const whatsappNumber = "255684555058";
       
+      // Set current year in footer
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+      // Mobile navigation toggle
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      
+      hamburger.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+      });
+      
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+              navLinks.classList.remove('active');
+          });
+      });
+      
       // Open artwork modal
       function openArtworkModal(artworkId) {
         const artwork = artworks[artworkId];
@@ -1271,69 +1277,6 @@
           }
         });
       }
-      
-      // Commission popup functions
-      function openPopup() {
-        const popup = document.getElementById('commission-popup');
-        popup.style.display = 'flex';
-        setTimeout(() => {
-          popup.style.opacity = '1';
-          popup.querySelector('div').style.transform = 'translateY(0)';
-        }, 10);
-      }
-
-      function closePopup() {
-        const popup = document.getElementById('commission-popup');
-        popup.style.opacity = '0';
-        popup.querySelector('div').style.transform = 'translateY(20px)';
-        setTimeout(() => {
-          popup.style.display = 'none';
-          resetForm();
-        }, 300);
-      }
-
-      function resetForm() {
-        document.getElementById('form-content').style.display = 'block';
-        document.getElementById('loading-spinner').style.display = 'none';
-        document.getElementById('success-message').style.display = 'none';
-        document.getElementById('commission-form').reset();
-      }
-
-      // Form submission
-      document.getElementById('commission-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Show loading
-        document.getElementById('form-content').style.display = 'none';
-        document.getElementById('loading-spinner').style.display = 'block';
-        
-        // Create FormData object
-        const formData = new FormData(this);
-        
-        // Send form data to Formspree
-        fetch('https://formspree.io/f/myzppjgn', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        })
-        .then(response => {
-          if (response.ok) {
-            // Show success message
-            document.getElementById('loading-spinner').style.display = 'none';
-            document.getElementById('success-message').style.display = 'block';
-          } else {
-            throw new Error('Form submission failed');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          document.getElementById('loading-spinner').style.display = 'none';
-          alert('There was a problem submitting your form. Please try again later.');
-          document.getElementById('form-content').style.display = 'block';
-        });
-      });
       
       // Preload images for better performance
       window.addEventListener('load', function() {
