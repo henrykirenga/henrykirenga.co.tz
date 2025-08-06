@@ -482,7 +482,7 @@
         <!-- Contact Form -->
         <div class="contact-form">
             <h2 class="section-title">Send Me a Message</h2>
-            <form action="https://formspree.io/f/myyqjqjq" method="POST">
+            <form action="https://formspree.io/f/myzppjgn" method="POST">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" required>
@@ -545,7 +545,12 @@
     <div class="faq-section">
         <div class="faq-container">
             <h2 class="section-title">Frequently Asked Questions</h2>
-            
+            <div class="faq-item">
+                <div class="faq-question">What types of commissions do you accept?</div>
+                <div class="faq-answer">
+                    <p>I accept a wide range of commissions including portraits, landscapes, abstract pieces, and custom sizes. If you have a specific idea in mind, feel free to reach out and we can discuss it further.</p>
+                </div>
+            </div>
             <div class="faq-item">
                 <div class="faq-question">How long does a commission typically take to complete?</div>
                 <div class="faq-answer">
@@ -587,7 +592,7 @@
     <div class="map-section">
         <h2 class="section-title">Our Studio Location</h2>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4712.223417060913!2d39.229955274829365!3d-6.709676623130348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c49d91988572d%3A0x8e2fb8d9dc6344ae!2sNias%20Nyalada%20Art%20Studio!5e0!3m2!1sen!2sus!4v1754298799431!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4712.223417060913!2d39.229955274829365!3d-6.709676623130348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c49d91988572d%3A0x8e2fb8d9dc6344ae!2sNias%20Nyalada%20Art%20Studio!5e0!3m2!1sen!2sus!4v1754298799431!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
     
@@ -729,22 +734,30 @@
       });
 
       // FAQ Accordion functionality
-      document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-          const answer = question.nextElementSibling;
-          const isActive = question.classList.contains('active');
-          
-          // Close all other FAQs
-          document.querySelectorAll('.faq-question').forEach(q => {
-            if (q !== question) {
-              q.classList.remove('active');
-              q.nextElementSibling.classList.remove('show');
+      document.addEventListener('DOMContentLoaded', function() {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+          question.addEventListener('click', () => {
+            // Toggle active class on clicked question
+            question.classList.toggle('active');
+            
+            // Toggle answer visibility
+            const answer = question.nextElementSibling;
+            if (question.classList.contains('active')) {
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+              answer.style.maxHeight = null;
             }
+            
+            // Close other FAQs
+            faqQuestions.forEach(q => {
+              if (q !== question) {
+                q.classList.remove('active');
+                q.nextElementSibling.style.maxHeight = null;
+              }
+            });
           });
-          
-          // Toggle current FAQ
-          question.classList.toggle('active');
-          answer.classList.toggle('show');
         });
       });
     </script>
