@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Henry Wilhelm Kirenga | Visual Artist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #F5F5F5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        nav {
+            background: #1A1A2E;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        nav a:hover {
+            color: #D4AF37;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: #1A1A2E;
+            color: white;
+            background-image: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.8)), url('Image/artist-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .gallery {
+            column-count: 3;
+            column-gap: 15px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .artwork {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .artwork:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .artwork img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .artwork img:hover {
+            transform: scale(1.02);
+        }
+        .artwork h2 {
+            font-family: 'Playfair Display', serif;
+            color: #1A1A2E;
+            margin: 10px 0;
+            font-size: 1.3rem;
+        }
+        
+        /* Artwork Status Badge */
+        .artwork-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #D4AF37;
+            color: #162A4E;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .artwork-status.sold {
+            background: #1A1A2E;
+            color: white;
+        }
+        
+        /* Modal Styles */
+        .artwork-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .artwork-modal.show {
+            opacity: 1;
+        }
+        .modal-content {
+            background: white;
+            max-width: 1000px;
+            margin: 50px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .modal-image-container {
+            flex: 1;
+            padding: 30px;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .modal-details {
+            flex: 1;
+            padding: 40px;
+        }
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            color: #1A1A2E;
+            margin-top: 0;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .modal-description {
+            margin: 20px 0;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .modal-meta {
+            margin: 25px 0;
+        }
+        .modal-meta p {
+            margin: 12px 0;
+            font-size: 1.1rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .modal-close:hover {
+            background: #D4AF37;
+            transform: rotate(90deg);
+        }
+        .whatsapp-button {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+        }
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* View More Button */
+        .view-more {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .view-more a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #1A1A2E;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid #1A1A2E;
+        }
+        .view-more a:hover {
+            background: transparent;
+            color: #1A1A2E;
+        }
+        
+        /* Artist Statement Section */
+        .artist-section {
+            display: flex;
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+            align-items: center;
+            gap: 50px;
+        }
+        .artist-image {
+            flex: 1;
+            transition: all 0.3s;
+        }
+        .artist-image:hover {
+            transform: scale(1.03);
+        }
+        .artist-image img {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid #D4AF37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .artist-statement {
+            flex: 2;
+        }
+        .artist-statement h1 {
+            font-family: 'Playfair Display', serif;
+            color: #162A4E;
+            font-size: 2.5rem;
+            margin-top: 0;
+        }
+        .artist-statement p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        /* Achievements Section */
+        .achievements {
+            background: #f9f9f9;
+            padding: 60px 40px;
+            margin: 60px 0;
+        }
+        .achievements-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .achievements h2 {
+            font-family: 'Playfair Display', serif;
+            color: #162A4E;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .achievements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .achievement-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid #D4AF37;
+            transition: all 0.3s;
+        }
+        .achievement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .achievement-item h3 {
+            color: #1A1A2E;
+            margin-top: 0;
+        }
+        
+        /* Footer Styles */
+        .custom-footer {
+            background: #1A1A2E;
+            color: white;
+            padding: 60px 20px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-about h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-top: 0;
+            color: #D4AF37;
+        }
+        .footer-links h3, .footer-contact h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-top: 0;
+            color: #D4AF37;
+        }
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: #D4AF37;
+        }
+        .footer-contact p {
+            margin: 12px 0;
+        }
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            background: #0d0d1a;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Animated Floating Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #D4AF37;
+            color: #162A4E;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            transition: all 0.3s;
+        }
+        .floating-btn:hover {
+            transform: scale(1.05);
+            animation: none;
+            background: #162A4E;
+            color: #D4AF37;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 900px) {
+            .gallery {
+                column-count: 2;
+            }
+            .modal-content {
+                flex-direction: column;
+            }
+            .modal-image-container {
+                padding: 20px;
+            }
+            .artist-section {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .gallery {
+                column-count: 1;
+                padding: 20px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .modal-details {
+                padding: 20px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .achievements-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Henry Wilhelm Kirenga</h1>
+        <p>Visual Artist | Acrylics & Palette Knife | Tanzania</p>
+    </div>
+    
+    <!-- Gallery Preview -->
+    <div class="gallery">
+        <div class="artwork" data-artwork-id="1">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/silence-of-the-sword.webp" alt="Silence of the Sword" onclick="openArtworkModal(1)">
+            <h2>Silence of the Sword</h2>
+        </div>
+        <div class="artwork" data-artwork-id="2">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/the-bloom-truck.webp" alt="The Bloom Truck" onclick="openArtworkModal(2)">
+            <h2>The Bloom Truck</h2>
+        </div>
+        <div class="artwork" data-artwork-id="3">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/window-flower.webp" alt="Bloom by the Window" onclick="openArtworkModal(3)">
+            <h2>Bloom by the Window</h2>
+        </div>
+    </div>
+    
+    <!-- View More Button -->
+    <div class="view-more">
+        <a href="gallery.html">View More Artwork</a>
+    </div>
+    
+    <!-- Artist Statement Section -->
+    <div class="artist-section">
+        <div class="artist-image">
+            <img src="Image/artist.jpg" alt="Henry Kirenga">
+        </div>
+        <div class="artist-statement">
+            <h1>Artist Statement</h1>
+            <p>Hi, I'm Henry Wilhelm Kirenga — a visual artist born in Dar es Salaam, Tanzania. My art is all about freedom. I don't limit myself to one subject or one way of expression. I paint portraits, animals, nature, emotions, anything that speaks to me in the moment. Every canvas is a chance to explore, to express, and to tell a story in my own way.</p>
+            <p>I work mainly with acrylic paint, using both brushes and palette knives but I rely more on the knife to build rich textures that bring my paintings to life. It's through these layers and movements that the story of each work begins to emerge.</p>
+            <p>Inspired by my Tanzanian roots, I often blend natural elements like coffee textures and African fabric patterns into my work. Whether realistic or abstract, every painting carries a piece of my environment and personal journey.</p>
+            <p>To me, art is freedom a space where I can express without limits and connect with people through visual emotion. I'm honored to share that journey with you.</p>
+        </div>
+    </div>
+    
+    <!-- Achievements Section -->
+    <div class="achievements">
+        <div class="achievements-container">
+            <h2>Achievements & Highlights</h2>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <h3>Exhibitions</h3>
+                    <p>Exhibited work at Rangi Gallery alongside other established artists.</p>
+                    <p>Exhibited at Nafasi Art Space, one of Tanzania's leading contemporary art hubs.</p>
+                    <p>Participated in international exhibitions in Germany and Zimbabwe, sharing Tanzanian art on global platforms.</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>Collectors & Commissions</h3>
+                    <p>Sold paintings to collectors in Germany and Japan, expanding the international reach of my work.</p>
+                    <p>Commissioned by collectors for personalized artworks including a portrait of Kendrick Lamar for a client in Mtwara, a painting inspired by Elon Musk's achievements, and a custom BMW race car painting.</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>Collaborations</h3>
+                    <p>Collaborated with Nias Nyalada Art Studio in live painting sessions with major organizations including Vodacom, Tigo, and Airtel.</p>
+                    <p>Worked with Nias Nyalada Art Studio during special painting sessions with leading Tanzanian musicians, including Diamond Platnumz's family and Jux.</p>
+                    <p>Created large-scale pieces including my largest painting to date and a powerful scene of a charging bull.</p>
+                    <p>Received a Certificate of Appreciation from TLM for artistic contribution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="custom-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>Henry Wilhelm Kirenga</h3>
+                <p>Dar es Salaam's premier visual artist, celebrating African heritage through vibrant acrylic artworks and palette knife techniques.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="https://instagram.com/henrywilhelmarts">Instagram</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Information</h3>
+                <p>Dar es Salaam, Tanzania</p>
+                <p>Email: henrywilhelm1002@gmail.com</p>
+                <p>Phone: +255 684 555 058</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>© 2025 Henry Wilhelm Kirenga. All rights reserved.</p>
+    </div>
+    
+    <!-- Artwork Modal -->
+    <div id="artwork-modal" class="artwork-modal">
+        <div class="modal-close" onclick="closeArtworkModal()">&times;</div>
+        <div class="modal-content">
+            <div class="modal-image-container">
+                <img id="modal-artwork-image" class="modal-image" src="" alt="">
+            </div>
+            <div class="modal-details">
+                <h2 id="modal-artwork-title" class="modal-title"></h2>
+                <div class="modal-meta">
+                    <p><strong>Medium:</strong> <span id="modal-artwork-medium"></span></p>
+                    <p><strong>Size:</strong> <span id="modal-artwork-size"></span></p>
+                    <p><strong>Status:</strong> <span id="modal-artwork-status"></span></p>
+                    <p><strong>Year:</strong> <span id="modal-artwork-year"></span></p>
+                </div>
+                <p id="modal-artwork-description" class="modal-description"></p>
+                <a id="whatsapp-inquiry" href="#" class="whatsapp-button" target="_blank">
+                    Inquire via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Animated Floating Commission Button -->
+    <a href="#" class="floating-btn" onclick="openPopup(); return false;">
+       <span style="margin-right: 10px;">🎨</span> Request Commission
+    </a>
+    
+    <!-- Commission Popup -->
+    <div id="commission-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+      <div style="background: white; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 30px; border-radius: 10px; position: relative; transform: translateY(20px); transition: transform 0.3s;">
+        <!-- Close Button -->
+        <button onclick="closePopup()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 20px; cursor: pointer;">✕</button>
+        
+        <!-- Form Content -->
+        <div id="form-content">
+          <h2 style="font-family: 'Playfair Display'; color: #162A4E;">Commission Custom Artwork</h2>
+          <form id="commission-form" style="margin-top: 20px;" action="https://formspree.io/f/myzppjgn" method="POST">
+            <!-- Name -->
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Full Name*</label>
+              <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            </div>
+            
+            <!-- Email -->
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Email*</label>
+              <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            </div>
+            
+            <!-- Size Selection -->
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Artwork Size*</label>
+              <select name="size" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <option value="" disabled selected>Select size</option>
+                <option value="80x60">80cm x 60cm </option>
+                <option value="70x100">70cm x 100cm </option>
+                <option value="100x100">100cm x 100cm </option>
+                <option value="custom">Custom Size</option>
+              </select>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" style="background: #D4AF37; color: #162A4E; border: none; padding: 12px 20px; font-weight: bold; border-radius: 5px; width: 100%; margin-top: 10px;">
+              Request Commission
+            </button>
+          </form>
+        </div>
+        
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" style="display: none; text-align: center; padding: 30px;">
+          <div style="border: 4px solid #f3f3f3; border-top: 4px solid #D4AF37; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+          <p style="margin-top: 15px;">Submitting your request...</p>
+        </div>
+        
+        <!-- Success Message -->
+        <div id="success-message" style="display: none; text-align: center; padding: 30px;">
+          <div style="font-size: 50px; color: #4CAF50;">✓</div>
+          <h3 style="font-family: 'Playfair Display'; color: #162A4E;">Request Sent!</h3>
+          <p>I'll contact you within 24 hours to discuss your commission.</p>
+          <button onclick="closePopup()" style="background: #D4AF37; color: #162A4E; border: none; padding: 10px 20px; margin-top: 20px; border-radius: 5px; cursor: pointer;">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+
+    <script>
+      // Artwork data
+      const artworks = {
+        1: {
+          title: "silence of the sword",
+            image: "Image/silence-of-the-sword.jpg",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "This painting shows a knight sitting quietly in a field of yellow flowers, with his sword resting by his side. The sky is glowing with warm sunset colors, and everything feels peaceful. It’s a moment of calm after a long battle a reminder that even the strongest need rest, and sometimes silence can be more powerful than action.",
+          year: "2025",
+          status: "Sold"
+        },
+        2: {
+          title: "The Bloom Truck",
+          image: "Image/the-bloom-truck.jpg",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A gentle reminder to pause and embrace beauty in life's quiet, colorful details.",
+          year: "2025",
+          status: "Available"
+        },
+        3: {
+          title: "Bloom by the Window",
+          image: "Image/window-flower.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "This painting shows a cactus in full bloom, sitting on a windowsill with soft sunlight pouring in. The rich green of the cactus and the bright pink flowers bring life and color into the cozy space. It’s a peaceful moment that reminds us how beauty can grow even in tough places, especially when there’s light.",
+          year: "2025",
+          status: "Sold"
+        }
+      };
+      
+      // WhatsApp number
+      const whatsappNumber = "255684555058";
+      
+      // Open artwork modal
+      function openArtworkModal(artworkId) {
+        const artwork = artworks[artworkId];
+        if (!artwork) return;
+        
+        document.getElementById('modal-artwork-image').src = artwork.image;
+        document.getElementById('modal-artwork-image').alt = artwork.title;
+        document.getElementById('modal-artwork-title').textContent = artwork.title;
+        document.getElementById('modal-artwork-medium').textContent = artwork.medium;
+        document.getElementById('modal-artwork-size').textContent = artwork.size;
+        document.getElementById('modal-artwork-status').textContent = artwork.status;
+        document.getElementById('modal-artwork-description').textContent = artwork.description;
+        document.getElementById('modal-artwork-year').textContent = artwork.year;
+        
+        // Set WhatsApp link
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=I'm interested in purchasing "${artwork.title}" (${artwork.size})`;
+        document.getElementById('whatsapp-inquiry').href = whatsappLink;
+        
+        // Show modal with smooth transition
+        const modal = document.getElementById('artwork-modal');
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 10);
+      }
+      
+      // Close artwork modal
+      function closeArtworkModal() {
+        const modal = document.getElementById('artwork-modal');
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300);
+      }
+      
+      // Toggle artwork status
+      function toggleStatus(element) {
+        const artworkDiv = element.closest('.artwork');
+        const artworkId = artworkDiv.getAttribute('data-artwork-id');
+        const artwork = artworks[artworkId];
+        
+        if (element.textContent === "Available") {
+          element.textContent = "Sold";
+          element.classList.add('sold');
+          artwork.status = "Sold";
+        } else {
+          element.textContent = "Available";
+          element.classList.remove('sold');
+          artwork.status = "Available";
+        }
+      }
+      
+      // Close modal when clicking outside
+      document.getElementById('artwork-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeArtworkModal();
+        }
+      });
+      
+      // Commission popup functions
+      function openPopup() {
+        const popup = document.getElementById('commission-popup');
+        popup.style.display = 'flex';
+        setTimeout(() => {
+          popup.style.opacity = '1';
+          popup.querySelector('div').style.transform = 'translateY(0)';
+        }, 10);
+      }
+
+      function closePopup() {
+        const popup = document.getElementById('commission-popup');
+        popup.style.opacity = '0';
+        popup.querySelector('div').style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          popup.style.display = 'none';
+          resetForm();
+        }, 300);
+      }
+
+      function resetForm() {
+        document.getElementById('form-content').style.display = 'block';
+        document.getElementById('loading-spinner').style.display = 'none';
+        document.getElementById('success-message').style.display = 'none';
+        document.getElementById('commission-form').reset();
+      }
+
+      // Form submission
+      document.getElementById('commission-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('loading-spinner').style.display = 'block';
+        
+        // Create FormData object
+        const formData = new FormData(this);
+        
+        // Send form data to Formspree
+        fetch('https://formspree.io/f/myzppjgn', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Show success message
+            document.getElementById('loading-spinner').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+          } else {
+            throw new Error('Form submission failed');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('loading-spinner').style.display = 'none';
+          alert('There was a problem submitting your form. Please try again later.');
+          document.getElementById('form-content').style.display = 'block';
+        });
+      });
+    </script>
+</body>
+</html>
