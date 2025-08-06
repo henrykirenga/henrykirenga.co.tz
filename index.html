@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>Henry Wilhelm Kirenga | Visual Artist</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles */
+        /* Base Styles - Kept exactly as you wanted */
         body {
             font-family: 'Lato', sans-serif;
             background: #F5F5F5;
@@ -15,7 +15,7 @@
             line-height: 1.6;
         }
         
-        /* Navigation - Mobile Friendly */
+        /* Navigation - Now mobile-friendly */
         nav {
             background: #1A1A2E;
             padding: 15px;
@@ -79,7 +79,7 @@
             width: 100%;
         }
         
-        /* Hero Section - Responsive */
+        /* Hero Section - Responsive but same look */
         .hero {
             text-align: center;
             padding: 80px 20px;
@@ -92,28 +92,27 @@
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: 3rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: 1.2rem;
             margin-bottom: 20px;
         }
         
-        /* Gallery Grid - Responsive Columns */
+        /* Gallery Grid - Same image sizes but responsive layout */
         .gallery {
-            column-count: 3;
-            column-gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
             padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
         
         .artwork {
-            break-inside: avoid;
-            margin-bottom: 20px;
             background: white;
             padding: 15px;
             border-radius: 8px;
@@ -130,6 +129,7 @@
         
         .artwork img {
             width: 100%;
+            height: auto;
             border-radius: 5px;
             margin-bottom: 10px;
             cursor: pointer;
@@ -144,7 +144,7 @@
             font-family: 'Playfair Display', serif;
             color: #1A1A2E;
             margin: 10px 0;
-            font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+            font-size: 1.3rem;
         }
         
         /* Artwork Status Badge */
@@ -156,11 +156,9 @@
             color: #162A4E;
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: clamp(0.7rem, 1vw, 0.8rem);
+            font-size: 0.8rem;
             font-weight: bold;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            pointer-events: none;
-            user-select: none;
         }
         
         .artwork-status.sold {
@@ -168,7 +166,7 @@
             color: white;
         }
         
-        /* Modal Styles - Responsive */
+        /* Modal Styles - Responsive but same design */
         .artwork-modal {
             display: none;
             position: fixed;
@@ -224,14 +222,14 @@
             font-family: 'Playfair Display', serif;
             color: #1A1A2E;
             margin-top: 0;
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-size: 2rem;
             margin-bottom: 15px;
         }
         
         .modal-description {
             margin: 15px 0;
             line-height: 1.7;
-            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+            font-size: 1.1rem;
             color: #555;
         }
         
@@ -241,7 +239,7 @@
         
         .modal-meta p {
             margin: 10px 0;
-            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+            font-size: 1.1rem;
         }
         
         .modal-close {
@@ -277,7 +275,6 @@
             margin-top: 15px;
             transition: all 0.3s;
             box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
         }
         
         .whatsapp-button:hover {
@@ -302,7 +299,6 @@
             font-weight: bold;
             transition: all 0.3s;
             border: 2px solid #1A1A2E;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
         }
         
         .view-more a:hover {
@@ -310,104 +306,7 @@
             color: #1A1A2E;
         }
         
-        /* Artist Statement Section - Responsive */
-        .artist-section {
-            display: flex;
-            flex-direction: column;
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .artist-image {
-            flex: 1;
-            transition: all 0.3s;
-            width: 100%;
-            max-width: 500px;
-        }
-        
-        .artist-image:hover {
-            transform: scale(1.03);
-        }
-        
-        .artist-image img {
-            width: 100%;
-            border-radius: 10px;
-            border: 3px solid #D4AF37;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .artist-statement {
-            flex: 2;
-        }
-        
-        .artist-statement h1 {
-            font-family: 'Playfair Display', serif;
-            color: #162A4E;
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            margin-top: 0;
-        }
-        
-        .artist-statement p {
-            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
-            line-height: 1.7;
-            color: #555;
-        }
-        
-        /* Achievements Section - Responsive */
-        .achievements {
-            background: #f9f9f9;
-            padding: 40px 20px;
-            margin: 40px 0;
-        }
-        
-        .achievements-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .achievements h2 {
-            font-family: 'Playfair Display', serif;
-            color: #162A4E;
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .achievements-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        
-        .achievement-item {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 4px solid #D4AF37;
-            transition: all 0.3s;
-        }
-        
-        .achievement-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .achievement-item h3 {
-            color: #1A1A2E;
-            margin-top: 0;
-            font-size: clamp(1.1rem, 1.3vw, 1.3rem);
-        }
-        
-        .achievement-item p {
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
-            margin: 10px 0;
-        }
-        
-        /* Footer Styles - Responsive */
+        /* Footer Styles */
         .custom-footer {
             background: #1A1A2E;
             color: white;
@@ -424,14 +323,14 @@
         
         .footer-about h3 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.3rem, 2vw, 1.5rem);
+            font-size: 1.5rem;
             margin-top: 0;
             color: #D4AF37;
         }
         
         .footer-links h3, .footer-contact h3 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.2rem, 1.8vw, 1.3rem);
+            font-size: 1.3rem;
             margin-top: 0;
             color: #D4AF37;
         }
@@ -449,7 +348,6 @@
             color: white;
             text-decoration: none;
             transition: color 0.3s;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
         }
         
         .footer-links a:hover {
@@ -458,7 +356,6 @@
         
         .footer-contact p {
             margin: 10px 0;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
         }
         
         .copyright {
@@ -469,7 +366,7 @@
             font-size: 0.8rem;
         }
         
-        /* Floating Button - Mobile Optimized */
+        /* Floating Button */
         .floating-btn {
             position: fixed;
             bottom: 20px;
@@ -484,7 +381,6 @@
             display: flex;
             align-items: center;
             font-weight: bold;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
             animation: pulse 2s infinite;
             transition: all 0.3s;
         }
@@ -514,51 +410,14 @@
             }
         }
         
-        /* Responsive Adjustments */
-        @media (min-width: 768px) {
-            .gallery {
-                column-count: 2;
-                padding: 30px;
-            }
-            
-            .modal-content {
-                flex-direction: row;
-            }
-            
-            .modal-image-container {
-                padding: 30px;
-            }
-            
-            .modal-details {
-                padding: 40px;
-            }
-            
-            .artist-section {
-                flex-direction: row;
-                padding: 0 40px;
-                gap: 50px;
-            }
-            
-            .footer-container {
-                grid-template-columns: 2fr 1fr 1fr;
-            }
-            
-            .achievements-list {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-        }
-        
-        @media (min-width: 992px) {
-            .gallery {
-                column-count: 3;
-            }
-        }
-        
-        @media (max-width: 767px) {
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            /* Show hamburger menu on mobile */
             .hamburger {
                 display: block;
             }
             
+            /* Mobile navigation */
             .nav-links {
                 position: fixed;
                 top: 70px;
@@ -583,8 +442,34 @@
                 font-size: 1.1rem;
             }
             
+            /* Hero section adjustments */
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            /* Modal adjustments for mobile */
+            .modal-content {
+                margin: 20px auto;
+            }
+            
             .modal-image {
                 max-height: 50vh;
+            }
+            
+            /* Footer adjustments */
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            /* Desktop layout for footer */
+            .footer-container {
+                grid-template-columns: 2fr 1fr 1fr;
             }
         }
     </style>
@@ -608,7 +493,7 @@
         <p>Visual Artist | Acrylics & Palette Knife | Tanzania</p>
     </div>
     
-    <!-- Gallery Preview -->
+    <!-- Gallery Grid -->
     <div class="gallery">
         <div class="artwork" data-artwork-id="1">
             <div class="artwork-status sold">Sold</div>
@@ -625,6 +510,21 @@
             <img src="Image/window-flower.webp" alt="Bloom by the Window" onclick="openArtworkModal(3)">
             <h2>Bloom by the Window</h2>
         </div>
+        <div class="artwork" data-artwork-id="4">
+            <div class="artwork-status">Available</div>
+            <img src="Image/queen-of-savanna.webp" alt="Queen of the Savanna" onclick="openArtworkModal(4)">
+            <h2>Queen of the Savanna</h2>
+        </div>
+        <div class="artwork" data-artwork-id="5">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/nhino.webp" alt="The Mighty Nhino" onclick="openArtworkModal(5)">
+            <h2>The Mighty Nhino</h2>
+        </div>
+        <div class="artwork" data-artwork-id="6">
+            <div class="artwork-status">Available</div>
+            <img src="Image/space-x.webp" alt="Space X Vision" onclick="openArtworkModal(6)">
+            <h2>Space X Vision</h2>
+        </div>
     </div>
     
     <!-- View More Button -->
@@ -632,47 +532,6 @@
         <a href="gallery.html">View More Artwork</a>
     </div>
     
-    <!-- Artist Statement Section -->
-    <div class="artist-section">
-        <div class="artist-image">
-            <img src="Image/artist.webp" alt="Henry Kirenga">
-        </div>
-        <div class="artist-statement">
-            <h1>Artist Statement</h1>
-            <p>Hi, I'm Henry Wilhelm Kirenga — a visual artist born in Dar es Salaam, Tanzania. My art is all about freedom. I don't limit myself to one subject or one way of expression. I paint portraits, animals, nature, emotions, anything that speaks to me in the moment. Every canvas is a chance to explore, to express, and to tell a story in my own way.</p>
-            <p>I work mainly with acrylic paint, using both brushes and palette knives but I rely more on the knife to build rich textures that bring my paintings to life. It's through these layers and movements that the story of each work begins to emerge.</p>
-            <p>Inspired by my Tanzanian roots, I often blend natural elements like coffee textures and African fabric patterns into my work. Whether realistic or abstract, every painting carries a piece of my environment and personal journey.</p>
-            <p>To me, art is freedom a space where I can express without limits and connect with people through visual emotion. I'm honored to share that journey with you.</p>
-        </div>
-    </div>
-    
-    <!-- Achievements Section -->
-    <div class="achievements">
-        <div class="achievements-container">
-            <h2>Achievements & Highlights</h2>
-            <div class="achievements-list">
-                <div class="achievement-item">
-                    <h3>Exhibitions</h3>
-                    <p>Exhibited work at Rangi Gallery alongside other established artists.</p>
-                    <p>Exhibited at Nafasi Art Space, one of Tanzania's leading contemporary art hubs.</p>
-                    <p>Participated in international exhibitions in Germany and Zimbabwe, sharing Tanzanian art on global platforms.</p>
-                </div>
-                <div class="achievement-item">
-                    <h3>Collectors & Commissions</h3>
-                    <p>Sold paintings to collectors in Germany and Japan, expanding the international reach of my work.</p>
-                    <p>Commissioned by collectors for personalized artworks including a portrait of Kendrick Lamar for a client in Mtwara, a painting inspired by Elon Musk's achievements, and a custom BMW race car painting.</p>
-                </div>
-                <div class="achievement-item">
-                    <h3>Collaborations</h3>
-                    <p>Collaborated with Nias Nyalada Art Studio in live painting sessions with major organizations including Vodacom, Tigo, and Airtel.</p>
-                    <p>Worked with Nias Nyalada Art Studio during special painting sessions with leading Tanzanian musicians, including Diamond Platnumz's family and Jux.</p>
-                    <p>Created large-scale pieces including my largest painting to date and a powerful scene of a charging bull.</p>
-                    <p>Received a Certificate of Appreciation from TLM for artistic contribution.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <div class="custom-footer">
         <div class="footer-container">
@@ -837,6 +696,33 @@
           description: "This painting shows a cactus in full bloom, sitting on a windowsill with soft sunlight pouring in. The rich green of the cactus and the bright pink flowers bring life and color into the cozy space. It's a peaceful moment that reminds us how beauty can grow even in tough places, especially when there's light.",
           year: "2025",
           status: "Sold"
+        },
+        4: {
+          title: "Queen of the Savanna",
+          image: "Image/queen-of-savanna.webp",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A majestic lioness standing proud in the golden savanna, capturing the raw power and grace of Africa's wilderness.",
+          year: "2025",
+          status: "Available"
+        },
+        5: {
+          title: "The Mighty Nhino",
+          image: "Image/nhino.webp",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A powerful depiction of a rhinoceros in its natural habitat, showcasing the strength and vulnerability of this magnificent creature.",
+          year: "2025",
+          status: "Sold"
+        },
+        6: {
+          title: "Space X Vision",
+          image: "Image/space-x.webp",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A futuristic interpretation of space exploration, blending technology with artistic imagination.",
+          year: "2025",
+          status: "Available"
         }
       };
       
