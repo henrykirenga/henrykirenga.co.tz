@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery | Henry Wilhelm Kirenga</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(120deg, #f5e9d4 0%, #fffbe6 100%);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        nav {
+            background: #1A1A2E;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(26,26,46,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        nav a:hover {
+            color: #D4AF37;
+            text-shadow: 0 2px 8px #D4AF3744;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        .gallery {
+            column-count: 3;
+            column-gap: 30px;
+            padding: 40px 30px 20px 30px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(212,175,55,0.08);
+            margin: 30px auto 0 auto;
+            max-width: 1400px;
+            will-change: transform;
+        }
+        .artwork {
+            break-inside: avoid;
+            margin-bottom: 30px;
+            background: linear-gradient(120deg, #fff 80%, #f5e9d4 100%);
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 3px 18px rgba(212,175,55,0.10);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            border: 1px solid #f5e9d4;
+            will-change: transform;
+        }
+        .artwork:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(212,175,55,0.18);
+            border-color: #D4AF37;
+        }
+        .artwork img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(26,26,46,0.08);
+            transition: box-shadow 0.3s, transform 0.3s;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        .artwork img:hover {
+            box-shadow: 0 6px 24px rgba(212,175,55,0.18);
+            transform: scale(1.02);
+        }
+        .artwork h2 {
+            font-family: 'Playfair Display', serif;
+            color: #1A1A2E;
+            margin-top: 0;
+            font-size: 1.3em;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+        }
+        .artwork-status {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: auto;
+            background: linear-gradient(90deg, #D4AF37 60%, #fffbe6 100%);
+            color: #162A4E;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(212,175,55,0.12);
+            border: 1px solid #fffbe6;
+            transition: all 0.3s;
+            z-index: 2;
+        }
+        .artwork-status.sold {
+            background: #1A1A2E;
+            color: white;
+            border: 1px solid #D4AF37;
+        }
+        .filter-buttons {
+            text-align: center;
+            margin: 40px 0 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .filter-btn {
+            background: linear-gradient(90deg, #D4AF37 60%, #fffbe6 100%);
+            color: #162A4E;
+            border: none;
+            padding: 12px 28px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(212,175,55,0.10);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #162A4E;
+            color: #fffbe6;
+            box-shadow: 0 4px 16px rgba(26,26,46,0.10);
+        }
+        /* Floating button */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(90deg, #D4AF37 60%, #fffbe6 100%);
+            color: #162A4E;
+            padding: 18px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(212,175,55,0.18);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            animation: pulse 2s infinite;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .floating-btn:hover {
+            transform: scale(1.07);
+            animation: none;
+            background: #162A4E;
+            color: #fffbe6;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        
+        /* Modal Styles */
+        .artwork-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(212,175,55,0.12);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .artwork-modal.show {
+            opacity: 1;
+        }
+        .modal-close {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            color: #1A1A2E;
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s;
+            background: rgba(255,255,255,0.8);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .modal-close:hover {
+            transform: rotate(90deg);
+            background: #D4AF37;
+            color: white;
+        }
+        .modal-content.fancy-modal {
+            background: linear-gradient(120deg, #fff 60%, #f5e9d4 100%);
+            box-shadow: 0 8px 32px rgba(212,175,55,0.18);
+            border-radius: 18px;
+            overflow: hidden;
+            animation: modalFadeIn 0.5s cubic-bezier(.4,0,.2,1);
+            display: flex;
+            flex-direction: row;
+            max-width: 1200px;
+            margin: 50px auto;
+            position: relative;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .no-frame {
+            background: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 350px;
+            overflow: hidden;
+        }
+        .fancy-modal .modal-image {
+            border-radius: 0;
+            box-shadow: none;
+            background: none;
+            width: 100%;
+            max-width: none;
+            max-height: 80vh;
+            margin: 0;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .fancy-modal .modal-image:hover {
+            transform: scale(1.02);
+        }
+        .fancy-modal .modal-details {
+            flex: 1;
+            padding: 48px 40px 48px 40px;
+            background: none;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .fancy-modal .modal-title {
+            font-size: 2.2em;
+            color: #1A1A2E;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+        }
+        .fancy-modal .modal-meta p {
+            font-size: 1.1em;
+            margin: 8px 0;
+            color: #333;
+        }
+        .fancy-modal .modal-description {
+            font-size: 1.15em;
+            color: #444;
+            margin: 18px 0 0 0;
+            line-height: 1.7;
+        }
+        .fancy-modal .whatsapp-button {
+            margin-top: 30px;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px rgba(37,211,102,0.12);
+            background: linear-gradient(90deg, #25D366 60%, #fffbe6 100%);
+            color: #162A4E;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .fancy-modal .whatsapp-button i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .fancy-modal .whatsapp-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+        .fancy-modal .whatsapp-button:hover::before {
+            left: 100%;
+        }
+        .fancy-modal .whatsapp-button:hover {
+            background: #128C7E;
+            color: #fffbe6;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37,211,102,0.3);
+        }
+        footer {
+            background: linear-gradient(90deg, #1A1A2E 80%, #1A1A2E 100%);
+            color: white;
+            box-shadow: 0 -2px 12px rgba(26,26,46,0.08);
+            margin-top: 50px;
+        }
+        @media (max-width: 900px) {
+            .gallery {
+                column-count: 2;
+            }
+            .modal-content.fancy-modal {
+                flex-direction: column;
+            }
+            .no-frame {
+                min-width: 100%;
+            }
+            .fancy-modal .modal-details {
+                min-width: 100%;
+                padding: 32px 16px;
+            }
+        }
+        @media (max-width: 768px) {
+            .gallery {
+                column-count: 1;
+            }
+            .modal-close {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 28px;
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery {
+                column-count: 1;
+                padding: 10px;
+            }
+            .modal-content.fancy-modal {
+                padding: 10px;
+                margin: 20px auto;
+            }
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .floating-btn {
+                padding: 15px 20px;
+                font-size: 1em;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Performance optimizations */
+        .artwork img {
+            will-change: transform;
+        }
+        
+        /* Loading animation for images */
+        .artwork img {
+            background: linear-gradient(90deg, #f5e9d4 25%, #fffbe6 50%, #f5e9d4 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            opacity: 0;
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+        }
+
+        .artwork img.loaded {
+            opacity: 1;
+            animation: none;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+        <button class="filter-btn" onclick="filterGallery('portraits')">Portraits</button>
+        <button class="filter-btn" onclick="filterGallery('nature')">Nature</button>
+        <button class="filter-btn" onclick="filterGallery('commissions')">Commissions</button>
+        <button class="filter-btn" onclick="filterGallery('wildlife')">Wildlife</button>
+        <button class="filter-btn" onclick="filterGallery('abstract')">Abstract</button>
+        <button class="filter-btn" onclick="filterGallery('culture')">Culture</button>
+    </div>
+
+    <div class="gallery">
+        <!-- Gallery images auto-generated from Image/ folder -->
+        <div class="artwork abstract" data-artwork-id="1">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/abstract.jpg" alt="Balance in Motion" onclick="openArtworkModal(1)">
+            <h2>Balance in Motion</h2>
+        </div>
+        <div class="artwork" data-artwork-id="2">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/african-beauty.jpg" alt="african-beauty" onclick="openArtworkModal(2)">
+            <h2>african-beauty</h2>
+        </div>
+        <div class="artwork culture" data-artwork-id="3">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/african-culture.jpg" alt="african-culture" onclick="openArtworkModal(3)">
+            <h2>african-culture</h2>
+        </div>
+        <div class="artwork culture" data-artwork-id="4">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/africanism.jpg" alt="africanism" onclick="openArtworkModal(4)">
+            <h2>africanism</h2>
+        </div>
+        <div class="artwork commission" data-artwork-id="5">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/bmw.jpg" alt="bmw" onclick="openArtworkModal(5)">
+            <h2>bmw</h2>
+        </div>
+        <div class="artwork portrait culture" data-artwork-id="6">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/batik.jpg" alt="batik" onclick="openArtworkModal(6)">
+            <h2>batik</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="7">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/bull.jpg" alt="bull" onclick="openArtworkModal(7)">
+            <h2>bull</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="8">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/butterfly.jpg" alt="butterfly" onclick="openArtworkModal(8)">
+            <h2>butterfly</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="9">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/drift-into-calm.JPG" alt="drift-into-calm" onclick="openArtworkModal(9)">
+            <h2>drift-into-calm</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="10">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/elephant.JPG" alt="elephant" onclick="openArtworkModal(10)">
+            <h2>elephant</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="11">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/flower-vessel.jpg" alt="flower-vessel" onclick="openArtworkModal(11)">
+            <h2>flower-vessel</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="12">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/gangster-racoon.jpg" alt="gangster-racoon" onclick="openArtworkModal(12)">
+            <h2>gangster-racoon</h2>
+        </div>
+        <div class="artwork portrait" data-artwork-id="13">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/golden-grace (2).jpg" alt="golden-grace (2)" onclick="openArtworkModal(13)">
+            <h2>golden-grace (2)</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="14">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/golden-grace.jpg" alt="golden harvest" onclick="openArtworkModal(14)">
+            <h2>golden-grace</h2>
+        </div>
+        <div class="artwork portrait abstract" data-artwork-id="15">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/guardian-of-tradition.jpg" alt="guardian of tradition" onclick="openArtworkModal(15)">
+            <h2>guardian-of-tradition</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="16">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/home-sweet-home.jpg" alt="home sweet home" onclick="openArtworkModal(16)">
+            <h2>home-sweet-home</h2>
+        </div>
+        <div class="artwork home" data-artwork-id="17">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/home.jpg" alt="home" onclick="openArtworkModal(17)">
+            <h2>home</h2>
+        </div>
+        <div class="artwork commission" data-artwork-id="18">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/journey-of-life.JPG" alt="journey of life" onclick="openArtworkModal(18)">
+            <h2>journey-of-life</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="19">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/legacy-in-the-making.jpg" alt="legacy-in-the-making" onclick="openArtworkModal(19)">
+            <h2>legacy-in-the-making</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="20">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/leopard.jpg" alt="leopard" onclick="openArtworkModal(20)">
+            <h2>leopard</h2>
+        </div>
+        <div class="artwork portrait" data-artwork-id="21">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/lonely.jpg" alt="lonely" onclick="openArtworkModal(21)">
+            <h2>lonely</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="22">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/monkey.jpg" alt="monkey" onclick="openArtworkModal(22)">
+            <h2>monkey</h2>
+        </div>
+        <div class="artwork portrait culture" data-artwork-id="23">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/queen-of-savanna.jpg" alt="queen of savanna" onclick="openArtworkModal(23)">
+            <h2>queen of savanna</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="24">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/rhino.jpg" alt="rhino" onclick="openArtworkModal(24)">
+            <h2>rhino</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="25">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/rooted-in-strength.jpg" alt="rooted in strength" onclick="openArtworkModal(25)">
+            <h2>rooted in strength</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="26">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/savanna-beauty.jpg" alt="savanna beauty" onclick="openArtworkModal(26)">
+            <h2>savanna beauty</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="27">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/savanna-elephant.jpg" alt="savanna elephant" onclick="openArtworkModal(27)">
+            <h2>savanna elephant</h2>
+        </div>
+        <div class="artwork portrait" data-artwork-id="28">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/silence-of-the-sword.jpg" alt="silence of the sword" onclick="openArtworkModal(28)">
+            <h2>silence of the sword</h2>
+        </div>
+        <div class="artwork commission" data-artwork-id="29">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/space-x.jpg" alt="space X" onclick="openArtworkModal(29)">
+            <h2>space X</h2>
+        </div>
+        <div class="artwork portrait" data-artwork-id="30">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/sunlit-soul.jpg" alt="sunlit soul" onclick="openArtworkModal(30)">
+            <h2>sunlit soul</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="31">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/swala.jpg" alt="swala" onclick="openArtworkModal(31)">
+            <h2>swala</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="32">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/tacoon.jpg" alt="tacoon" onclick="openArtworkModal(32)">
+            <h2>tacoon</h2>
+        </div>
+        <div class="artwork" data-artwork-id="33">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/the-bloom-truck.jpg" alt="The Bloom Truck" onclick="openArtworkModal(33)">
+            <h2>The Bloom Truck</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="34">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/vacation.jpg" alt="vacation" onclick="openArtworkModal(34)">
+            <h2>vacation</h2>
+        </div>
+        <div class="artwork" data-artwork-id="35">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/victoria.jpg" alt="victoria" onclick="openArtworkModal(35)">
+            <h2>victoria</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="36">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/window-flower.jpg" alt="window flower" onclick="openArtworkModal(36)">
+            <h2>window flower</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="37">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/window-lemon.JPG" alt="window lemon" onclick="openArtworkModal(37)">
+            <h2>window lemon</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="38">
+            <div class="artwork-status" onclick="toggleStatus(this)">Available</div>
+            <img src="Image/zebra.jpg" alt="zebra" onclick="openArtworkModal(38)">
+            <h2>zebra</h2>
+        </div>
+        
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; text-align: left;">
+            <div style="flex: 1; min-width: 300px; padding: 20px;">
+                <h3 style="font-family: 'Playfair Display', serif; color: #D4AF37;">Henry Wilhelm Kirenga</h3>
+                <p>Dar es Salaam's premier visual artist, celebrating African heritage through vibrant acrylic artworks and palette knife techniques.</p>
+            </div>
+            
+            <div style="flex: 1; min-width: 200px; padding: 20px;">
+                <h4 style="color: #D4AF37; margin-top: 0;">Quick Links</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                    <li><a href="gallery.html" style="color: white; text-decoration: none;">Gallery</a></li>
+                    <li><a href="about.html" style="color: white; text-decoration: none;">About</a></li>
+                    <li><a href="contact.html" style="color: white; text-decoration: none;">Contact</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Instagram</a></li>
+                </ul>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px; padding: 20px;">
+                <h4 style="color: #D4AF37; margin-top: 0;">Contact Information</h4>
+                <p>Dar es Salaam, Tanzania</p>
+                <p>Email: henrywillhelm1002@gmail.com</p>
+                <p>Phone: +255 684 555 058</p>
+                
+                <a href="#" class="whatsapp-button" style="display: inline-block; margin-top: 15px;" onclick="openPopup(); return false;">
+                    Request Commission
+                </a>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p>&copy; 2025 Henry Wilhelm Kirenga. All rights reserved.</p>
+            <div style="margin-top: 10px;">
+                <a href="privacy.html" style="color: #D4AF37; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+                <a href="terms.html" style="color: #D4AF37; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+                <a href="shipping.html" style="color: #D4AF37; text-decoration: none; margin: 0 10px;">Shipping Policy</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Artwork Modal -->
+    <div id="artwork-modal" class="artwork-modal">
+        <div class="modal-close" onclick="closeArtworkModal()">&times;</div>
+        <div class="modal-content fancy-modal">
+            <div class="modal-image-container no-frame">
+                <img id="modal-artwork-image" class="modal-image" src="" alt="">
+            </div>
+            <div class="modal-details">
+                <h2 id="modal-artwork-title" class="modal-title"></h2>
+                <div class="modal-meta">
+                    <p><strong>Year:</strong> <span id="modal-artwork-year"></span></p>
+                    <p><strong>Medium:</strong> <span id="modal-artwork-medium"></span></p>
+                    <p><strong>Size:</strong> <span id="modal-artwork-size"></span></p>
+                    <p><strong>Status:</strong> <span id="modal-artwork-status"></span></p>
+                    <p><strong>Price:</strong> <span id="modal-artwork-price"></span></p>
+                </div>
+                <p id="modal-artwork-description" class="modal-description"></p>
+                <a id="whatsapp-inquiry" href="#" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Inquire via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Commission Popup -->
+    <div id="commission-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+      <div style="background: white; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 30px; border-radius: 10px; position: relative; transform: translateY(20px); transition: transform 0.3s;">
+        <!-- Close Button -->
+        <button onclick="closePopup()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 20px; cursor: pointer;">✕</button>
+        
+        <!-- Form Content -->
+        <div id="form-content">
+          <h2 style="font-family: 'Playfair Display'; color: #162A4E;">Commission Custom Artwork</h2>
+          <form id="commission-form" style="margin-top: 20px;" action="https://formspree.io/f/myzppjgn" method="POST">
+            <!-- Name -->
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Full Name*</label>
+              <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            </div>
+            
+            <!-- Email -->
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Email*</label>
+              <input type="email" name="_replyto" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            </div>
+            
+            <!-- Size Selection -->
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Artwork Size*</label>
+              <select name="size" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <option value="" disabled selected>Select size</option>
+                <option value="80x60">80cm x 60cm </option>
+                <option value="70x100">70cm x 100cm </option>
+                <option value="100x100">100cm x 100cm </option>
+                <option value="custom">Custom Size</option>
+              </select>
+            </div>
+            
+            <!-- Hidden field for Formspree -->
+            <input type="hidden" name="_subject" value="New Commission Request">
+            <input type="hidden" name="_next" value="#">
+            
+            <!-- Submit Button -->
+            <button type="submit" style="background: #D4AF37; color: #162A4E; border: none; padding: 12px 20px; font-weight: bold; border-radius: 5px; width: 100%; margin-top: 10px;">
+              Request Commission
+            </button>
+          </form>
+        </div>
+        
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" style="display: none; text-align: center; padding: 30px;">
+          <div style="border: 4px solid #f3f3f3; border-top: 4px solid #D4AF37; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+          <p style="margin-top: 15px;">Submitting your request...</p>
+        </div>
+        
+        <!-- Success Message -->
+        <div id="success-message" style="display: none; text-align: center; padding: 30px;">
+          <div style="font-size: 50px; color: #4CAF50;">✓</div>
+          <h3 style="font-family: 'Playfair Display'; color: #162A4E;">Request Sent!</h3>
+          <p>I'll contact you within 24 hours to discuss your commission.</p>
+          <button onclick="closePopup()" style="background: #37a5d4; color: #162A4E; border: none; padding: 10px 20px; margin-top: 20px; border-radius: 5px; cursor: pointer;">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Commission Button -->
+    <a href="#" class="floating-btn" onclick="openPopup(); return false;">
+       <span style="margin-right: 10px;">🎨</span> Request Commission
+    </a>
+
+    <script>
+      // Artwork data - now includes all 38 artworks
+      const artworks = {
+        1: {
+          title: "Balance in Motion",
+          image: "Image/abstract.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "This abstract piece plays with curved lines and soft shades of blue, creating a calm yet dynamic feeling. The textured arcs seem to flow across the canvas, meeting the white space in harmony. It’s a simple reminder of how movement and stillness can exist together—balanced, yet alive.",
+          year: "2025",
+          price: "TSZ 150,000",
+          status: "Available"
+        },
+        2: {
+          title: "African Beauty",
+          image: "Image/african-beauty.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A celebration of African beauty and grace, showcasing the cultural richness of Tanzania.",
+          year: "2024",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        3: {
+          title: "African Culture",
+          image: "Image/african-culture.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A vibrant depiction of African cultural traditions and heritage.",
+          year: "2025",
+          price: "TSZ 180,000",
+          status: "Sold"
+        },
+        4: {
+          title: "Africanism",
+          image: "Image/africanism.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A powerful expression of African identity and contemporary culture.",
+          year: "2024",
+          price: "TSZ 180,000",
+          status: "Sold"
+        },
+        5: {
+          title: "BMW",
+          image: "Image/bmw.jpg",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A modern take on automotive art with an African twist.",
+          year: "2024",
+          price: "TSZ 550,000",
+          status: "Sold"
+        },
+        6: {
+          title: "Batik",
+          image: "Image/batik.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An artistic interpretation of traditional African batik patterns.",
+          year: "2024",
+          price: "TSZ 1,000,000",
+          status: "Available"
+        },
+        7: {
+          title: "Bull",
+          image: "Image/bull.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A powerful portrayal of strength and determination.",
+          year: "2024",
+          price: "TSZ 500,000",
+          status: "Available"
+        },
+        8: {
+          title: "Butterfly",
+          image: "Image/butterfly.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A delicate butterfly in vibrant colors.",
+          year: "2024",
+          price: "TSZ 180,000",
+          status: "Sold"
+        },
+        9: {
+          title: "Drift Into Calm",
+          image: "Image/drift-into-calm.JPG",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A serene composition that evokes tranquility and peace.",
+          year: "2025",
+          price: "TSZ 1,350,000",
+          status: "Available"
+        },
+        10: {
+          title: "the Ndovu of the Savanna",
+          image: "Image/elephant.JPG",
+          medium: "Acrylics",
+          size: "120cm x 80cm",
+          description: "A majestic African elephant in its natural habitat.",
+          year: "2025",
+          price: "TSZ 350,000",
+          status: "Available"
+        },
+        11: {
+          title: "Flower Vessel",
+          image: "Image/flower-vessel.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A beautiful arrangement of flowers in a traditional vessel.",
+          year: "2025",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        12: {
+          title: "Gangster Racoon",
+          image: "Image/gangster-racoon.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A playful yet edgy depiction of urban wildlife.",
+          year: "2025",
+          price: "TSZ 150,000",
+          status: "Available"
+        },
+        13: {
+          title: "Golden Harvest",
+          image: "Image/golden-grace (2).jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "Rich in earthy tones and golden highlights, the painting captures a moment of harvest a time deeply tied to joy and gratitude ",
+          year: "2025",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        14: {
+          title: "Golden Grace",
+          image: "Image/golden-grace.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "Golden Grace captures the radiant strength and quiet dignity of an African woman whose presence lights up the canvas. With golden undertones and elegant textures, this painting is a celebration of inner beauty, resilience, and cultural pride. Every stroke tells a story of grace passed down through generations of women who lead with softness but hold the weight of tradition and transformation within them.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Available"
+        },
+        15: {
+          title: "Guardian of Tradition",
+          image: "Image/guardian-of-tradition.jpg",
+          medium: "Acrylics",
+          size: "120cm x 80cm",
+          description: "A portrait honoring the keepers of cultural traditions.",
+          year: "2025",
+          price: "TSZ 400,000",
+          status: "Available"
+        },
+        16: {
+          title: "Home Sweet Home",
+          image: "Image/home-sweet-home.jpg",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A cozy depiction of domestic life and comfort.",
+          year: "2024",
+          price: "TSZ 350,000",
+          status: "Sold"
+        },
+        17: {
+          title: "Home",
+          image: "Image/home.jpg",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "An abstract representation of the concept of home.",
+          year: "2025",
+          price: "TSZ 450,000",
+          status: "Available"
+        },
+        18: {
+          title: "Journey of Life",
+          image: "Image/journey-of-life.JPG",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A symbolic representation of life's journey and experiences.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        19: {
+          title: "Legacy in the Making",
+          image: "Image/legacy-in-the-making.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A portrait capturing the creation of personal and cultural legacy.",
+          year: "2025",
+          price: "TSZ 220,000",
+          status: "Available"
+        },
+        20: {
+          title: "Leopard",
+          image: "Image/leopard.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A powerful African leopard in its natural environment.",
+          year: "2025",
+          price: "TSZ 200,000",
+          status: "Available"
+        },
+        21: {
+          title: "Lonely",
+          image: "Image/lonely.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "An evocative piece exploring themes of solitude and introspection.",
+          year: "2025",
+          price: "TSZ 150,000",
+          status: "Available"
+        },
+        22: {
+          title: "Monkey",
+          image: "Image/monkey.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A playful monkey character full of personality.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        23: {
+          title: "Queen of Savanna",
+          image: "Image/queen-of-savanna.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A regal portrait of a beautifulAfrican wildlife's most majestic creatures.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Available"
+        },
+        24: {
+          title: "Rhino",
+          image: "Image/rhino.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A powerful rhinoceros, highlighting conservation themes.",
+          year: "2024",
+          price: "TSZ 220,000",
+          status: "Available"
+        },
+        25: {
+          title: "Rooted in Strength",
+          image: "Image/rooted-in-strength.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A symbolic representation of resilience and cultural roots.",
+          year: "2025",
+          price: "TSZ 150,000",
+          status: "Available"
+        },
+        26: {
+          title: "Savanna Beauty",
+          image: "Image/savanna-beauty.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A beautiful portrait inspired by the colors of the African savanna.",
+          year: "2023",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        27: {
+          title: "Savanna Elephant",
+          image: "Image/savanna-elephant.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An elephant in the golden light of the savanna.",
+          year: "2023",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        28: {
+          title: "Silence of the Sword",
+          image: "Image/silence-of-the-sword.jpg",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A dramatic composition with historical and cultural references.",
+          year: "2024",
+          price: "TSZ 650,000",
+          status: "Sold"
+        },
+        29: {
+          title: "Space X",
+          image: "Image/space-x.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A futuristic exploration of space and technology themes.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Available"
+        },
+        30: {
+          title: "Sunlit Soul",
+          image: "Image/sunlit-soul.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A portrait illuminated by golden sunlight, capturing inner warmth.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        31: {
+          title: "Swala",
+          image: "Image/swala.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A graceful antelope in the African wilderness.",
+          year: "2025",
+          price: "TSZ 230,000",
+          status: "Available"
+        },
+        32: {
+          title: "Tacoon",
+          image: "Image/tacoon.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A colorful and energetic raccoon character.",
+          year: "2025",
+          price: "TSZ 160,000",
+          status: "Available"
+        },
+        33: {
+          title: "The Bloom Truck",
+          image: "Image/the-bloom-truck.jpg",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A gentle reminder to pause and embrace beauty in life's quiet, colorful details.",
+          year: "2025",
+          price: "TSZ 1,500,000",
+          status: "Available"
+        },
+        34: {
+          title: "Vacation",
+          image: "Image/vacation.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A cheerful depiction of holiday and leisure time.",
+          year: "2025",
+          price: "TSZ 150,000",
+          status: "Available"
+        },
+        35: {
+          title: "Victoria",
+          image: "Image/victoria.jpg",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A portrait named Victoria, full of character and depth.",
+          year: "2025",
+          price: "TSZ 650,000",
+          status: "Available"
+        },
+        36: {
+          title: "Bloom by the Window",
+          image: "Image/window-flower.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "This painting shows a cactus in full bloom, sitting on a windowsill with soft sunlight pouring in. The rich green of the cactus and the bright pink flowers bring life and color into the cozy space. It’s a peaceful moment that reminds us how beauty can grow even in tough places, especially when there’s light.",
+          year: "2025",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        37: {
+          title: "Window Lemon",
+          image: "Image/window-lemon.JPG",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A still life featuring lemons by a sunny window.",
+          year: "2025",
+          price: "TSZ 150,000",
+          status: "Available"
+        },
+        38: {
+          title: "Zebra",
+          image: "Image/zebra.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A striking zebra in its natural habitat.",
+          year: "2025",
+          price: "TSZ 200,000",
+          status: "Available"
+        }
+      };
+      
+      // WhatsApp number
+      const whatsappNumber = "255684555058";
+      
+      // Open artwork modal
+      function openArtworkModal(artworkId) {
+        const artwork = artworks[artworkId];
+        if (!artwork) return;
+        
+        document.getElementById('modal-artwork-image').src = artwork.image;
+        document.getElementById('modal-artwork-image').alt = artwork.title;
+        document.getElementById('modal-artwork-title').textContent = artwork.title;
+        document.getElementById('modal-artwork-medium').textContent = artwork.medium;
+        document.getElementById('modal-artwork-size').textContent = artwork.size;
+        document.getElementById('modal-artwork-status').textContent = artwork.status;
+        document.getElementById('modal-artwork-description').textContent = artwork.description;
+        document.getElementById('modal-artwork-year').textContent = artwork.year;
+        document.getElementById('modal-artwork-price').textContent = artwork.price;
+        
+        // Set WhatsApp link
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=I'm interested in purchasing "${artwork.title}" (${artwork.size})`;
+        document.getElementById('whatsapp-inquiry').href = whatsappLink;
+        
+        // Show modal with smooth transition
+        const modal = document.getElementById('artwork-modal');
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 10);
+      }
+      
+      // Close artwork modal
+      function closeArtworkModal() {
+        const modal = document.getElementById('artwork-modal');
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300);
+      }
+      
+      // Toggle artwork status
+      function toggleStatus(element) {
+        const artworkDiv = element.closest('.artwork');
+        const artworkId = artworkDiv.getAttribute('data-artwork-id');
+        const artwork = artworks[artworkId];
+        
+        if (element.textContent === "Available") {
+          element.textContent = "Sold";
+          element.classList.add('sold');
+          artwork.status = "Sold";
+        } else {
+          element.textContent = "Available";
+          element.classList.remove('sold');
+          artwork.status = "Available";
+        }
+      }
+      
+      // Close modal when clicking outside
+      document.getElementById('artwork-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeArtworkModal();
+        }
+      });
+      
+      // Filter gallery
+      function filterGallery(category) {
+        const artworks = document.querySelectorAll('.artwork');
+        const buttons = document.querySelectorAll('.filter-btn');
+        
+        // Update active button
+        buttons.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.textContent.toLowerCase() === category || 
+              (category === 'all' && btn.textContent === 'All')) {
+            btn.classList.add('active');
+          }
+        });
+        
+        // Filter artworks
+        artworks.forEach(art => {
+          if (category === 'all') {
+            art.style.display = 'block';
+          } else {
+            art.style.display = art.classList.contains(category) ? 'block' : 'none';
+          }
+        });
+      }
+      
+      // Commission popup functions
+      function openPopup() {
+        const popup = document.getElementById('commission-popup');
+        popup.style.display = 'flex';
+        setTimeout(() => {
+          popup.style.opacity = '1';
+          popup.querySelector('div').style.transform = 'translateY(0)';
+        }, 10);
+      }
+
+      function closePopup() {
+        const popup = document.getElementById('commission-popup');
+        popup.style.opacity = '0';
+        popup.querySelector('div').style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          popup.style.display = 'none';
+          resetForm();
+        }, 300);
+      }
+
+      function resetForm() {
+        document.getElementById('form-content').style.display = 'block';
+        document.getElementById('loading-spinner').style.display = 'none';
+        document.getElementById('success-message').style.display = 'none';
+        document.getElementById('commission-form').reset();
+      }
+
+      // Form submission
+      document.getElementById('commission-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('loading-spinner').style.display = 'block';
+        
+        // Create FormData object
+        const formData = new FormData(this);
+        
+        // Send form data to Formspree
+        fetch('https://formspree.io/f/myzppjgn', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Show success message
+            document.getElementById('loading-spinner').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+          } else {
+            throw new Error('Form submission failed');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('loading-spinner').style.display = 'none';
+          alert('There was a problem submitting your form. Please try again later.');
+          document.getElementById('form-content').style.display = 'block';
+        });
+      });
+      
+      // Preload images for better performance
+      window.addEventListener('load', function() {
+        // Preload images and add fade-in effect
+        document.querySelectorAll('.artwork img').forEach(img => {
+          if (img.complete) {
+            img.classList.add('loaded');
+          } else {
+            img.addEventListener('load', function() {
+              img.classList.add('loaded');
+            });
+          }
+        });
+      });
+    </script>
+</body>
+</html>
