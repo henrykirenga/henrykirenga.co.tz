@@ -9,3 +9,14 @@
     background: black;
     color: white;
 }
+/* ===== ARTWORK STATUS FIX ===== */
+.artwork-status {
+    background: gold !important;
+    color: black !important;
+}
+
+.artwork-status[data-status="sold"],
+.artwork-status.sold {
+    background: black !important;
+    color: white !important;
+}
