@@ -150,33 +150,35 @@
             text-transform: capitalize;
         }
         
-        /* Protected Status Badge - Cannot be changed by visitors */
-        .artwork-status {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: linear-gradient(90deg, var(--secondary-color) 60%, #fffbe6 100%);
-            color: var(--primary-color);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 2px 6px rgba(212,175,55,0.12);
-            border: 1px solid #fffbe6;
-            transition: all 0.3s;
-            z-index: 2;
-            pointer-events: none; /* Disable clicking */
-            user-select: none; /* Prevent text selection */
-            -webkit-user-select: none; /* Safari */
-            -moz-user-select: none; /* Firefox */
-            -ms-user-select: none; /* IE/Edge */
-        }
-        
-        .artwork-status.sold {
-            background: var(--primary-color);
-            color: white;
-            border: 1px solid var(--secondary-color);
-        }
+        /* Status Badge Styles */
+.artwork-status {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 120%;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(212,175,55,0.12);
+    transition: all 0.3s;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Available status */
+.artwork-status:not(.sold) {
+    background: linear-gradient(96deg, #FFD700 68%, #FFFBE6 100%);
+    color: #000000;
+    border: 1px solid #FFFBE6;
+}
+
+/* Sold status */
+.artwork-status.sold {
+    background: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFD700;
+}
         
         /* Filter Buttons */
         .filter-buttons {
