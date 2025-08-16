@@ -111,25 +111,36 @@
             font-size: 1.3rem;
         }
         
-        /* Artwork Status Badge - Now unchangeable by visitors */
-        .artwork-status {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #D4AF37;
-            color: #162A4E;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            pointer-events: none; /* Disables clicking */
-            user-select: none; /* Prevents text selection */
-        }
-        .artwork-status.sold {
-            background: #1A1A2E;
-            color: white;
-        }
+        /* Artwork Status Badge - Fixed Version */
+.artwork-status {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 10;
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Available status */
+.artwork-status:not(.sold) {
+    background: linear-gradient(135deg, #FFD700 0%, #FFC600 100%);
+    color: #000;
+    border: 1px solid #FFC600;
+}
+
+/* Sold status */
+.artwork-status.sold {
+    background: linear-gradient(135deg, #333 0%, #000 100%);
+    color: #FFF;
+    border: 1px solid #555;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
         
         /* Modal Styles */
         .artwork-modal {
