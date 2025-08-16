@@ -157,27 +157,28 @@
     left: 15px;
     padding: 6px 14px;
     border-radius: 20px;
-    font-size: 120%;
+    font-size: 14px;
     font-weight: bold;
-    box-shadow: 0 2px 6px rgba(212,175,55,0.12);
-    transition: all 0.3s;
-    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 10;
     pointer-events: none;
-    user-select: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Available status */
 .artwork-status:not(.sold) {
-    background: linear-gradient(96deg, #FFD700 68%, #FFFBE6 100%);
-    color: #000000;
-    border: 1px solid #FFFBE6;
+    background: linear-gradient(135deg, #FFD700 0%, #FFC600 100%);
+    color: #000;
+    border: 1px solid #FFC600;
 }
 
 /* Sold status */
 .artwork-status.sold {
-    background: #000000;
-    color: #FFFFFF;
-    border: 1px solid #FFD700;
+    background: linear-gradient(135deg, #333 0%, #000 100%);
+    color: #FFF;
+    border: 1px solid #555;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }
         
         /* Filter Buttons */
