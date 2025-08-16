@@ -1,0 +1,11 @@
+/* Available status - yellow color */
+.artwork-status {
+    background: gold;
+    color: black;
+}
+
+/* Sold status - black color */
+.artwork-status.sold {
+    background: black;
+    color: white;
+}
