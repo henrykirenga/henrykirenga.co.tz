@@ -1383,18 +1383,18 @@
           year: "2025",
           price: "TSZ 200,000",
           status: "Sold"
-        };
+        },
       
       // WhatsApp number
-      const whatsappNumber = "255684555058";
+      const whatsappNumber = "255684555058",
       
       // Set current year in footer
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-      
+      document.getElementById('current-year').textContent = new Date().getFullYear(),
+
       // Mobile navigation toggle
-      const hamburger = document.querySelector('.hamburger');
-      const navLinks = document.querySelector('.nav-links');
-      
+      const hamburger = document.querySelector('.hamburger'),
+      const navLinks = document.querySelector('.nav-links'),
+
       hamburger.addEventListener('click', () => {
           navLinks.classList.toggle('active');
       });
@@ -1404,11 +1404,11 @@
           link.addEventListener('click', () => {
               navLinks.classList.remove('active');
           });
-      });
+      }),
       
       // Open artwork modal
       function openArtworkModal(artworkId) {
-        const artwork = artworks[artworkId];
+        const artwork = artworks[artworkId],
         if (!artwork) return;
         
         document.getElementById('modal-artwork-image').src = artwork.image;
