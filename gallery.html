@@ -89,7 +89,7 @@
             bottom: 0;
             left: 0;
             background-color: var(--secondary-color);
-            transition: width 极致的艺术品展示与定制平台
+            transition: width 0.3s ease;
         }
         
         nav a:hover::after {
@@ -111,7 +111,7 @@
             background: linear-gradient(120deg, #fff 80%, #f5e9d4 100%);
             padding: 15px;
             border-radius: 12px;
-            box-shadow: 0 3px极致的艺术品展示与定制平台
+            box-shadow: 0 3px 12px rgba(212,175,55,0.10);
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
             border: 1px solid #f5e9d4;
@@ -124,59 +124,21 @@
             border-color: var(--secondary-color);
         }
         
-        .artwork-image-container {
-            position: relative;
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-        
         .artwork img {
             width: 100%;
             border-radius: 8px;
-            display: block;
-            transition: all 0.3s ease;
+            margin-bottom: 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(26,26,46,0.08);
+            transition: box-shadow 0.3s, transform 0.3s;
             aspect-ratio: 1/1;
             object-fit: cover;
             will-change: transform;
         }
         
         .artwork img:hover {
+            box-shadow: 0 6px 18px rgba(212,175,55,0.18);
             transform: scale(1.02);
-        }
-        
-        .view-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-            border-radius: 8px;
-        }
-        
-        .artwork-image-container:hover .view-overlay {
-            opacity: 1;
-        }
-        
-        .view-icon {
-            font-size: 2rem;
-            color: white;
-            margin-bottom: 8px;
-        }
-        
-        .view-text {
-            color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
         }
         
         .artwork h2 {
@@ -205,7 +167,7 @@
         }
 
         /* Available status */
-        .artwork-status:not(.sold):not(.unavailable) {
+        .artwork-status:not(.sold) {
             background: linear-gradient(135deg, #FFD700 0%, #FFC600 100%);
             color: #000;
             border: 1px solid #FFC600;
@@ -217,13 +179,6 @@
             color: #FFF;
             border: 1px solid #555;
             text-shadow: 0 1px 1px rgba(0,0,0,0.3);
-        }
-        
-        /* Unavailable status */
-        .artwork-status.unavailable {
-            background: linear-gradient(135deg, #888 0%, #666 100%);
-            color: #FFF;
-            border: 1px solid #999;
         }
         
         /* Filter Buttons */
@@ -241,12 +196,12 @@
             background: linear-gradient(90deg, var(--secondary-color) 60%, #fffbe6 100%);
             color: var(--primary-color);
             border: none;
-            padding: 10极致的艺术品展示与定制平台
+            padding: 10px 20px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
             font-size: 1em;
-            box-shadow: 0 2px 6px rgba(212,175极致的艺术品展示与定制平台
+            box-shadow: 0 2px 6px rgba(212,175,55,0.10);
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
@@ -279,7 +234,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: linear-gradient(90deg, var(--secondary极致的艺术品展示与定制平台
+            background: linear-gradient(90deg, var(--secondary-color) 60%, #fffbe6 100%);
             color: var(--primary-color);
             padding: 14px 22px;
             border-radius: 50px;
@@ -304,7 +259,7 @@
         
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 极致的艺术品展示与定制平台
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
             100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
         
@@ -340,7 +295,7 @@
             z-index: 1001;
             transition: transform 0.3s;
             background: rgba(255,255,255,0.9);
-            width: 45极致的艺术品展示与定制平台
+            width: 45px;
             height: 45px;
             display: flex;
             align-items: center;
@@ -401,7 +356,7 @@
         }
         
         .modal-meta p {
-            font-size: 1极致的艺术品展示与定制平台
+            font-size: 1em;
             margin: 8px 0;
             color: #555;
         }
@@ -446,14 +401,14 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5极致的艺术品展示与定制平台
+            transition: 0.5s;
         }
         
         .whatsapp-button:hover::before {
             left: 100%;
         }
         
-极致的艺术品展示与定制平台
+        .whatsapp-button:hover {
             background: #128C7E;
             color: white;
             transform: translateY(-2px);
@@ -468,10 +423,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(26,26,46极致的艺术品展示与定制平台
+            background: rgba(26,26,46,0.9);
             z-index: 1000;
             overflow-y: auto;
-            padding极致的艺术品展示与定制平台
+            padding: 20px;
             box-sizing: border-box;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -482,7 +437,7 @@
         }
         
         .commission-content {
-            background: linear-gradient(120deg, #fff 60%, #f5极致的艺术品展示与定制平台
+            background: linear-gradient(120deg, #fff 60%, #f5e9d4 100%);
             box-shadow: 0 8px 24px rgba(212,175,55,0.18);
             border-radius: 12px;
             overflow: hidden;
@@ -569,7 +524,7 @@
             text-align: center;
         }
         
-        .footer极致的艺术品展示与定制平台
+        .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -671,7 +626,7 @@
             }
             
             .nav-links.active {
-                clip-path: circle(1000极致的艺术品展示与定制平台
+                clip-path: circle(1000px at 90% -10%);
                 -webkit-clip-path: circle(1000px at 90% -10%);
             }
             
@@ -703,7 +658,7 @@
         <a href="index.html" class="nav-logo">Henry Kirenga</a>
         <button class="hamburger">☰</button>
         <div class="nav-links">
-            <a href极致的艺术品展示与定制平台
+            <a href="index.html">Home</a>
             <a href="gallery.html">Gallery</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
@@ -714,7 +669,7 @@
     <div class="filter-buttons">
         <button class="filter-btn active" onclick="filterGallery('all')">All</button>
         <button class="filter-btn" onclick="filterGallery('portraits')">Portraits</button>
-        <button class="filter-btn极致的艺术品展示与定制平台
+        <button class="filter-btn" onclick="filterGallery('nature')">Nature</button>
         <button class="filter-btn" onclick="filterGallery('commissions')">Commissions</button>
         <button class="filter-btn" onclick="filterGallery('wildlife')">Wildlife</button>
         <button class="filter-btn" onclick="filterGallery('abstract')">Abstract</button>
@@ -726,60 +681,259 @@
         <!-- Gallery items -->
         <div class="artwork abstract" data-artwork-id="1">
             <div class="artwork-status">Available</div>
-            <div class="artwork-image-container">
-                <img src="Image/abstract.webp" alt="Balance in Motion" loading="lazy">
-                <div class="view-overlay" onclick="openArtworkModal(1)">
-                    <div class="view-icon">👁️</div>
-                    <div class="view-text">View</div>
-                </div>
-            </div>
+            <img src="Image/abstract.webp" alt="Balance in Motion" loading="lazy" onclick="openArtworkModal(1)">
             <h2>Balance in Motion</h2>
         </div>
         <div class="artwork portraits" data-artwork-id="2">
             <div class="artwork-status">Available</div>
-            <div class="artwork-image-container">
-                <img src="Image/african-beauty.webp" alt="african beauty">
-                <div class="view-overlay" onclick="openArtworkModal(2)">
-                    <div class="view-icon">👁️</div>
-                    <div class="view-text">View</div>
-                </div>
-            </div>
+            <img src="Image/african-beauty.webp" alt="african beauty" onclick="openArtworkModal(2)">
             <h2>african beauty</h2>
         </div>
         <div class="artwork culture" data-artwork-id="3">
             <div class="artwork-status sold">Sold</div>
-            <div class="artwork-image-container">
-                <img src="Image/african-culture.jpg" alt="african culture">
-                <div class="view-overlay" onclick="openArtworkModal(3)">
-                    <div class="view-icon">👁️</div>
-                    <div class="view-text">View</div>
-                </div>
-            </div>
+            <img src="Image/african-culture.jpg" alt="african culture" onclick="openArtworkModal(3)">
             <h2>african culture</h2>
         </div>
         <div class="artwork culture" data-artwork-id="4">
             <div class="artwork-status">Available</div>
-            <div class="artwork极致的艺术品展示与定制平台
-                <img src="Image/africanism.jpg" alt="Layers of Us">
-                <div class="view-overlay" onclick="openArtworkModal(4)">
-                    <div class="view-icon">👁️</div>
-                    <div class="view-text">View</div>
-                </div>
-            </div>
+            <img src="Image/africanism.jpg" alt="Layers of Us" onclick="openArtworkModal(4)">
             <h2>Layers of Us</h2>
         </div>
         <div class="artwork commissions" data-artwork-id="5">
            <div class="artwork-status sold">Sold</div>
-            <div class="artwork-image-container">
-                <img src="Image/bmw.webp" alt="bmw">
-                <div class="view-overlay" onclick="openArtworkModal(5)">
-                    <div class="view-icon">👁️</div>
-                    <div class="view-text">View</div>
-                </div>
-            </div>
+            <img src="Image/bmw.webp" alt="bmw" onclick="openArtworkModal(5)">
             <h2>bmw</h2>
         </div>
-        <!-- More artworks with the same pattern... -->
+        <div class="artwork portraits culture" data-artwork-id="6">
+            <div class="artwork-status">Available</div>
+            <img src="Image/batik.webp" alt="batik" onclick="openArtworkModal(6)">
+            <h2>batik</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="7">
+            <div class="artwork-status">Unavailable</div>
+            <img src="Image/bull.webp" alt="bull" onclick="openArtworkModal(7)">
+            <h2>bull</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="8">
+           <div class="artwork-status sold">Sold</div>
+            <img src="Image/butterfly.webp" alt="Fragile Grace" onclick="openArtworkModal(8)">
+            <h2>Fragile Grace</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="9">
+            <div class="artwork-status">Available</div>
+            <img src="Image/drift-into-calm.webp" alt="drift into calm" onclick="openArtworkModal(9)">
+            <h2>drift into calm</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="10">
+            <div class="artwork-status">Available</div>
+            <img src="Image/elephant.webp" alt="The Golden Journey" onclick="openArtworkModal(10)">
+            <h2>The Golden Journey</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="11">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/flower-vessel.webp" alt="flower vessel" onclick="openArtworkModal(11)">
+            <h2>flower vessel</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="12">
+            <div class="artwork-status">Available</div>
+            <img src="Image/gangster-racoon.webp" alt="Midnight Outlaw" onclick="openArtworkModal(12)">
+            <h2>Midnight Outlaw</h2>
+        </div>
+        <div class="artwork portraits" data-artwork-id="13">
+            <div class="artwork-status">Available</div>
+            <img src="Image/golden-grace (2).webp" alt="golden grace" onclick="openArtworkModal(13)">
+            <h2>golden grace</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="14">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/golden-grace.webp" alt="golden harvest" onclick="openArtworkModal(14)">
+            <h2>golden harvest</h2>
+        </div>
+        <div class="artwork portraits abstract" data-artwork-id="15">
+            <div class="artwork-status">Available</div>
+            <img src="Image/guardian-of-tradition.webp" alt="guardian of tradition" onclick="openArtworkModal(15)">
+            <h2>guardian of tradition</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="16">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/home-sweet-home.webp" alt="home sweet home" onclick="openArtworkModal(16)">
+            <h2>home sweet home</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="17">
+            <div class="artwork-status">Available</div>
+            <img src="Image/home.webp" alt="home" onclick="openArtworkModal(17)">
+            <h2>home</h2>
+        </div>
+        <div class="artwork commissions" data-artwork-id="18">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/journey-of-life.webp" alt="journey of life" onclick="openArtworkModal(18)">
+            <h2>journey of life</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="19">
+            <div class="artwork-status">Available</div>
+            <img src="Image/legacy-in-the-making.webp" alt="legacy in the making" onclick="openArtworkModal(19)">
+            <h2>legacy in the making</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="20">
+            <div class="artwork-status">Available</div>
+            <img src="Image/leopard.webp" alt="Silent Sentinel" onclick="openArtworkModal(20)">
+            <h2>Silent Sentinel</h2>
+        </div>
+        <div class="artwork portraits" data-artwork-id="21">
+            <div class="artwork-status">Available</div>
+            <img src="Image/lonely.jpg" alt="The Silent Gaze" onclick="openArtworkModal(21)">
+            <h2>The Silent Gaze</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="22">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/monkey.webp" alt="The Outsider" onclick="openArtworkModal(22)">
+            <h2>The Outsider</h2>
+        </div>
+        <div class="artwork portraits culture" data-artwork-id="23">
+            <div class="artwork-status">Available</div>
+            <img src="Image/queen-of-savanna.webp" alt="queen of savanna" onclick="openArtworkModal(23)">
+            <h2>queen of savanna</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="24">
+            <div class="artwork-status">Available</div>
+            <img src="Image/rhino.webp" alt="The Watchful Guardian" onclick="openArtworkModal(24)">
+            <h2>The Watchful Guardian</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="25">
+            <div class="artwork-status">Available</div>
+            <img src="Image/rooted-in-strength.jpg" alt="Rooted in Strength" onclick="openArtworkModal(25)">
+            <h2>Rooted in Strength</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="26">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/savanna-beauty.webp" alt="savanna beauty" onclick="openArtworkModal(26)">
+            <h2>savanna beauty</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="27">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/savanna-elephant.webp" alt="The Gentle Giant" onclick="openArtworkModal(27)">
+            <h2>The Gentle Giant</h2>
+        </div>
+        <div class="artwork portraits" data-artwork-id="28">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/silence-of-the-sword.webp" alt="silence of the sword" onclick="openArtworkModal(28)">
+            <h2>silence of the sword</h2>
+        </div>
+        <div class="artwork commissions" data-artwork-id="29">
+           <div class="artwork-status sold">Sold</div>
+            <img src="Image/space-x.webp" alt="space X" onclick="openArtworkModal(29)">
+            <h2>space X</h2>
+        </div>
+        <div class="artwork portraits" data-artwork-id="30">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/sunlit-soul.webp" alt="sunlit soul" onclick="openArtworkModal(30)">
+            <h2>sunlit soul</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="31">
+            <div class="artwork-status">Available</div>
+            <img src="Image/swala.webp" alt="Grace of the Horns" onclick="openArtworkModal(31)">
+            <h2>Grace of the Horns</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="32">
+            <div class="artwork-status">Available</div>
+            <img src="Image/tacoon.webp" alt="tacoon" onclick="openArtworkModal(32)">
+            <h2>tacoon</h2>
+        </div>
+        <div class="artwork" data-artwork-id="33">
+            <div class="artwork-status">Available</div>
+            <img src="Image/the-bloom-truck.webp" alt="The Bloom Truck" onclick="openArtworkModal(33)">
+            <h2>The Bloom Truck</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="34">
+            <div class="artwork-status">Available</div>
+            <img src="Image/vacation.webp" alt="vacation" onclick="openArtworkModal(34)">
+            <h2>vacation</h2>
+        </div>
+        <div class="artwork" data-artwork-id="35">
+            <div class="artwork-status">Unavailable</div>
+            <img src="Image/victoria.webp" alt="victoria" onclick="openArtworkModal(35)">
+            <h2>victoria</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="36">
+           <div class="artwork-status sold">Sold</div>
+            <img src="Image/window-flower.webp" alt="Light and Life" onclick="openArtworkModal(36)">
+            <h2>Light and Life</h2>
+        </div>
+        <div class="artwork nature" data-artwork-id="37">
+            <div class="artwork-status">Available</div>
+            <img src="Image/window-lemon.webp" alt="The Stillness Beyond the window " onclick="openArtworkModal(37)">
+            <h2>The Stillness Beyond the window </h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="38">
+            <div class="artwork-status">Available</div>
+            <img src="Image/zebra.webp" alt="Melted Patterns" loading="lazy" onclick="openArtworkModal(38)">
+            <h2>Melted Patterns</h2>
+        </div>
+        <div class="artwork" data-artwork-id="39">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/Sailing Though Firelight.webp" alt="Sailing Though Firelight" loading="lazy" onclick="openArtworkModal(39)">
+            <h2>Sailing Though Firelight</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="40">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/Ubaharia.jpg" alt="Ubaharia" loading="lazy" onclick="openArtworkModal(40)">
+            <h2>Ubaharia</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="41">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/The Watchful Glow.jpg" alt="The Watchful Glow" loading="lazy" onclick="openArtworkModal(41)">
+            <h2>The Watchful Glow</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="42">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/The journey of Yasuke.jpg" alt="The journey of Yasuke" loading="lazy" onclick="openArtworkModal(42)">
+            <h2>The journey of Yasuke</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="43">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/The Elegance of africa.jpg" alt="The Elegance of Africa" loading="lazy" onclick="openArtworkModal(43)">
+            <h2>The Elegance of Africa</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="44">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/joyful puppy.jpg" alt="joyful puppy" loading="lazy" onclick="openArtworkModal(44)">
+            <h2>joyful puppy</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="45">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/Heartbeats in Music.jpg" alt="Heartbeats in Music" loading="lazy" onclick="openArtworkModal(45)">
+            <h2>Heartbeats in Music</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="46">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/Leap of Freedom.jpg" alt="Leap of Freedom" loading="lazy" onclick="openArtworkModal(46)">
+            <h2>Leap of Freedom</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="47">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/Rhythms of Joy.jpg" alt="Rhythms of Joy" loading="lazy" onclick="openArtworkModal(47)">
+            <h2>Rhythms of Joy</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="48">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/Sails Among the Wings.jpg" alt="Sails Among the Wings" loading="lazy" onclick="openArtworkModal(48)">
+            <h2>Sails Among the Wings</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="49">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/The Golden Smile.jpg" alt="The Golden Smile" loading="lazy" onclick="openArtworkModal(49)">
+            <h2>The Golden Smile</h2>
+        </div>
+        <div class="artwork wildlife" data-artwork-id="50">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/The Masterpiece.jpg" alt="The Masterpiece" loading="lazy" onclick="openArtworkModal(50)">
+            <h2>The Masterpiece</h2>
+        </50>
+        <div class="artwork wildlife" data-artwork-id="51">
+            <div class="artwork-status sold">Sold</div>
+            <img src="Image/Veil of Beauty.jpg" alt="Veil of Beauty" loading="lazy" onclick="openArtworkModal(51)">
+            <h2>Veil of Beauty</h2>
+        </div>
     </div>
     
     <!-- Footer -->
@@ -805,7 +959,7 @@
                 <div class="modal-meta">
                     <p><strong>Year:</strong> <span id="modal-artwork-year"></span></p>
                     <p><strong>Medium:</strong> <span id="modal-artwork-medium"></span></p>
-                    <p><strong>Size:</strong> <span id极致的艺术品展示与定制平台
+                    <p><strong>Size:</strong> <span id="modal-artwork-size"></span></p>
                     <p><strong>Status:</strong> <span id="modal-artwork-status"></span></p>
                     <p><strong>Price:</strong> <span id="modal-artwork-price"></span></p>
                 </div>
@@ -829,7 +983,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name极致的艺术品展示与定制平台
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
@@ -866,12 +1020,12 @@
                 </div>
                 <div class="form-group">
                     <label for="budget">Budget Range (TSZ)</label>
-                    <select id="bud极致的艺术品展示与定制平台
+                    <select id="budget" name="budget" required>
                         <option value="">Select an option</option>
                         <option value="150000-250000">150,000 - 250,000</option>
                         <option value="250000-500000">250,000 - 500,000</option>
                         <option value="500000-1000000">500,000 - 1,000,000</option>
-                        <option value="极致的艺术品展示与定制平台
+                        <option value="1000000+">1,000,000+</option>
                     </select>
                 </div>
                 <button type="submit" class="submit-btn">Submit Request</button>
@@ -909,12 +1063,492 @@
         },
         3: {
           title: "African Culture",
-          image: "极致的艺术品展示与定制平台
+          image: "Image/african-culture.jpg",
           medium: "Acrylics",
           size: "80cm x 60cm",
           description: "A vibrant depiction of African cultural traditions and heritage.",
           year: "2025",
           price: "TSZ 180,000",
+          status: "Sold"
+        },
+        4: {
+          title: "Layers of Us",
+          image: "Image/africanism.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An artistic representation of African identity and pride.",
+          year: "2023",
+          price: "TSZ 250,000",
+          status: "Available"
+        },
+        5: {
+          title: "BMW",
+          image: "Image/bmw.webp",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A sleek and modern portrayal of a BMW car, capturing its elegance and power.",
+          year: "2024",
+          price: "TSZ 600,000",
+          status: "Sold"
+        },
+        6: {
+          title: "Batik",
+          image: "Image/batik.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A beautiful representation of traditional batik patterns and designs.",
+          year: "2023",
+          price: "CURRENTLY ON EXHIBITION",
+          status: "Available"
+        },
+        7: {
+          title: "Bull",
+          image: "Image/bull.webp",
+          medium: "Acrylics",
+          size: "200cm x 120cm",
+          description: "A powerful depiction of a bull, symbolizing strength and resilience.",
+          year: "2024",
+          price: "UNAVAILABLE",
+          status: "Unavailable"
+        },
+        8: {
+          title: "Fragile Grace",
+          image: "Image/butterfly.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A delicate portrayal of a butterfly, symbolizing transformation and beauty.",
+          year: "2025",
+          price: "TSZ 180,000",
+          status: "Sold"
+        },
+        9: {
+          title: "Drift into Calm",
+          image: "Image/drift-into-calm.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A serene landscape that invites viewers to drift into a state of calm and tranquility.",
+          year: "2023",
+          price: "CURRENTLY ON EXHIBITION",
+          status: "Available"
+        },
+        10: {
+          title: "The Golden Journey",
+          image: "Image/elephant.webp",
+          medium: "Acrylics",
+          size: "120cm x 80cm",
+          description: "An evocative portrayal of an elephant, symbolizing wisdom and strength on its golden journey.",
+          year: "2025",
+          price: "TSZ 320,000",
+          status: "Available"
+        },
+        11: {
+          title: "Flower Vessel",
+          image: "Image/flower-vessel.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A delicate depiction of a flower vessel, capturing the beauty of nature in bloom.",
+          year: "2024",
+          price: "TSZ 180,000",
+          status: "Sold"
+        },
+        12: {
+          title: "Midnight Outlaw",
+          image: "Image/gangster-racoon.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A playful and edgy portrayal of a raccoon with a gangster vibe.",
+          year: "2024",
+          price: "TSZ 180,000",
+          status: "Available"
+        },
+        13: {
+          title: "Golden Grace",
+          image: "Image/golden-grace (2).webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A graceful depiction of a figure bathed in golden light, symbolizing elegance and poise.",
+          year: "2024",
+          price: "TSZ 280,000",
+          status: "Available"
+        },
+        14: {
+          title: "Golden Harvest",
+          image: "Image/golden-grace.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A vibrant portrayal of a bountiful harvest, celebrating the richness of nature.",
+          year: "2024",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        15: {
+          title: "Guardian of Tradition",
+          image: "Image/guardian-of-tradition.webp",
+          medium: "Acrylics",
+          size: "120cm x 80cm",
+          description: "An evocative depiction of a guardian figure, symbolizing the preservation of cultural traditions.",
+          year: "2025",
+          price: "CURRENTLY ON EXHIBITION(Germany)",
+          status: "Available"
+        },
+        16: {
+          title: "Home Sweet Home",
+          image: "Image/home-sweet-home.webp",
+          medium: "Acrylics",
+          size: "120cm x 70cm",
+          description: "A warm and inviting portrayal of a cozy home, evoking feelings of comfort and belonging.",
+          year: "2024",
+          price: "TSZ 300,000",
+          status: "Sold"
+        },
+        17: {
+          title: "Home",
+          image: "Image/home.webp",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A heartfelt depiction of the concept of home, symbolizing safety and love.",
+          year: "2025",
+          price: "TSZ 450,000",
+          status: "Available"
+        },
+        18: {
+          title: "Journey of Life",
+          image: "Image/journey-of-life.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An inspiring portrayal of the journey of life and the beauty of its moments.",
+          year: "2024",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        19: {
+          title: "Legacy in the making",
+          image: "Image/legacy-in-the-making.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "This painting portrays a lion cub and its protector walking through light and shadows. The cub represents children as small heroes facing big battles, while the lion embodies courage, guidance, and protection. The rays of light symbolize hope and healing, reminding us that no battle is too great when faced with strength and love.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Available"
+        },
+        20: {
+          title: "Silent Sentinel",
+          image: "Image/leopard.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An energetic portrayal of a leopard, capturing its dynamic movement.",
+          year: "2025",
+          price: "TSZ 230,000",
+          status: "Available"
+        },
+        21: {
+          title: "The Silent Gaze",
+          image: "Image/lonely.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A poignant depiction of solitude, evoking feelings of introspection and contemplation.",
+          year: "2023",
+          price: "TSZ 180,000",
+          status: "Available"
+        },
+        22: {
+          title: "The Outsider",
+          image: "Image/monkey.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A lively portrayal of a monkey, capturing its playful and curious nature.",
+          year: "2024",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        23: {
+          title: "Queen of Savanna",
+          image: "Image/queen-of-savanna.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A regal depiction of a queen figure, symbolizing strength and beauty in the savanna.",
+          year: "2023",
+          price: "CURRENTLY ON EXHIBITION",
+          status: "Available"
+        },
+        24: {
+          title: "The Watchful Guardian",
+          image: "Image/rhino.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A powerful portrayal of a rhino, symbolizing protection and vigilance in the wild.",
+          year: "2024",
+          price: "TSZ 280,000",
+          status: "Available"
+        },
+        25: {
+          title: "Rooted in Strength",
+          image: "Image/rooted-in-strength.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A symbolic depiction of strength and resilience, inspired by the deep roots of nature.",
+          year: "2025",
+          price: "TSZ 180,000",
+          status: "Available"
+        },
+        26: {
+          title: "Savanna Beauty",
+          image: "Image/savanna-beauty.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A vibrant portrayal of the beauty of the savanna landscape and its wildlife.",
+          year: "2024",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        27: {
+          title: "The Gentle Giant",
+          image: "Image/savanna-elephant.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A majestic depiction of an elephant in the savanna, symbolizing wisdom and strength.",
+          year: "2024",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        28: {
+          title: "Silence of the Sword",
+          image: "Image/silence-of-the-sword.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An evocative portrayal of a sword, symbolizing honor and the quiet strength it embodies.",
+          year: "2024",
+          price: "TSZ 600,000",
+          status: "Sold"
+        },
+        29: {
+          title: "Space X",
+          image: "Image/space-x.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A futuristic depiction of space exploration, inspired by the innovations of SpaceX.",
+          year: "2024",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        30: {
+          title: "Sunlit Soul",
+          image: "Image/sunlit-soul.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A radiant portrayal of a figure bathed in sunlight, symbolizing inner light and positivity.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        31: {
+          title: "Grace of the Horns",
+          image: "Image/swala.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A graceful depiction of an antelope, symbolizing elegance and agility in the wild.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Available"
+        },
+        32: {
+          title: "The Watchful Beak",
+          image: "Image/tacoon.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "An enchanting portrayal of the sounds and sights of the wild, inviting viewers into a serene natural world.",
+          year: "2024",
+          price: "TSZ 180,000",
+          status: "Available"
+        },
+        33: {
+          title: "The Bloom Truck",
+          image: "Image/the-bloom-truck.webp",
+          medium: "Acrylics",
+          size: "100cm x 100cm",
+          description: "A vibrant depiction of a flower truck, symbolizing the beauty and joy that flowers bring to life.",
+          year: "2025",
+          price: "TSZ 1,200,000",
+          status: "Available"
+        },
+        34: {
+          title: "Vacation",
+          image: "Image/vacation.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A relaxing portrayal of a vacation scene, evoking feelings of leisure and escape.",
+          year: "2024",
+          price: "TSZ 180,000",
+          status: "Available"
+        },
+        35: {
+          title: "Victoria",
+          image: "Image/victoria.webp",
+          medium: "Acrylics",
+          size: "200cm x 120cm",
+          description: "A regal depiction of a figure named Victoria, symbolizing strength and grace.",
+          year: "2024",
+          price: "UNAVAILABLE",
+          status: "Unavailable"
+        },
+        36: {
+          title: "Light and Life",
+          image: "Image/window-flower.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A delicate portrayal of a flower in a window, symbolizing hope and new beginnings.",
+          year: "2025",
+          price: "TSZ 180,000",
+          status: "Sold"
+        },
+        37: {
+          title: "The Stillness Beyond the Window",
+          image: "Image/window-lemon.webp",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A tranquil depiction of a scene beyond a window, inviting viewers to embrace stillness and reflection.",
+          year: "2025",
+          price: "TSZ 180,000",
+          status: "Available"
+        },
+        38: {
+          title: "Melted Patterns",
+          image: "Image/zebra.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A dynamic portrayal of a zebra, capturing the fluidity and beauty of its patterns.",
+          year: "2024",
+          price: "TSZ 250,000",
+          status: "Available"
+        },
+        39: {
+          title: "Sailing Through Firelight",
+          image: "Image/Sailing Though Firelight.webp",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An adventurous depiction of a sailing scene illuminated by firelight, evoking a sense of exploration and wonder.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        40: {
+          title: "Ubaharia",
+          image: "Image/Ubaharia.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A vibrant portrayal of a figure named Ubaharia, symbolizing beauty and strength.",
+          year: "2024",
+          price: "TSZ 180,000",
+          status: "Sold"
+        },
+        41: {
+          title: "The Watchful Glow",
+          image: "Image/The Watchful Glow.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A captivating depiction of a figure bathed in a watchful glow, symbolizing vigilance and insight.",
+          year: "2023",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        42: {
+          title: "The Journey of Yasuke",
+          image: "Image/The journey of Yasuke.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "An inspiring portrayal of the journey of Yasuke, symbolizing courage and resilience.",
+          year: "2024",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        43: {
+          title: "The Elegance of Africa",
+          image: "Image/The Elegance of africa.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A graceful depiction of African elegance, celebrating the continent's rich cultural heritage.",
+          year: "2023",
+          price: "TSZ 830,000",
+          status: "Sold"
+        },
+        44: {
+          title: "Joyful Puppy",
+          image: "Image/joyful puppy.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A heartwarming portrayal of a joyful puppy, capturing its playful and loving nature.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        45: {
+          title: "Heartbeats in Music",
+          image: "Image/Heartbeats in Music.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A rhythmic depiction of music, capturing the heartbeat-like pulses that music evokes.",
+          year: "2023",
+          price: "TSZ 160,000",
+          status: "Sold"
+        },
+        46: {
+          title: "Leap of Freedom",
+          image: "Image/Leap of Freedom.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An energetic portrayal of a leap, symbolizing freedom and the joy of movement.",
+          year: "2024",
+          price: "TSZ 200,000",
+          status: "Sold"
+        },
+        47: {
+          title: "Rhythms of Joy",
+          image: "Image/Rhythms of Joy.jpg",
+          medium: "Acrylics",
+          size: "80cm x 60cm",
+          description: "A lively depiction of joy, capturing the rhythms and movements that express happiness.",
+          year: "2023",
+          price: "TSZ 850,000",
+          status: "Sold"
+        },
+        48: {
+          title: "Sails Among the Wings",
+          image: "Image/Sails Among the Wings.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An adventurous portrayal of sails among wings, symbolizing exploration and freedom.",
+          year: "2024",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        49: {
+          title: "The Golden Smile",
+          image: "Image/The Golden Smile.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A radiant depiction of a golden smile, symbolizing warmth and positivity.",
+          year: "2023",
+          price: "TSZ 350,000",
+          status: "Sold"
+        },
+        50: {
+          title: "The Masterpiece",
+          image: "Image/The Masterpiece.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "An exquisite portrayal of a masterpiece, celebrating artistic excellence and creativity.",
+          year: "2025",
+          price: "TSZ 250,000",
+          status: "Sold"
+        },
+        51: {
+          title: "Veil of Beauty",
+          image: "Image/Veil of Beauty.jpg",
+          medium: "Acrylics",
+          size: "100cm x 70cm",
+          description: "A delicate depiction of a veil, symbolizing beauty and mystery.",
+          year: "2023",
+          price: "TSZ 250,000",
           status: "Sold"
         }
         // ... (other artwork data would remain the same)
@@ -950,7 +1584,7 @@
         document.getElementById('modal-artwork-image').alt = artwork.title;
         document.getElementById('modal-artwork-title').textContent = artwork.title;
         document.getElementById('modal-artwork-medium').textContent = artwork.medium;
-        document.getElementById('modal-artwork-size').极致的艺术品展示与定制平台
+        document.getElementById('modal-artwork-size').textContent = artwork.size;
         document.getElementById('modal-artwork-status').textContent = artwork.status;
         document.getElementById('modal-artwork-description').textContent = artwork.description;
         document.getElementById('modal-artwork-year').textContent = artwork.year;
@@ -965,7 +1599,7 @@
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
-            modal.classList.add极致的艺术品展示与定制平台
+            modal.classList.add('show');
         }, 10);
       }
       
@@ -1048,7 +1682,8 @@
         const message = `New Commission Request:%0A%0AName: ${data.name}%0AEmail: ${data.email}%0APhone: ${data.phone}%0AArt Type: ${data['art-type']}%0ASize: ${data.size}%0ABudget: ${data.budget}%0ADeadline: ${data.deadline}%0A%0ADescription:%0A${data.description}`;
         
         // Open WhatsApp with pre-filled message
-        window.open(`极致的艺术品展示与定制平台
+        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        
         // Close modal and reset form
         closeCommissionModal();
         this.reset();
@@ -1069,28 +1704,6 @@
             });
           }
         });
-      });
-      
-      // Lazy load images for better performance
-      document.addEventListener('DOMContentLoaded', function() {
-        const lazyImages = [].slice.call(document.querySelectorAll('img.loading'));
-        
-        if ('IntersectionObserver' in window) {
-          let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                let lazyImage = entry.target;
-                lazyImage.src = lazyImage.dataset.src;
-                lazyImage.classList.remove('loading');
-                lazyImageObserver.unobserve(lazyImage);
-              }
-            });
-          });
-          
-          lazyImages.forEach(function(lazyImage) {
-            lazyImageObserver.observe(lazyImage);
-          });
-        }
       });
     </script>
 </body>
