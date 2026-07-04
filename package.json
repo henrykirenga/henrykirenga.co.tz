@@ -1,0 +1,18 @@
+{
+  "name": "henrykirenga-gallery",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Henry Wilhelm Kirenga — art portfolio (static site) + Supabase-backed admin CMS.",
+  "type": "module",
+  "scripts": {
+    "serve": "npx --yes serve@14 -l 5173 .",
+    "extract-seed": "node scripts/extract-seed.mjs",
+    "create-admin": "node scripts/create-admin.mjs",
+    "import": "node scripts/import.mjs"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5",
+    "sharp": "^0.33.4"
+  }
+}

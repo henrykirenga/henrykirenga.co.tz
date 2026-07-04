@@ -1,0 +1,1073 @@
+[
+  {
+    "legacy_id": 1,
+    "title": "Balance in Motion",
+    "slug": "balance-in-motion",
+    "description": "This abstract piece plays with curved lines and soft shades of blue, creating a calm yet dynamic feeling. The textured arcs seem to flow across the canvas, meeting the white space in harmony. It's a simple reminder of how movement and stillness can exist together balanced, yet alive.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2025,
+    "price_display": "TSZ 150,000",
+    "availability": "available",
+    "categories": [
+      "abstract"
+    ],
+    "image": "Image/abstract.webp",
+    "featured": true,
+    "archived": false,
+    "sort_order": 0
+  },
+  {
+    "legacy_id": 2,
+    "title": "African Beauty",
+    "slug": "african-beauty",
+    "description": "A celebration of African beauty and grace, showcasing the cultural richness of Tanzania.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 280,000",
+    "availability": "sold",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/african-beauty.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 1
+  },
+  {
+    "legacy_id": 3,
+    "title": "African Culture",
+    "slug": "african-culture",
+    "description": "A vibrant depiction of African cultural traditions and heritage.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2025,
+    "price_display": "TSZ 180,000",
+    "availability": "sold",
+    "categories": [
+      "culture"
+    ],
+    "image": "Image/african-culture.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 2
+  },
+  {
+    "legacy_id": 4,
+    "title": "Layers of Us",
+    "slug": "layers-of-us",
+    "description": "An artistic representation of African identity and pride.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2023,
+    "price_display": "TSZ 250,000",
+    "availability": "available",
+    "categories": [
+      "culture"
+    ],
+    "image": "Image/africanism.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 3
+  },
+  {
+    "legacy_id": 5,
+    "title": "BMW",
+    "slug": "bmw",
+    "description": "A sleek and modern portrayal of a BMW car, capturing its elegance and power.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 100cm",
+    "year": 2024,
+    "price_display": "TSZ 600,000",
+    "availability": "sold",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/bmw.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 4
+  },
+  {
+    "legacy_id": 6,
+    "title": "Batik",
+    "slug": "batik",
+    "description": "A beautiful representation of traditional batik patterns and designs.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2023,
+    "price_display": "CURRENTLY ON EXHIBITION",
+    "availability": "available",
+    "categories": [
+      "portraits",
+      "culture"
+    ],
+    "image": "Image/batik.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 5
+  },
+  {
+    "legacy_id": 7,
+    "title": "Bull",
+    "slug": "bull",
+    "description": "A powerful depiction of a bull, symbolizing strength and resilience.",
+    "medium": "Acrylics",
+    "dimensions": "200cm x 120cm",
+    "year": 2024,
+    "price_display": "UNAVAILABLE",
+    "availability": "unavailable",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/bull.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 6
+  },
+  {
+    "legacy_id": 8,
+    "title": "Fragile Grace",
+    "slug": "fragile-grace",
+    "description": "A delicate portrayal of a butterfly, symbolizing transformation and beauty.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2025,
+    "price_display": "TSZ 180,000",
+    "availability": "sold",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/butterfly.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 7
+  },
+  {
+    "legacy_id": 9,
+    "title": "Drift into Calm",
+    "slug": "drift-into-calm",
+    "description": "A serene landscape that invites viewers to drift into a state of calm and tranquility.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2023,
+    "price_display": "CURRENTLY ON EXHIBITION",
+    "availability": "available",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/drift-into-calm.webp",
+    "featured": true,
+    "archived": false,
+    "sort_order": 8
+  },
+  {
+    "legacy_id": 10,
+    "title": "The Golden Journey",
+    "slug": "the-golden-journey",
+    "description": "An evocative portrayal of an elephant, symbolizing wisdom and strength on its golden journey.",
+    "medium": "Acrylics",
+    "dimensions": "120cm x 80cm",
+    "year": 2025,
+    "price_display": "TSZ 320,000",
+    "availability": "available",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/elephant.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 9
+  },
+  {
+    "legacy_id": 11,
+    "title": "Flower Vessel",
+    "slug": "flower-vessel",
+    "description": "A delicate depiction of a flower vessel, capturing the beauty of nature in bloom.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2024,
+    "price_display": "TSZ 180,000",
+    "availability": "sold",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/flower-vessel.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 10
+  },
+  {
+    "legacy_id": 12,
+    "title": "Midnight Outlaw",
+    "slug": "midnight-outlaw",
+    "description": "A playful and edgy portrayal of a raccoon with a gangster vibe.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2024,
+    "price_display": "TSZ 180,000",
+    "availability": "available",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/gangster-racoon.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 11
+  },
+  {
+    "legacy_id": 13,
+    "title": "Golden Grace",
+    "slug": "golden-grace",
+    "description": "A graceful depiction of a figure bathed in golden light, symbolizing elegance and poise.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 280,000",
+    "availability": "available",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/golden-grace (2).webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 12
+  },
+  {
+    "legacy_id": 14,
+    "title": "Golden Harvest",
+    "slug": "golden-harvest",
+    "description": "A vibrant portrayal of a bountiful harvest, celebrating the richness of nature.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2024,
+    "price_display": "TSZ 200,000",
+    "availability": "sold",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/golden-grace.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 13
+  },
+  {
+    "legacy_id": 15,
+    "title": "Guardian of Tradition",
+    "slug": "guardian-of-tradition",
+    "description": "An evocative depiction of a guardian figure, symbolizing the preservation of cultural traditions.",
+    "medium": "Acrylics",
+    "dimensions": "120cm x 80cm",
+    "year": 2025,
+    "price_display": "CURRENTLY ON EXHIBITION(Germany)",
+    "availability": "available",
+    "categories": [
+      "portraits",
+      "abstract"
+    ],
+    "image": "Image/guardian-of-tradition.webp",
+    "featured": true,
+    "archived": false,
+    "sort_order": 14
+  },
+  {
+    "legacy_id": 16,
+    "title": "Home Sweet Home",
+    "slug": "home-sweet-home",
+    "description": "A warm and inviting portrayal of a cozy home, evoking feelings of comfort and belonging.",
+    "medium": "Acrylics",
+    "dimensions": "120cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 300,000",
+    "availability": "sold",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/home-sweet-home.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 15
+  },
+  {
+    "legacy_id": 17,
+    "title": "Home",
+    "slug": "home",
+    "description": "A heartfelt depiction of the concept of home, symbolizing safety and love.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 100cm",
+    "year": 2025,
+    "price_display": "TSZ 450,000",
+    "availability": "available",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/home.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 16
+  },
+  {
+    "legacy_id": 18,
+    "title": "Journey of Life",
+    "slug": "journey-of-life",
+    "description": "An inspiring portrayal of the journey of life and the beauty of its moments.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/journey-of-life.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 17
+  },
+  {
+    "legacy_id": 19,
+    "title": "Legacy in the making",
+    "slug": "legacy-in-the-making",
+    "description": "This painting portrays a lion cub and its protector walking through light and shadows. The cub represents children as small heroes facing big battles, while the lion embodies courage, guidance, and protection. The rays of light symbolize hope and healing, reminding us that no battle is too great when faced with strength and love.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 250,000",
+    "availability": "available",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/legacy-in-the-making.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 18
+  },
+  {
+    "legacy_id": 20,
+    "title": "Silent Sentinel",
+    "slug": "silent-sentinel",
+    "description": "An energetic portrayal of a leopard, capturing its dynamic movement.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 230,000",
+    "availability": "available",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/leopard.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 19
+  },
+  {
+    "legacy_id": 21,
+    "title": "The Silent Gaze",
+    "slug": "the-silent-gaze",
+    "description": "A poignant depiction of solitude, evoking feelings of introspection and contemplation.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2023,
+    "price_display": "TSZ 180,000",
+    "availability": "available",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/lonely.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 20
+  },
+  {
+    "legacy_id": 22,
+    "title": "The Outsider",
+    "slug": "the-outsider",
+    "description": "A lively portrayal of a monkey, capturing its playful and curious nature.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2024,
+    "price_display": "TSZ 200,000",
+    "availability": "sold",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/monkey.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 21
+  },
+  {
+    "legacy_id": 23,
+    "title": "Queen of Savanna",
+    "slug": "queen-of-savanna",
+    "description": "A regal depiction of a queen figure, symbolizing strength and beauty in the savanna.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2023,
+    "price_display": "CURRENTLY ON EXHIBITION",
+    "availability": "available",
+    "categories": [
+      "portraits",
+      "culture"
+    ],
+    "image": "Image/queen-of-savanna.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 22
+  },
+  {
+    "legacy_id": 24,
+    "title": "The Watchful Guardian",
+    "slug": "the-watchful-guardian",
+    "description": "A powerful portrayal of a rhino, symbolizing protection and vigilance in the wild.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 280,000",
+    "availability": "available",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/rhino.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 23
+  },
+  {
+    "legacy_id": 25,
+    "title": "Rooted in Strength",
+    "slug": "rooted-in-strength",
+    "description": "A symbolic depiction of strength and resilience, inspired by the deep roots of nature.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2025,
+    "price_display": "TSZ 180,000",
+    "availability": "sold",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/rooted-in-strength.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 24
+  },
+  {
+    "legacy_id": 26,
+    "title": "Savanna Beauty",
+    "slug": "savanna-beauty",
+    "description": "A vibrant portrayal of the beauty of the savanna landscape and its wildlife.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2024,
+    "price_display": "TSZ 200,000",
+    "availability": "sold",
+    "categories": [
+      "culture"
+    ],
+    "image": "Image/savanna-beauty.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 25
+  },
+  {
+    "legacy_id": 27,
+    "title": "The Gentle Giant",
+    "slug": "the-gentle-giant",
+    "description": "A majestic depiction of an elephant in the savanna, symbolizing wisdom and strength.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/savanna-elephant.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 26
+  },
+  {
+    "legacy_id": 28,
+    "title": "Silence of the Sword",
+    "slug": "silence-of-the-sword",
+    "description": "An evocative portrayal of a sword, symbolizing honor and the quiet strength it embodies.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 600,000",
+    "availability": "sold",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/silence-of-the-sword.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 27
+  },
+  {
+    "legacy_id": 29,
+    "title": "Space X",
+    "slug": "space-x",
+    "description": "A futuristic depiction of space exploration, inspired by the innovations of SpaceX.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/space-x.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 28
+  },
+  {
+    "legacy_id": 30,
+    "title": "Sunlit Soul",
+    "slug": "sunlit-soul",
+    "description": "A radiant portrayal of a figure bathed in sunlight, symbolizing inner light and positivity.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/sunlit-soul.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 29
+  },
+  {
+    "legacy_id": 31,
+    "title": "Grace of the Horns",
+    "slug": "grace-of-the-horns",
+    "description": "A graceful depiction of an antelope, symbolizing elegance and agility in the wild.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 250,000",
+    "availability": "available",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/swala.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 30
+  },
+  {
+    "legacy_id": 32,
+    "title": "The Watchful Beak",
+    "slug": "the-watchful-beak",
+    "description": "An enchanting portrayal of the sounds and sights of the wild, inviting viewers into a serene natural world.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2024,
+    "price_display": "TSZ 180,000",
+    "availability": "available",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/tacoon.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 31
+  },
+  {
+    "legacy_id": 33,
+    "title": "The Bloom Truck",
+    "slug": "the-bloom-truck",
+    "description": "A vibrant depiction of a flower truck, symbolizing the beauty and joy that flowers bring to life.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 100cm",
+    "year": 2025,
+    "price_display": "TSZ 1,200,000",
+    "availability": "sold",
+    "categories": [],
+    "image": "Image/the-bloom-truck.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 32
+  },
+  {
+    "legacy_id": 34,
+    "title": "Vacation",
+    "slug": "vacation",
+    "description": "A relaxing portrayal of a vacation scene, evoking feelings of leisure and escape.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2024,
+    "price_display": "TSZ 180,000",
+    "availability": "available",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/vacation.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 33
+  },
+  {
+    "legacy_id": 35,
+    "title": "Victoria",
+    "slug": "victoria",
+    "description": "A regal depiction of a figure named Victoria, symbolizing strength and grace.",
+    "medium": "Acrylics",
+    "dimensions": "200cm x 120cm",
+    "year": 2024,
+    "price_display": "UNAVAILABLE",
+    "availability": "unavailable",
+    "categories": [],
+    "image": "Image/victoria.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 34
+  },
+  {
+    "legacy_id": 36,
+    "title": "Light and Life",
+    "slug": "light-and-life",
+    "description": "A delicate portrayal of a flower in a window, symbolizing hope and new beginnings.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2025,
+    "price_display": "TSZ 180,000",
+    "availability": "sold",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/window-flower.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 35
+  },
+  {
+    "legacy_id": 37,
+    "title": "The Stillness Beyond the Window",
+    "slug": "the-stillness-beyond-the-window",
+    "description": "A tranquil depiction of a scene beyond a window, inviting viewers to embrace stillness and reflection.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2025,
+    "price_display": "TSZ 180,000",
+    "availability": "sold",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/window-lemon.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 36
+  },
+  {
+    "legacy_id": 38,
+    "title": "Melted Patterns",
+    "slug": "melted-patterns",
+    "description": "A dynamic portrayal of a zebra, capturing the fluidity and beauty of its patterns.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 250,000",
+    "availability": "available",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/zebra.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 37
+  },
+  {
+    "legacy_id": 39,
+    "title": "Sailing Through Firelight",
+    "slug": "sailing-through-firelight",
+    "description": "An adventurous depiction of a sailing scene illuminated by firelight, evoking a sense of exploration and wonder.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [],
+    "image": "Image/Sailing Though Firelight.webp",
+    "featured": false,
+    "archived": false,
+    "sort_order": 38
+  },
+  {
+    "legacy_id": 40,
+    "title": "Ubaharia",
+    "slug": "ubaharia",
+    "description": "A vibrant portrayal of a figure named Ubaharia, symbolizing beauty and strength.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2024,
+    "price_display": "TSZ 180,000",
+    "availability": "sold",
+    "categories": [],
+    "image": "Image/Ubaharia.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 39
+  },
+  {
+    "legacy_id": 41,
+    "title": "The Watchful Glow",
+    "slug": "the-watchful-glow",
+    "description": "A captivating depiction of a figure bathed in a watchful glow, symbolizing vigilance and insight.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2023,
+    "price_display": "TSZ 200,000",
+    "availability": "sold",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/The Watchful Glow.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 40
+  },
+  {
+    "legacy_id": 42,
+    "title": "The Journey of Yasuke",
+    "slug": "the-journey-of-yasuke",
+    "description": "An inspiring portrayal of the journey of Yasuke, symbolizing courage and resilience.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2024,
+    "price_display": "TSZ 200,000",
+    "availability": "sold",
+    "categories": [],
+    "image": "Image/The journey of Yasuke.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 41
+  },
+  {
+    "legacy_id": 43,
+    "title": "The Elegance of Africa",
+    "slug": "the-elegance-of-africa",
+    "description": "A graceful depiction of African elegance, celebrating the continent's rich cultural heritage.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2023,
+    "price_display": "TSZ 830,000",
+    "availability": "sold",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/The Elegance of africa.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 42
+  },
+  {
+    "legacy_id": 44,
+    "title": "Joyful Puppy",
+    "slug": "joyful-puppy",
+    "description": "A heartwarming portrayal of a joyful puppy, capturing its playful and loving nature.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/joyful puppy.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 43
+  },
+  {
+    "legacy_id": 45,
+    "title": "Heartbeats in Music",
+    "slug": "heartbeats-in-music",
+    "description": "A rhythmic depiction of music, capturing the heartbeat-like pulses that music evokes.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2023,
+    "price_display": "TSZ 160,000",
+    "availability": "sold",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/Heartbeats in Music.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 44
+  },
+  {
+    "legacy_id": 46,
+    "title": "Leap of Freedom",
+    "slug": "leap-of-freedom",
+    "description": "An energetic portrayal of a leap, symbolizing freedom and the joy of movement.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 200,000",
+    "availability": "sold",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/Leap of Freedom.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 45
+  },
+  {
+    "legacy_id": 47,
+    "title": "Rhythms of Joy",
+    "slug": "rhythms-of-joy",
+    "description": "A lively depiction of joy, capturing the rhythms and movements that express happiness.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2023,
+    "price_display": "TSZ 850,000",
+    "availability": "sold",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/Rhythms of Joy.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 46
+  },
+  {
+    "legacy_id": 48,
+    "title": "Sails Among the Wings",
+    "slug": "sails-among-the-wings",
+    "description": "An adventurous portrayal of sails among wings, symbolizing exploration and freedom.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2024,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "nature"
+    ],
+    "image": "Image/Sails Among the Wings.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 47
+  },
+  {
+    "legacy_id": 49,
+    "title": "The Golden Smile",
+    "slug": "the-golden-smile",
+    "description": "A radiant depiction of a golden smile, symbolizing warmth and positivity.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2023,
+    "price_display": "TSZ 350,000",
+    "availability": "sold",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/The Golden Smile.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 48
+  },
+  {
+    "legacy_id": 50,
+    "title": "The Masterpiece",
+    "slug": "the-masterpiece",
+    "description": "An exquisite portrayal of a masterpiece, celebrating artistic excellence and creativity.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/The Masterpiece.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 49
+  },
+  {
+    "legacy_id": 51,
+    "title": "Veil of Beauty",
+    "slug": "veil-of-beauty",
+    "description": "A delicate depiction of a veil, symbolizing beauty and mystery.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2023,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "portraits"
+    ],
+    "image": "Image/Veil of Beauty.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 50
+  },
+  {
+    "legacy_id": 52,
+    "title": "Black and white beauty",
+    "slug": "black-and-white-beauty",
+    "description": "A striking portrayal of contrasts, celebrating the beauty found in duality.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 275,000",
+    "availability": "sold",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/black and white beauty.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 51
+  },
+  {
+    "legacy_id": 53,
+    "title": "Bloom vessel",
+    "slug": "bloom-vessel",
+    "description": "A vibrant depiction of a blooming vessel, symbolizing growth and vitality.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2025,
+    "price_display": "TSZ 200,000",
+    "availability": "sold",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/bloom vessel.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 52
+  },
+  {
+    "legacy_id": 54,
+    "title": "Scarface",
+    "slug": "scarface",
+    "description": "Inspired by the legendary lion Scarface not his face, but his story. A story of power, scars, and survival that still roars through the wild.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 275,000",
+    "availability": "available",
+    "categories": [
+      "wildlife"
+    ],
+    "image": "Image/scarface .jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 53
+  },
+  {
+    "legacy_id": 55,
+    "title": "Spur",
+    "slug": "spur",
+    "description": "A dynamic portrayal of a spur, symbolizing movement and energy.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/spur.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 54
+  },
+  {
+    "legacy_id": 56,
+    "title": "Sunset beyond Horizon",
+    "slug": "sunset-beyond-horizon",
+    "description": "A serene depiction of a beach at sunset, inviting viewers to embrace tranquility and reflection.",
+    "medium": "Acrylics",
+    "dimensions": "90cm x 90cm",
+    "year": 2025,
+    "price_display": "TSZ 350,000",
+    "availability": "sold",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/sunset beach.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 55
+  },
+  {
+    "legacy_id": 57,
+    "title": "sunset",
+    "slug": "sunset",
+    "description": "A warm portrayal of a sunset, capturing the beauty and tranquility of the evening sky.",
+    "medium": "Acrylics",
+    "dimensions": "90cm x 90cm",
+    "year": 2025,
+    "price_display": "TSZ 350,000",
+    "availability": "available",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/sunset.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 56
+  },
+  {
+    "legacy_id": 58,
+    "title": "the black melanin",
+    "slug": "the-black-melanin",
+    "description": "A gentle depiction of meadows, evoking feelings of peace and connection with nature.",
+    "medium": "Acrylics",
+    "dimensions": "100cm x 70cm",
+    "year": 2025,
+    "price_display": "TSZ 250,000",
+    "availability": "sold",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/the black melanin.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 57
+  },
+  {
+    "legacy_id": 59,
+    "title": "The Bloom Branch",
+    "slug": "the-bloom-branch",
+    "description": "A serene portrayal of a zen garden, inviting viewers to embrace mindfulness and tranquility.",
+    "medium": "Acrylics",
+    "dimensions": "80cm x 60cm",
+    "year": 2025,
+    "price_display": "TSZ 180,000",
+    "availability": "available",
+    "categories": [],
+    "image": "Image/the bloom branch.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 58
+  },
+  {
+    "legacy_id": 60,
+    "title": "The Palm",
+    "slug": "the-palm",
+    "description": "A dreamy depiction of palm trees, evoking a sense of wonder and imagination.",
+    "medium": "Acrylics",
+    "dimensions": "90cm x 90cm",
+    "year": 2025,
+    "price_display": "TSZ 350,000",
+    "availability": "sold",
+    "categories": [
+      "commissions"
+    ],
+    "image": "Image/The Palm.jpg",
+    "featured": false,
+    "archived": false,
+    "sort_order": 59
+  }
+]

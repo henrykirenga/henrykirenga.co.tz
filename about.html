@@ -4,1066 +4,290 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Henry Wilhelm Kirenga</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description" content="The story, vision and journey of Henry Wilhelm Kirenga — contemporary visual artist from Dar es Salaam, Tanzania.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/luxury.css">
     <style>
-        :root {
-            --primary-color: #1A1A2E;
-            --secondary-color: #D4AF37;
-            --text-color: #333;
-            --light-bg: #F5F5F5;
-            --dark-bg: #0d0d1a;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Lato', sans-serif;
-            background: var(--light-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Improved Navigation */
-        nav {
-            background: var(--primary-color);
-            padding: 15px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .nav-logo {
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            transition: color 0.3s;
-            position: relative;
-            padding: 5px 0;
-        }
-        
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-        }
-        
-        nav a:hover {
-            color: var(--secondary-color);
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--secondary-color);
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.8)), url('Image/artist-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            min-height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-        }
-        
-        /* About Section */
-        .about-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-        
-        .about-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .about-header h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            margin-bottom: 15px;
-        }
-        
-        .about-header p {
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Artist Profile */
-        .artist-profile {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .artist-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .artist-images img {
-            width: 100%;
-            aspect-ratio: 4/5;
-            height: auto;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(212,175,55,0.12);
-            border: 2px solid var(--secondary-color);
-            background: linear-gradient(120deg, #fffbe6 60%, #f5e9d4 100%);
-            object-fit: cover;
-            transition: transform 0.3s, box-shadow 0.3s, opacity 0.7s cubic-bezier(.4,0,.2,1);
-            opacity: 0;
-        }
-        
-        .artist-images img.loaded {
-            opacity: 1;
-        }
-        
-        .artist-images img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 16px 48px rgba(212,175,55,0.18);
-        }
-        
-        .artist-images img:first-child {
-            aspect-ratio: 16/9;
-        }
-        
-        .artist-bio h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            margin-bottom: 20px;
-        }
-        
-        .artist-bio p {
-            margin-bottom: 20px;
-            font-size: clamp(1rem, 1.2vw, 1.1rem);
-            color: #555;
-        }
-        
-        /* Journey Section */
-        .journey-section {
-            background: #f9f9f9;
-            padding: 40px 20px;
-            margin: 60px 0;
-        }
-        
-        .journey-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .journey-container h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .journey-content {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-        
-        .journey-text p {
-            font-size: clamp(1rem, 1.2vw, 1.1rem);
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        
-        .journey-image {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .journey-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 2px solid var(--secondary-color);
-        }
-        
-        .journey-image img[src*="certificate-of-appliciation.jpg"] {
-            max-width: 350px;
-            margin: 0 auto;
-            display: block;
-        }
-        
-        /* Art Philosophy */
-        .philosophy-section {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-        
-        .philosophy-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            margin-bottom: 20px;
-        }
-        
-        .philosophy-section p {
-            font-size: clamp(1rem, 1.2vw, 1.1rem);
-            line-height: 1.7;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto 20px;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            background: var(--primary-color);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        
-        .testimonials h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--secondary-color);
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            margin-bottom: 30px;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .testimonial-item {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        
-        .testimonial-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.15);
-        }
-        
-        .testimonial-item p {
-            font-style: italic;
-            margin-bottom: 15px;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
-        }
-        
-        .testimonial-item .author {
-            color: var(--secondary-color);
-            font-weight: bold;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: var(--dark-bg);
-            color: #aaa;
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .social-links {
-            margin: 20px 0;
-        }
-        
-        .social-links a {
-            color: var(--secondary-color);
-            margin: 0 10px;
-            font-size: 24px;
-            text-decoration: none;
-        }
-        
-        /* Floating Button */
-        .floating-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--secondary-color);
-            color: var(--primary-color);
-            padding: 12px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
-            animation: pulse 2s infinite;
-            transition: all 0.3s;
-        }
-        
-        .floating-btn:hover {
-            transform: scale(1.05);
-            animation: none;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-        }
-        
-        /* Highlight Box */
-        .highlight-box {
-            background: rgba(212, 175, 55, 0.1);
-            border-left: 4px solid var(--secondary-color);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        /* Signature */
-        .signature {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--primary-color);
-            text-align: right;
-            margin-top: 20px;
-        }
-        
-        /* Achievement Grid */
-        .achievement-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .achievement-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--secondary-color);
-        }
-        
-        .achievement-item h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: clamp(1.1rem, 1.3vw, 1.3rem);
-        }
-        
-        .commission-list {
-            margin-top: 15px;
-            padding-left: 20px;
-        }
-        
-        .commission-list li {
-            margin-bottom: 8px;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
-        }
-        
-        /* Process Steps */
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .process-step {
-            text-align: center;
-        }
-        
-        .process-step-number {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-        
-        .process-step h3 {
-            font-family: 'Playfair Display';
-            font-size: clamp(1rem, 1.2vw, 1.2rem);
-            margin-bottom: 8px;
-        }
-        
-        .process-step p {
-            font-size: clamp(0.8rem, 1vw, 0.9rem);
-        }
-        
-        /* Testimonial Form */
-        .testimonial-form-container {
-            max-width: 800px;
-            margin: 30px auto 0;
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        
-        .testimonial-form h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--secondary-color);
-            font-size: clamp(1.2rem, 1.8vw, 1.5rem);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .testimonial-form .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .testimonial-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
-        }
-        
-        .testimonial-form input[type="text"],
-        .testimonial-form input[type="email"],
-        .testimonial-form textarea,
-        .testimonial-form select {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255,255,255,0.9);
-            font-family: 'Lato', sans-serif;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
-        }
-        
-        .testimonial-form textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        
-        .testimonial-form button {
-            background: var(--secondary-color);
-            color: var(--primary-color);
-            border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: block;
-            margin: 20px auto 0;
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
-            width: 100%;
-            max-width: 200px;
-        }
-        
-        .testimonial-form button:hover {
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        
-        /* Popup Styles */
-        #commission-popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .popup-content {
-            background: white;
-            width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 20px;
-            border-radius: 10px;
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s;
-        }
-        
-        .popup-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        
-        .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--secondary-color);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Responsive Adjustments */
-        @media (min-width: 768px) {
-            .artist-profile {
-                flex-direction: row;
-            }
-            
-            .journey-content {
-                flex-direction: row;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .nav-links {
-                display: flex !important;
-            }
-            
-            .hamburger {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .hamburger {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--primary-color);
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                clip-path: circle(0px at 90% -10%);
-                -webkit-clip-path: circle(0px at 90% -10%);
-                transition: all 0.5s ease-out;
-            }
-            
-            .nav-links.active {
-                clip-path: circle(1000px at 90% -10%);
-                -webkit-clip-path: circle(1000px at 90% -10%);
-            }
-            
-            .nav-links a {
-                margin: 10px 0;
-                font-size: 1.2rem;
-            }
-            
-            .artist-images img:first-child {
-                aspect-ratio: 4/5;
-            }
-            
-            .floating-btn {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-        }
+        .quote-block { border-left: 2px solid var(--gold); padding: 8px 0 8px 28px; margin: 30px 0; font-family: var(--display); font-style: italic; font-size: 1.4rem; color: var(--ink); }
+        .band-dark .quote-block { color: #fff; }
+        .commission-list { list-style: none; margin-top: 20px; }
+        .commission-list li { position: relative; padding-left: 28px; margin-bottom: 14px; color: var(--muted); }
+        .commission-list li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.8rem; top: 4px; }
+        .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .process-step { text-align: center; padding: 30px; }
+        .process-step .n { font-family: var(--display); font-size: 3rem; color: var(--gold); line-height: 1; margin-bottom: 16px; }
+        .process-step h3 { color: var(--ink); font-size: 1.3rem; margin-bottom: 10px; }
+        .process-step p { color: var(--muted); font-size: 0.95rem; }
+        .cert-frame { max-width: 420px; margin: 40px auto 0; }
+        .cert-frame img { border: 1px solid var(--gold); border-radius: 4px; box-shadow: var(--shadow); }
+        .cert-frame p { text-align: center; margin-top: 16px; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; }
+        .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .testi { background: rgba(255,255,255,0.06); border: 1px solid rgba(212,175,55,0.25); padding: 38px; border-radius: 4px; transition: transform 0.4s, background 0.4s; }
+        .testi:hover { transform: translateY(-6px); background: rgba(255,255,255,0.1); }
+        .testi .mark { font-family: var(--display); font-size: 3rem; color: var(--gold); line-height: 0.5; }
+        .testi p { font-style: italic; color: rgba(255,255,255,0.85); margin: 18px 0; }
+        .testi .author { color: var(--gold-soft); font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; }
+        .form-panel { max-width: 760px; margin: 60px auto 0; background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.25); padding: 46px; border-radius: 4px; }
+        .form-panel h3 { color: #fff; text-align: center; font-size: 1.7rem; margin-bottom: 26px; }
+        .form-panel label { color: rgba(255,255,255,0.7); }
+        .form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .images-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .images-2 img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+        @media (max-width: 768px) { .process, .testi-grid, .form-row2, .images-2 { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="nav-logo">Henry Kirenga</a>
-        <button class="hamburger">☰</button>
-        <div class="nav-links">
+    <header id="header">
+        <a href="index.html" class="brand">Henry <span>Kirenga</span><small>Visual Artist</small></a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
             <a href="gallery.html">Gallery</a>
-            <a href="about.html">About</a>
+            <a href="about.html" class="active">About</a>
             <a href="contact.html">Contact</a>
-        </div>
-    </nav>
+            <a href="#" class="nav-cta" onclick="openPopup(); return false;">Commission</a>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Henry Wilhelm Kirenga</h1>
-        <p>Visual Artist | Acrylics & Palette Knife | Tanzania</p>
-    </div>
-    
-    <!-- About Section -->
-    <div class="about-section">
-        <div class="about-header">
-            <h1>About Me</h1>
-            <p>Hi, I'm Henry Kirenga, a visual artist born in Dar es Salaam, Tanzania.</p>
+    <!-- Hero -->
+    <section class="hero short center">
+        <div class="hero-bg" style="background-image:url('Image/artist-working.webp');" data-cms-bg="artist_portrait"></div>
+        <div class="hero-content">
+            <span class="eyebrow">The Artist</span>
+            <h1>The Story Behind<br>the <em>Canvas.</em></h1>
+            <p data-cms="about_hero_text">Born in Dar es Salaam. Driven by freedom. Painting emotion into every layer of acrylic.</p>
         </div>
-        
-        <div class="artist-profile">
-            <div class="artist-images">
-                <img src="Image/artist-working.webp" alt="Henry Kirenga working in his studio with palette knives" loading="lazy">
-                <img src="Image/artist-portrait1.webp" alt="Close-up of Henry Kirenga creating textured artwork" loading="lazy">
+    </section>
+
+    <!-- Vision -->
+    <section class="section">
+        <div class="split">
+            <div class="split-body reveal">
+                <span class="eyebrow">My Artistic Vision</span>
+                <h2 data-cms="about_vision_title">Art is my language of freedom.</h2>
+                <p data-cms="about_vision_p1">My work is rooted in freedom. I don't confine myself to a single subject or style — I paint portraits, animals, nature, emotions, and anything that sparks inspiration. Whether it's a quiet expression on someone's face or the wild energy of a charging bull, every painting is a chance to explore new ideas and connect on a deeper level.</p>
+                <div class="quote-block">"Each stroke breaks boundaries, each color tells a story untold by words."</div>
+                <p data-cms="about_vision_p2">I mainly use acrylic, working with both brushes and palette knives — the knife being my favorite tool for building rich texture and movement. I'm especially inspired by my environment, from the earthy textures of coffee seeds to the colorful patterns of African fabrics.</p>
             </div>
-            <div class="artist-bio">
-                <h2>My Artistic Vision</h2>
-                <p>My work is rooted in freedom. I don't confine myself to a single subject or style I paint portraits, animals, nature, emotions, and anything that sparks inspiration. Whether it's a quiet expression on someone's face or the wild energy of a charging bull, every painting is a chance to explore new ideas and connect with people on a deeper level.</p>
-                
-                <div class="highlight-box">
-                    <p>"Art is my language of freedom each stroke breaks boundaries, each color tells a story untold by words."</p>
-                </div>
-                
-                <p>I mainly use acrylic paint, working with both brushes and palette knives, with the knife being my favorite tool for building rich texture and movement. I'm especially inspired by my environment from the earthy textures of coffee seeds, to the colorful patterns of African fabrics, and the natural beauty that surrounds me in Tanzania. These elements help form a unique visual language in my work.</p>
+            <div class="images-2 reveal">
+                <img src="Image/artist-portrait1.webp" alt="Henry Kirenga creating textured artwork" loading="lazy">
+                <img src="Image/artist-portrait2.jpg" alt="Henry Kirenga in his studio" loading="lazy">
             </div>
         </div>
-    </div>
-    
-    <!-- Journey Section -->
-    <div class="journey-section">
-        <div class="journey-container">
-            <h2>My Artistic Journey</h2>
-            <div class="journey-content">
-                <div class="journey-text">
-                    <p>My journey as an artist has been shaped by curiosity, culture, and a need to express what words can't. Over time, I've developed a style that allows me to shift freely between subjects not because I'm undecided, but because I believe art should be as open and expressive as life itself.</p>
-                    
-                    <div class="achievement-grid">
-                        <div class="achievement-item">
-                            <h3>Exhibitions</h3>
-                            <p>Exhibited work at Rangi Gallery alongside other established artists.</p>
-                            <p>Exhibited at Nafasi Art Space, one of Tanzania's leading contemporary art hubs.</p>
-                            <p>Participated in international exhibitions in Germany and Zimbabwe, sharing Tanzanian art on global platforms.</p>
-                        </div>
-                        <div class="achievement-item">
-                            <h3>Collectors & Sales</h3>
-                            <p>Sold paintings to collectors in Germany and Japan, expanding the international reach of my work.</p>
-                        </div>
-                        <div class="achievement-item">
-                            <h3>Corporate Collaborations</h3>
-                            <p>Collaborated with Nias Nyalada Art Studio in live painting sessions with major organizations including Vodacom, Tigo, and Airtel.</p>
-                        </div>
-                        <div class="achievement-item">
-                            <h3>Musical Collaborations</h3>
-                            <p>Worked with Nias Nyalada Art Studio during special painting sessions with leading Tanzanian musicians, including Diamond Platnumz's family and Jux.</p>
-                        </div>
-                    </div>
+    </section>
+
+    <!-- Journey -->
+    <div class="band-dark">
+        <section class="section">
+            <div class="section-head center reveal">
+                <span class="eyebrow">The Journey</span>
+                <h2>My Artistic Journey</h2>
+                <p style="color:rgba(255,255,255,0.7);">A path shaped by curiosity, culture, and a need to express what words can't.</p>
+            </div>
+            <div class="cards-2">
+                <div class="lux-card reveal"><div class="idx">01</div><h3>Exhibitions</h3>
+                    <p>Exhibited at Rangi Gallery alongside established artists.</p>
+                    <p>Featured at Nafasi Art Space, one of Tanzania's leading contemporary art hubs.</p>
+                    <p>International exhibitions in Germany and Zimbabwe.</p>
                 </div>
-                <div class="journey-image">
-                    <img src="Image/artist-exhibition.webp" alt="Henry Kirenga at exhibition with his artwork" loading="lazy">
+                <div class="lux-card reveal"><div class="idx">02</div><h3>Collectors &amp; Sales</h3>
+                    <p>Sold paintings to collectors in Germany and Japan, expanding the international reach of my work.</p>
+                </div>
+                <div class="lux-card reveal"><div class="idx">03</div><h3>Corporate Collaborations</h3>
+                    <p>Live painting sessions with Vodacom, Tigo and Airtel via Nias Nyalada Art Studio.</p>
+                </div>
+                <div class="lux-card reveal"><div class="idx">04</div><h3>Musical Collaborations</h3>
+                    <p>Special sessions with leading Tanzanian musicians including Diamond Platnumz's family and Jux.</p>
                 </div>
             </div>
+        </section>
+    </div>
+
+    <!-- Philosophy + Commissioned works -->
+    <section class="section">
+        <div class="split">
+            <div class="split-body reveal">
+                <span class="eyebrow">Philosophy</span>
+                <h2>Art for all.</h2>
+                <p data-cms="about_philosophy">I choose to keep my art affordable and accessible, especially for my local community — not because I value it less, but because I believe art should be for everyone, not just a few. For international collectors, that means supporting work rooted in purpose and integrity. For locals, it means making space for connection through creativity.</p>
+            </div>
+            <div class="split-body reveal">
+                <span class="eyebrow">Commissioned Works</span>
+                <h2>Made by hand, for you.</h2>
+                <p>I've had the privilege of creating personalized artworks for collectors, including:</p>
+                <ul class="commission-list">
+                    <li>A portrait of Kendrick Lamar for a client in Mtwara</li>
+                    <li>A painting inspired by Elon Musk's achievements</li>
+                    <li>A custom BMW race car painting</li>
+                    <li>Large-scale pieces including my largest painting to date</li>
+                    <li>A powerful scene of a charging bull</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    
-    <!-- Philosophy Section -->
-    <div class="philosophy-section">
-        <h2>Art for All</h2>
-        <p>I choose to keep my art affordable and accessible, especially for my local community. It's not because I value it less but because I believe that art should be for everyone, not just a few. For international collectors, that means supporting work that's rooted in purpose and integrity. For locals, it means making space for connection through creativity.</p>
-    </div>
-    
-    <!-- Commissioned Works -->
-    <div class="philosophy-section">
-        <h2>Commissioned Works</h2>
-        <p>I've had the privilege of creating personalized artworks for collectors, including:</p>
-        <ul class="commission-list">
-            <li>A portrait of Kendrick Lamar for a client in Mtwara</li>
-            <li>A painting inspired by Elon Musk's achievements</li>
-            <li>A custom BMW race car painting</li>
-            <li>Created large-scale pieces including my largest painting to date</li>
-            <li>A powerful scene of a charging bull</li>
-        </ul>
-    </div>
-    
+    </section>
+
     <!-- Recognition -->
-    <div class="philosophy-section">
-        <h2>Recognition</h2>
-        <p>I've been honored to receive a Certificate of Appreciation from TLM in recognition of my artistic contribution.</p>
-        <div class="journey-image" style="margin-top:20px;">
-            <img src="Image/certificate-of-appliciation.jpg" alt="Certificate of Appreciation from TLM" loading="lazy" style="max-width:100%; border:4px solid var(--secondary-color); border-radius:18px; box-shadow:0 0 32px rgba(212,175,55,0.3); display:block; margin:0 auto; background:linear-gradient(120deg,#fffbe6 60%,#f5e9d4 100%);">
-            <p class="image-caption">Certificate of Appreciation from TLM</p>
-        </div>
-    </div>
-    
-    <!-- Creative Process -->
-    <div class="philosophy-section">
-        <h2>My Creative Process</h2>
-        <p>Each artwork begins with a moment of inspiration - sometimes from nature, sometimes from human emotion, often from the vibrant culture around me. I work primarily with palette knives to create textured, expressive pieces that capture movement and energy.</p>
-        
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="process-step-number">1</div>
-                <h3>Inspiration</h3>
-                <p>Finding the spark in everyday moments</p>
+    <div class="band-deep">
+        <section class="section tight">
+            <div class="section-head center reveal">
+                <span class="eyebrow">Recognition</span>
+                <h2>An Honored Contribution</h2>
+                <p>Honored to receive a Certificate of Appreciation from TLM in recognition of my artistic contribution.</p>
             </div>
-            <div class="process-step">
-                <div class="process-step-number">2</div>
-                <h3>Creation</h3>
-                <p>Building layers with palette knives</p>
+            <div class="cert-frame reveal">
+                <img src="Image/certificate-of-appliciation.jpg" alt="Certificate of Appreciation from TLM" loading="lazy">
+                <p>Certificate of Appreciation — TLM</p>
             </div>
-            <div class="process-step">
-                <div class="process-step-number">3</div>
-                <h3>Refinement</h3>
-                <p>Perfecting details and textures</p>
-            </div>
-        </div>
+        </section>
     </div>
-    
-    <!-- Connect Section -->
-    <div class="philosophy-section">
-        <h2>Let's Connect</h2>
-        <p>Thank you for taking the time to get to know my work. Feel free to explore the Gallery or reach out via the Contact page if you're interested in a commission, collaboration, or just a conversation.</p>
-        <p>Art is how I speak and I'm grateful you're here to listen.</p>
-        
-        <div class="signature">
-            <p>— Henry Wilhelm Kirenga</p>
+
+    <!-- Process -->
+    <section class="section">
+        <div class="section-head center reveal">
+            <span class="eyebrow">Behind the Work</span>
+            <h2>My Creative Process</h2>
+            <p>Each artwork begins with a moment of inspiration — from nature, human emotion, or the vibrant culture around me.</p>
         </div>
-    </div>
-    
+        <div class="process">
+            <div class="process-step reveal"><div class="n">01</div><h3>Inspiration</h3><p>Finding the spark in everyday moments.</p></div>
+            <div class="process-step reveal"><div class="n">02</div><h3>Creation</h3><p>Building layers with palette knives.</p></div>
+            <div class="process-step reveal"><div class="n">03</div><h3>Refinement</h3><p>Perfecting details and textures.</p></div>
+        </div>
+    </section>
+
     <!-- Testimonials -->
-    <div class="testimonials">
-        <h2>Collector Testimonials</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-item">
-                <p>"Henry's painting captures Tanzanian spirit like no other artist I've seen. The textures and colors transport me back to my homeland."</p>
-                <div class="author">— Deborah, Collector (Germany)</div>
+    <div class="band-dark">
+        <section class="section">
+            <div class="section-head center reveal">
+                <span class="eyebrow">Kind Words</span>
+                <h2>Collector Testimonials</h2>
             </div>
-        </div>
-        
-        <!-- Testimonial Form -->
-        <div class="testimonial-form-container">
-            <div class="testimonial-form">
+            <div class="testi-grid">
+                <div class="testi reveal">
+                    <div class="mark">"</div>
+                    <p>Henry's painting captures the Tanzanian spirit like no other artist I've seen. The textures and colors transport me back to my homeland.</p>
+                    <div class="author">— Deborah, Collector · Germany</div>
+                </div>
+                <div class="testi reveal">
+                    <div class="mark">"</div>
+                    <p>A commissioned piece that exceeded every expectation. The palette-knife texture is simply alive — it's the centerpiece of our home.</p>
+                    <div class="author">— Private Collector · Japan</div>
+                </div>
+            </div>
+
+            <div class="form-panel reveal">
                 <h3>Share Your Experience</h3>
                 <form id="testimonial-form" action="https://formspree.io/f/myzppjgn" method="POST">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Your Name*</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="location">Your Location (Country/City)*</label>
-                            <input type="text" id="location" name="location" required>
-                        </div>
+                    <div class="form-row2">
+                        <div class="field"><label>Your Name*</label><input type="text" name="name" required></div>
+                        <div class="field"><label>Your Location*</label><input type="text" name="location" required></div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Your Email*</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Your Title/Relation (e.g., Collector, Gallery Owner, etc.)</label>
-                        <input type="text" id="title" name="title">
-                    </div>
-                    <div class="form-group">
-                        <label for="testimonial">Your Testimonial*</label>
-                        <textarea id="testimonial" name="testimonial" required></textarea>
-                    </div>
+                    <div class="field"><label>Your Email*</label><input type="email" name="email" required></div>
+                    <div class="field"><label>Your Title / Relation</label><input type="text" name="title"></div>
+                    <div class="field"><label>Your Testimonial*</label><textarea name="testimonial" required></textarea></div>
                     <input type="hidden" name="form-type" value="testimonial">
-                    <button type="submit">Submit Testimonial</button>
+                    <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Submit Testimonial</button>
                 </form>
             </div>
-        </div>
+        </section>
     </div>
-    
+
+    <!-- Connect CTA -->
+    <section class="cta-band">
+        <div class="cta-band-bg" style="background-image:url('Image/guardian-of-tradition.webp');"></div>
+        <span class="eyebrow reveal">Let's Connect</span>
+        <h2 class="reveal">Art is how I speak.</h2>
+        <p class="reveal">Thank you for taking the time to know my work. Explore the gallery, or reach out about a commission, collaboration, or just a conversation.</p>
+        <div class="reveal" style="display:flex; gap:18px; justify-content:center; flex-wrap:wrap;">
+            <a href="gallery.html" class="btn btn-gold">View Gallery</a>
+            <a href="contact.html" class="btn btn-ghost">Get in Touch</a>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand">Henry <span>Kirenga</span></a>
+                <p data-cms="footer_about">Dar es Salaam's contemporary visual artist — celebrating African heritage through vibrant acrylic works and palette-knife texture.</p>
+            </div>
+            <div class="footer-col"><h4>Explore</h4>
+                <a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col"><h4>Contact</h4>
+                <p data-cms="location">Dar es Salaam, Tanzania</p>
+                <a href="mailto:henry@henrykirenga.co.tz" data-cms="email" data-cms-attr="href:email_mailto">henry@henrykirenga.co.tz</a>
+                <a href="tel:+255684555058" data-cms="phone" data-cms-attr="href:phone_tel">+255 684 555 058</a>
+                <a href="https://instagram.com/henrywilhelmarts" target="_blank" data-cms="instagram_handle" data-cms-attr="href:instagram_url">@henrywilhelmarts</a>
+            </div>
         </div>
-        <div class="social-links">
-            <a href="https://instagram.com/henrywilhelmarts" aria-label="Instagram">📸</a>
-            <a href="mailto:henrywilhelm1002@gmail.com" aria-label="Email">✉️</a>
+        <div class="footer-bottom">
+            <span>© <span id="year"></span> <span data-cms="artist_name">Henry Wilhelm Kirenga</span>. All rights reserved.</span>
+            <div class="socials">
+                <a href="https://instagram.com/henrywilhelmarts" target="_blank" data-cms-attr="href:instagram_url">Instagram</a>
+                <a href="https://wa.me/255684555058" target="_blank" data-cms-wa>WhatsApp</a>
+                <a href="mailto:henry@henrykirenga.co.tz" data-cms-attr="href:email_mailto">Email</a>
+            </div>
         </div>
-        <p>© <span id="current-year"></span> Henry Wilhelm Kirenga. All rights reserved.</p>
     </footer>
-    
-    <!-- Floating Commission Button -->
-    <a href="#" class="floating-btn" onclick="openPopup(); return false;">
-       <span style="margin-right: 10px;">🎨</span> Request Personalized Artwork
-    
+
+    <a href="#" class="floating-btn" onclick="openPopup(); return false;">✦ Commission</a>
+
     <!-- Commission Popup -->
     <div id="commission-popup">
-      <div class="popup-content">
-        <button class="popup-close" onclick="closePopup()">✕</button>
-        
-        <!-- Form Content -->
-        <div id="form-content">
-          <h2 style="font-family: 'Playfair Display'; color: var(--primary-color);">Commission Custom Artwork</h2>
-          <form id="commission-form" style="margin-top: 20px;" action="https://formspree.io/f/myzppjgn" method="POST">
-            <!-- Name -->
-            <div style="margin-bottom: 15px;">
-              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Full Name*</label>
-              <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        <div class="popup-card">
+            <button class="popup-close" onclick="closePopup()">✕</button>
+            <div id="form-content">
+                <span class="eyebrow">Bespoke</span>
+                <h2>Commission Custom Artwork</h2>
+                <p class="sub">Tell me what you have in mind and I'll reply within 24 hours.</p>
+                <form id="commission-form" action="https://formspree.io/f/myzppjgn" method="POST">
+                    <div class="field"><label>Full Name</label><input type="text" name="name" required></div>
+                    <div class="field"><label>Email</label><input type="email" name="email" required></div>
+                    <div class="field"><label>Artwork Size</label>
+                        <select name="size" required>
+                            <option value="" disabled selected>Select size</option>
+                            <option value="80x60">80cm × 60cm</option>
+                            <option value="70x100">70cm × 100cm</option>
+                            <option value="100x100">100cm × 100cm</option>
+                            <option value="custom">Custom Size</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-gold">Request Commission</button>
+                </form>
             </div>
-            
-            <!-- Email -->
-            <div style="margin-bottom: 15px;">
-              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Email*</label>
-              <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <div id="loading-spinner" style="display:none; text-align:center; padding:30px;">
+                <div class="spinner"></div><p style="margin-top:16px; color:var(--muted);">Submitting your request…</p>
             </div>
-            
-            <!-- Size Selection -->
-            <div style="margin-bottom: 15px;">
-              <label style="display: block; margin-bottom: 5px; font-weight: bold;">Artwork Size*</label>
-              <select name="size" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                <option value="" disabled selected>Select size</option>
-                <option value="80x60">80cm x 60cm </option>
-                <option value="70x100">70cm x 100cm </option>
-                <option value="100x100">100cm x 100cm </option>
-                <option value="custom">Custom Size</option>
-              </select>
+            <div id="success-message" style="display:none; text-align:center; padding:30px;">
+                <div style="font-size:44px; color:var(--gold);">✦</div>
+                <h2 style="margin:14px 0;">Request Sent</h2>
+                <p style="color:var(--muted);">I'll be in touch within 24 hours to discuss your commission.</p>
+                <button onclick="closePopup()" class="btn btn-dark" style="margin-top:24px;">Close</button>
             </div>
-            
-            <!-- Submit Button -->
-            <button type="submit" style="background: var(--secondary-color); color: var(--primary-color); border: none; padding: 12px 20px; font-weight: bold; border-radius: 5px; width: 100%; margin-top: 10px;">
-              Request Personalized Artwork
-            </button>
-          </form>
         </div>
-        
-        <!-- Loading Spinner -->
-        <div id="loading-spinner" style="display: none; text-align: center; padding: 30px;">
-          <div class="loading-spinner"></div>
-          <p style="margin-top: 15px;">Submitting your request...</p>
-        </div>
-        
-        <!-- Success Message -->
-        <div id="success-message" style="display: none; text-align: center; padding: 30px;">
-          <div style="font-size: 50px; color: #4CAF50;">✓</div>
-          <h3 style="font-family: 'Playfair Display'; color: var(--primary-color);">Request Sent!</h3>
-          <p>I'll contact you within 24 hours to discuss your commission.</p>
-          <button onclick="closePopup()" style="background: var(--secondary-color); color: var(--primary-color); border: none; padding: 10px 20px; margin-top: 20px; border-radius: 5px; cursor: pointer;">Close</button>
-        </div>
-      </div>
     </div>
 
+    <script src="assets/luxury.js"></script>
     <script>
-      // Set current year in footer
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-      
-      // Mobile navigation toggle
-      const hamburger = document.querySelector('.hamburger');
-      const navLinks = document.querySelector('.nav-links');
-      
-      hamburger.addEventListener('click', () => {
-          navLinks.classList.toggle('active');
-      });
-      
-      // Close mobile menu when clicking a link
-      document.querySelectorAll('.nav-links a').forEach(link => {
-          link.addEventListener('click', () => {
-              navLinks.classList.remove('active');
-          });
-      });
-      
-      // Image lazy loading and fade-in effect
-      document.addEventListener('DOMContentLoaded', function() {
-          const images = document.querySelectorAll('.artist-images img');
-          
-          const imageObserver = new IntersectionObserver((entries, observer) => {
-              entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                      const img = entry.target;
-                      img.src = img.getAttribute('src');
-                      img.classList.add('loaded');
-                      observer.unobserve(img);
-                  }
-              });
-          }, { threshold: 0.1 });
-          
-          images.forEach(img => {
-              imageObserver.observe(img);
-          });
-      });
-      
-      // Commission popup functions
-      function openPopup() {
-          const popup = document.getElementById('commission-popup');
-          popup.style.display = 'flex';
-          setTimeout(() => {
-              popup.style.opacity = '1';
-              popup.querySelector('.popup-content').style.transform = 'translateY(0)';
-          }, 10);
-      }
-
-      function closePopup() {
-          const popup = document.getElementById('commission-popup');
-          popup.style.opacity = '0';
-          popup.querySelector('.popup-content').style.transform = 'translateY(20px)';
-          setTimeout(() => {
-              popup.style.display = 'none';
-              resetForm();
-          }, 300);
-      }
-
-      function resetForm() {
-          document.getElementById('form-content').style.display = 'block';
-          document.getElementById('loading-spinner').style.display = 'none';
-          document.getElementById('success-message').style.display = 'none';
-          document.getElementById('commission-form').reset();
-      }
-
-      // Form submission
-      document.getElementById('commission-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Show loading
-          document.getElementById('form-content').style.display = 'none';
-          document.getElementById('loading-spinner').style.display = 'block';
-          
-          // Create FormData object
-          const formData = new FormData(this);
-          
-          // Send form data to Formspree
-          fetch('https://formspree.io/f/myzppjgn', {
-              method: 'POST',
-              body: formData,
-              headers: {
-                  'Accept': 'application/json'
-              }
-          })
-          .then(response => {
-              if (response.ok) {
-                  // Show success message
-                  document.getElementById('loading-spinner').style.display = 'none';
-                  document.getElementById('success-message').style.display = 'block';
-              } else {
-                  throw new Error('Form submission failed');
-              }
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              document.getElementById('loading-spinner').style.display = 'none';
-              alert('There was a problem submitting your form. Please try again later.');
-              document.getElementById('form-content').style.display = 'block';
-          });
-      });
-      
-      // Testimonial Form Submission
+      // Testimonial form (page-specific)
       document.getElementById('testimonial-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const form = e.target;
-          const submitButton = form.querySelector('button[type="submit"]');
-          const originalButtonText = submitButton.textContent;
-          
-          // Change button text to show loading
-          submitButton.textContent = 'Submitting...';
-          submitButton.disabled = true;
-          
-          // Create FormData object
-          const formData = new FormData(form);
-          
-          // Send form data to Formspree
-          fetch('https://formspree.io/f/myzppjgn', {
-              method: 'POST',
-              body: formData,
-              headers: {
-                  'Accept': 'application/json'
-              }
-          })
-          .then(response => {
-              if (response.ok) {
-                  // Show success message
-                  alert('Thank you for your testimonial! It has been submitted for review.');
-                  form.reset();
-              } else {
-                  throw new Error('Form submission failed');
-              }
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              alert('There was a problem submitting your testimonial. Please try again later.');
-          })
-          .finally(() => {
-              submitButton.textContent = originalButtonText;
-              submitButton.disabled = false;
-          });
+        e.preventDefault();
+        var form = e.target, btn = form.querySelector('button[type="submit"]'), t = btn.textContent;
+        btn.textContent = 'Submitting…'; btn.disabled = true;
+        fetch('https://formspree.io/f/myzppjgn', { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+          .then(function(r){ if(r.ok){ alert('Thank you for your testimonial! It has been submitted for review.'); form.reset(); } else throw new Error(); })
+          .catch(function(){ alert('There was a problem submitting your testimonial. Please try again later.'); })
+          .finally(function(){ btn.textContent = t; btn.disabled = false; });
       });
+    </script>
+    <script type="module">
+      import { hydrateContent } from './assets/render.js';
+      hydrateContent();
     </script>
 </body>
 </html>
