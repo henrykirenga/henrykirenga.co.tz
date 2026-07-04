@@ -5,18 +5,19 @@
 // Also hydrates CMS text/images via [data-cms] / [data-cms-img] attributes so the
 // static HTML remains the SEO-friendly default and is enhanced when data differs.
 // -----------------------------------------------------------------------------
-import { getArtworks, getFeatured, getContent, mediaUrl } from "./data.js";
+import { getArtworks, getFeatured, getContent, getLimitedEdition, getTestimonials, submitTestimonial, mediaUrl } from "./data.js";
 
 const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 const STATUS_LABEL = { available: "Available", reserved: "Reserved", sold: "Sold", unavailable: "Unavailable" };
 
-// Registry consumed by the shared modal (assets/luxury.js reads window.artworks).
+// Registry consumed by the shared modal (window.artworks). Merges so multiple
+// renderers (gallery grid + limited-edition strip) can coexist on one page.
 function registerForModal(list) {
-  const map = {};
+  window.artworks = window.artworks || {};
   for (const a of list) {
-    map[a.id] = {
+    window.artworks[a.id] = {
       title: a.title,
       image: a.image,
       medium: a.medium,
@@ -27,7 +28,18 @@ function registerForModal(list) {
       price: a.price_display,
     };
   }
-  window.artworks = map;
+}
+
+function artCardHtml(a, i) {
+  return `<div class="art-card reveal" onclick="openArtworkModal('${esc(a.id)}')">
+    <span class="art-badge ${a.availability === "sold" ? "sold" : ""}">${esc(STATUS_LABEL[a.availability] || "Available")}</span>
+    <img src="${esc(a.thumb || a.image)}" alt="${esc(a.title)}" loading="lazy">
+    <div class="art-overlay">
+      <span class="num">${a.year ? esc(a.year) : "Work " + String(i + 1).padStart(2, "0")}</span>
+      <h3>${esc(a.title)}</h3>
+      <span class="view">View Piece →</span>
+    </div>
+  </div>`;
 }
 
 // ---- home: featured grid ----
@@ -37,20 +49,89 @@ export async function renderFeatured(selector = "#featured-grid", limit = 3) {
   try {
     const items = await getFeatured(limit);
     registerForModal(items);
-    grid.innerHTML = items.map((a, i) => `
-      <div class="art-card reveal" onclick="openArtworkModal('${esc(a.id)}')">
-        <span class="art-badge ${a.availability === "sold" ? "sold" : ""}">${esc(STATUS_LABEL[a.availability] || "Available")}</span>
-        <img src="${esc(a.thumb || a.image)}" alt="${esc(a.title)}" loading="lazy">
-        <div class="art-overlay">
-          <span class="num">Work ${String(i + 1).padStart(2, "0")}</span>
-          <h3>${esc(a.title)}</h3>
-          <span class="view">View Piece →</span>
-        </div>
-      </div>`).join("");
+    grid.innerHTML = items.map((a, i) => artCardHtml(a, i)).join("");
     reveal(grid);
   } catch (e) {
     console.error("renderFeatured", e);
   }
+}
+
+// ---- Limited edition: attention marquee + luxury grid ----
+export async function renderLimited({ marquee, grid } = {}) {
+  let items = [];
+  try { items = await getLimitedEdition(12); } catch (e) { console.error("renderLimited", e); }
+  const mqWrap = marquee ? document.querySelector(marquee) : null;
+  const gr = grid ? document.querySelector(grid) : null;
+
+  if (!items.length) {
+    // Nothing flagged yet — hide the dynamic parts, keep the section's copy.
+    if (mqWrap) mqWrap.style.display = "none";
+    if (gr) gr.style.display = "none";
+    return;
+  }
+  registerForModal(items);
+
+  if (mqWrap) {
+    // duplicate the set so the track loops seamlessly
+    const loop = [...items, ...items];
+    mqWrap.innerHTML = `<div class="lux-marquee-track">${loop.map((a) => `
+      <button class="lux-marquee-item" type="button" onclick="openArtworkModal('${esc(a.id)}')" aria-label="${esc(a.title)}">
+        <img src="${esc(a.thumb || a.image)}" alt="${esc(a.title)}" loading="lazy">
+        <span>${esc(a.title)}</span>
+      </button>`).join("")}</div>`;
+    mqWrap.style.display = "";
+  }
+  if (gr) {
+    gr.innerHTML = items.map((a, i) => artCardHtml(a, i)).join("");
+    gr.style.display = "";
+    reveal(gr);
+  }
+}
+
+// ---- Collector testimonials (auto-updating) ----
+export async function renderTestimonials(gridSel = "#testi-grid") {
+  const grid = document.querySelector(gridSel);
+  if (!grid) return;
+  let items = [];
+  try { items = await getTestimonials(); } catch (e) { console.error("testimonials", e); }
+  if (!items || !items.length) return; // keep whatever static markup exists
+  grid.innerHTML = items.map((t) => `
+    <div class="testi reveal">
+      <div class="mark">"</div>
+      <p>${esc(t.quote)}</p>
+      <div class="author">— ${esc(t.name)}${t.role_title ? ", " + esc(t.role_title) : ""}${t.location ? " · " + esc(t.location) : ""}</div>
+    </div>`).join("");
+  reveal(grid);
+}
+
+export function wireTestimonialForm(formSel = "#testimonial-form", gridSel = "#testi-grid") {
+  const form = document.querySelector(formSel);
+  if (!form) return;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.disabled = true; btn.textContent = "Submitting…";
+    const f = new FormData(form);
+    try {
+      await submitTestimonial({
+        name: f.get("name"), location: f.get("location"),
+        title: f.get("title"), quote: f.get("testimonial"),
+      });
+      form.reset();
+      await renderTestimonials(gridSel);
+      alert("Thank you! Your testimonial is now live on the site.");
+    } catch (err) {
+      // Fallback to email if the backend/table isn't available.
+      try {
+        await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+        alert("Thank you for your testimonial! It has been submitted.");
+        form.reset();
+      } catch { alert("Sorry — could not submit right now. Please try again later."); }
+    } finally {
+      btn.disabled = false; btn.textContent = orig;
+    }
+  });
 }
 
 // ---- gallery: full grid + filtering ----
@@ -80,11 +161,11 @@ export async function renderGallery(selector = "#gallery-grid") {
 
 function paintGallery(grid, rows) {
   grid.innerHTML = rows.map((a) => `
-    <div class="artwork ${a.categories.map(esc).join(" ")}" data-artwork-id="${esc(a.id)}">
+    <div class="artwork ${a.categories.map(esc).join(" ")}" data-artwork-id="${esc(a.id)}" onclick="openArtworkModal('${esc(a.id)}')" role="button" tabindex="0" aria-label="${esc(a.title)} — view details">
       <div class="artwork-status ${a.availability === "sold" ? "sold" : ""}">${esc(STATUS_LABEL[a.availability] || "Available")}</div>
-      <img src="${esc(a.thumb || a.image)}" alt="${esc(a.title)}" loading="lazy" onclick="openArtworkModal('${esc(a.id)}')">
+      <img src="${esc(a.thumb || a.image)}" alt="${esc(a.title)}" loading="lazy">
       <h2>${esc(a.title)}</h2>
-      <button class="view-details-btn" onclick="openArtworkModal('${esc(a.id)}')">View Details</button>
+      <button class="view-details-btn" type="button">View Details</button>
     </div>`).join("");
   // fade cards in as their images load
   grid.querySelectorAll(".artwork").forEach((card) => {

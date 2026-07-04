@@ -104,6 +104,7 @@
                     </div>
                 </div>
             </div>
+            <div class="lux-marquee reveal" id="home-limited-marquee" style="margin-top:56px;"></div>
         </section>
     </div>
 
@@ -255,9 +256,10 @@
     <script>window.whatsappNumber = "255684555058";</script>
     <script src="assets/luxury.js"></script>
     <script type="module">
-      import { renderFeatured, hydrateContent } from './assets/render.js';
+      import { renderFeatured, renderLimited, hydrateContent } from './assets/render.js';
       hydrateContent();
       renderFeatured('#featured-grid', 3);
+      renderLimited({ marquee: '#home-limited-marquee' });
     </script>
 </body>
 </html>

@@ -160,6 +160,21 @@ header.solid { background: rgba(16, 16, 24, 0.96); }
 .strip-track span::after { content: '✦'; color: var(--gold); font-size: 0.9rem; font-style: normal; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
+/* ---------- Luxury image marquee (auto-scroll) ---------- */
+.lux-marquee { overflow: hidden; position: relative; padding: 8px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.lux-marquee-track { display: flex; gap: 26px; width: max-content; animation: luxscroll 48s linear infinite; }
+.lux-marquee:hover .lux-marquee-track { animation-play-state: paused; }
+.lux-marquee-item { flex: 0 0 auto; width: 270px; background: none; border: none; padding: 0; cursor: pointer; text-align: left; }
+.lux-marquee-item img { width: 270px; height: 190px; object-fit: cover; border-radius: 4px; display: block; transition: transform 0.6s ease; box-shadow: 0 20px 40px -26px rgba(16,16,24,0.7); }
+.lux-marquee-item:hover img { transform: scale(1.04); }
+.lux-marquee-item span { display: block; margin-top: 12px; font-family: var(--display); font-style: italic; font-size: 1.15rem; color: var(--gold-soft); }
+@keyframes luxscroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .lux-marquee-track, .strip-track { animation: none; } }
+
+/* ---------- Luxury grid (limited edition, etc.) ---------- */
+.lux-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; max-width: 1440px; margin: 0 auto; padding: 10px 0 0; }
+@media (max-width: 560px) { .lux-marquee-item, .lux-marquee-item img { width: 220px; } .lux-marquee-item img { height: 160px; } }
+
 /* ---------- Art cards ---------- */
 .art-card { position: relative; overflow: hidden; border-radius: 4px; cursor: pointer; background: var(--ink); }
 .art-card img { width: 100%; height: 440px; object-fit: cover; transition: transform 1.1s cubic-bezier(.2,.7,.2,1); }

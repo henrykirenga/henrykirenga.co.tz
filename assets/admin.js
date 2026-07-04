@@ -28,6 +28,9 @@ const CONTENT_FIELDS = [
   { key: "about_vision_p1", label: "Vision paragraph 1", type: "area" },
   { key: "about_vision_p2", label: "Vision paragraph 2", type: "area" },
   { key: "about_philosophy", label: "Philosophy", type: "area" },
+  { group: "Limited edition section" },
+  { key: "limited_title", label: "Limited edition heading", type: "text" },
+  { key: "limited_intro", label: "Limited edition intro", type: "area" },
   { group: "Contact & footer" },
   { key: "email", label: "Email", type: "text" },
   { key: "phone", label: "Phone", type: "text" },
@@ -144,6 +147,7 @@ function renderShell() {
         <button class="nav-item" data-view="artworks">🎨 Artworks</button>
         <button class="nav-item" data-view="collections">🗂️ Collections</button>
         <button class="nav-item" data-view="content">📝 Site Content</button>
+        <button class="nav-item" data-view="testimonials">💬 Testimonials</button>
         <div class="spacer"></div>
         <div class="who">${esc(session.user.email)}</div>
         <button class="nav-item" id="signout">↩ Sign out</button>
@@ -166,6 +170,48 @@ function renderView() {
   if (state.view === "artworks") return renderArtworks();
   if (state.view === "collections") return renderCollections();
   if (state.view === "content") return renderContent();
+  if (state.view === "testimonials") return renderTestimonialsView();
+}
+
+// ---------------------------------------------------------------------------
+// Testimonials moderation
+// ---------------------------------------------------------------------------
+async function renderTestimonialsView() {
+  $("#view").innerHTML = `<div class="page-head"><div><h1>Testimonials</h1><div class="muted">Visitor submissions — shown live on the About page</div></div></div><div class="spin"></div>`;
+  const { data, error } = await sb.from("testimonials").select("*").order("created_at", { ascending: false });
+  if (error) {
+    $("#view").innerHTML = `<div class="page-head"><div><h1>Testimonials</h1></div></div>
+      <div class="empty">The <code>testimonials</code> table isn't set up yet.<br>Run <b>supabase/migrations/0004</b> in the Supabase SQL editor, then reload.</div>`;
+    return;
+  }
+  $("#view").innerHTML = `
+    <div class="page-head"><div><h1>Testimonials</h1><div class="muted">${data.length} submitted · ${data.filter((t) => t.approved).length} live</div></div></div>
+    <div class="aw-list">${data.length ? data.map((t) => `
+      <div class="aw-row" style="grid-template-columns:1fr auto" data-id="${t.id}">
+        <div class="aw-meta">
+          <div class="t">${esc(t.name)}${t.role_title ? " · " + esc(t.role_title) : ""}${t.location ? " · " + esc(t.location) : ""}</div>
+          <div class="s" style="color:#c7c6cd;max-width:640px">${esc(t.quote)}</div>
+          <div class="s">${t.approved ? '<span class="badge available">Live</span>' : '<span class="badge arch">Hidden</span>'}</div>
+        </div>
+        <div class="aw-actions">
+          <button class="abtn abtn-ghost" data-a="toggle">${t.approved ? "Hide" : "Publish"}</button>
+          <button class="icon-btn abtn-danger" data-a="del">🗑</button>
+        </div>
+      </div>`).join("") : `<div class="empty">No testimonials yet.</div>`}</div>`;
+  $("#view").querySelectorAll(".aw-row").forEach((row) => {
+    const t = data.find((x) => x.id === row.dataset.id);
+    row.querySelector('[data-a="toggle"]').addEventListener("click", async () => {
+      const { error: e } = await sb.from("testimonials").update({ approved: !t.approved }).eq("id", t.id);
+      if (e) return toast(e.message, true);
+      toast(t.approved ? "Hidden" : "Published"); renderTestimonialsView();
+    });
+    row.querySelector('[data-a="del"]').addEventListener("click", async () => {
+      if (!confirm("Delete this testimonial?")) return;
+      const { error: e } = await sb.from("testimonials").delete().eq("id", t.id);
+      if (e) return toast(e.message, true);
+      toast("Deleted"); renderTestimonialsView();
+    });
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -318,6 +364,7 @@ function openEditor(a) {
         </div></div>
         <div class="fld-row">
           <label class="chip"><input type="checkbox" name="featured" ${a.featured ? "checked" : ""}> Feature on homepage</label>
+          <label class="chip"><input type="checkbox" name="limited" ${(a.categories || []).includes("limited-edition") ? "checked" : ""}> Limited edition</label>
           <label class="chip"><input type="checkbox" name="archived" ${a.archived ? "checked" : ""}> Archived (hidden)</label>
         </div>
         <div class="fld"><label>Images</label>
@@ -407,6 +454,7 @@ function openEditor(a) {
     const val = (n) => body.querySelector(`[name="${n}"]`).value.trim();
     const cats = [...body.querySelectorAll(".chip input[type=checkbox]:checked")]
       .map((c) => c.value).filter((v) => CATEGORIES.includes(v));
+    if (body.querySelector('[name="limited"]').checked) cats.push("limited-edition");
     const title = val("title") || "Untitled";
     const patch = {
       title, slug: slugify(title) || a.slug, description: val("description"), medium: val("medium"),

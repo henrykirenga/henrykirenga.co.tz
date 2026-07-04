@@ -136,6 +136,35 @@ export async function getContent() {
   return { ...defaults, ...overrides };
 }
 
+export async function getLimitedEdition(limit = 12) {
+  const all = await getArtworks();
+  return all.filter((a) => (a.categories || []).includes("limited-edition")).slice(0, limit);
+}
+
+export async function getTestimonials() {
+  const sb = await getSupabase();
+  if (!sb) return seed("testimonials").catch(() => []);
+  const { data, error } = await sb
+    .from("testimonials")
+    .select("*")
+    .eq("approved", true)
+    .order("created_at", { ascending: false });
+  if (error) return seed("testimonials").catch(() => []); // table not created yet → fall back
+  return data;
+}
+
+export async function submitTestimonial(payload) {
+  const sb = await getSupabase();
+  if (!sb) throw new Error("Testimonials require the live backend.");
+  const { error } = await sb.from("testimonials").insert({
+    name: payload.name,
+    location: payload.location || null,
+    role_title: payload.title || null,
+    quote: payload.quote,
+  });
+  if (error) throw error;
+}
+
 export async function getCollections() {
   const sb = await getSupabase();
   if (!sb) return [];

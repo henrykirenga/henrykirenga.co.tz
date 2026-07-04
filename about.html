@@ -166,7 +166,7 @@
                 <span class="eyebrow">Kind Words</span>
                 <h2>Collector Testimonials</h2>
             </div>
-            <div class="testi-grid">
+            <div class="testi-grid" id="testi-grid" aria-live="polite">
                 <div class="testi reveal">
                     <div class="mark">"</div>
                     <p>Henry's painting captures the Tanzanian spirit like no other artist I've seen. The textures and colors transport me back to my homeland.</p>
@@ -273,21 +273,11 @@
     </div>
 
     <script src="assets/luxury.js"></script>
-    <script>
-      // Testimonial form (page-specific)
-      document.getElementById('testimonial-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        var form = e.target, btn = form.querySelector('button[type="submit"]'), t = btn.textContent;
-        btn.textContent = 'Submitting…'; btn.disabled = true;
-        fetch('https://formspree.io/f/myzppjgn', { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
-          .then(function(r){ if(r.ok){ alert('Thank you for your testimonial! It has been submitted for review.'); form.reset(); } else throw new Error(); })
-          .catch(function(){ alert('There was a problem submitting your testimonial. Please try again later.'); })
-          .finally(function(){ btn.textContent = t; btn.disabled = false; });
-      });
-    </script>
     <script type="module">
-      import { hydrateContent } from './assets/render.js';
+      import { hydrateContent, renderTestimonials, wireTestimonialForm } from './assets/render.js';
       hydrateContent();
+      renderTestimonials('#testi-grid');
+      wireTestimonialForm('#testimonial-form', '#testi-grid');
     </script>
 </body>
 </html>
