@@ -8,7 +8,9 @@
     "serve": "npx --yes serve@14 -l 5173 .",
     "extract-seed": "node scripts/extract-seed.mjs",
     "create-admin": "node scripts/create-admin.mjs",
-    "import": "node scripts/import.mjs"
+    "import": "node scripts/import.mjs",
+    "verify": "node scripts/verify.mjs",
+    "verify-full": "node scripts/verify-full.mjs"
   },
   "devDependencies": {
     "@supabase/supabase-js": "^2.45.0",

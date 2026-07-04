@@ -34,7 +34,7 @@ async function uploadVariants(localPath, baseDir, key) {
   const thumb = await sharp(buf).rotate().resize({ width: 480, height: 480, fit: "inside", withoutEnlargement: true }).webp({ quality: 72 }).toBuffer();
   const meta = await sharp(full).metadata();
   const fullPath = `${baseDir}/${key}.webp`;
-  const thumbPath = `thumbs/${key}.webp`;
+  const thumbPath = `thumbs/${baseDir}/${key}.webp`;
   let r = await sb.storage.from(BUCKET).upload(fullPath, full, { contentType: "image/webp", upsert: true });
   if (r.error) throw r.error;
   r = await sb.storage.from(BUCKET).upload(thumbPath, thumb, { contentType: "image/webp", upsert: true });

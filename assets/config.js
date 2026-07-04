@@ -10,7 +10,7 @@
 // Fill them in to switch the whole site + admin to the live Supabase backend.
 // See README.md → "Setup".
 // -----------------------------------------------------------------------------
-export const SUPABASE_URL = "https://klosxpndzthunjpyiyiu.supabase.co/rest/v1/";
+export const SUPABASE_URL = "https://klosxpndzthunjpyiyiu.supabase.co";
 export const SUPABASE_ANON_KEY = "sb_publishable_vjwri6F5WJAnefMOMR28zg_n0t-0Btm";
 
 // Public storage bucket that holds artwork + content images.
