@@ -112,12 +112,18 @@
                     <span>Certificate of Authenticity</span>
                     <span>One of One — Never Reproduced</span>
                 </div>
-                <a href="#" class="btn btn-gold" onclick="openCommissionModal(); return false;">Reserve a Piece</a>
+                <a href="#" class="btn btn-gold" onclick="showLimited(); return false;">View the Limited Edition Works</a>
             </div>
         </div>
 
-        <!-- the limited-edition works themselves -->
-        <div class="lux-grid limited-works" id="limited-grid" aria-live="polite"></div>
+        <!-- the limited-edition works themselves (revealed by the button) -->
+        <div id="limited-collection" hidden>
+            <div class="section-head center" style="max-width:640px; margin:10px auto 30px; padding:0 6vw;">
+                <span class="eyebrow">The Collection</span>
+                <h2 style="font-size:clamp(1.8rem,4vw,2.6rem); color:var(--ink);">Available Limited Editions</h2>
+            </div>
+            <div class="lux-grid limited-works" id="limited-grid" aria-live="polite"></div>
+        </div>
     </section>
 
     <!-- Section intro -->
@@ -273,6 +279,14 @@
       // ---- Gallery behaviour (classic script) ----
       window.whatsappNumber = window.whatsappNumber || "255684555058";
       window.filterGallery = window.filterGallery || function(){};
+
+      // Reveal the limited-edition works in place and scroll to them.
+      window.showLimited = function () {
+        var wrap = document.getElementById('limited-collection');
+        if (!wrap) return;
+        wrap.hidden = false;
+        wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
 
       var header = document.getElementById('header');
       if (header) window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY > 40); });

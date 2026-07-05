@@ -57,9 +57,9 @@ export async function renderFeatured(selector = "#featured-grid", limit = 3) {
 }
 
 // ---- Limited edition: attention marquee + luxury grid ----
-export async function renderLimited({ marquee, grid } = {}) {
+export async function renderLimited({ marquee, grid, limit = 12 } = {}) {
   let items = [];
-  try { items = await getLimitedEdition(12); } catch (e) { console.error("renderLimited", e); }
+  try { items = await getLimitedEdition(limit); } catch (e) { console.error("renderLimited", e); }
   const mqWrap = marquee ? document.querySelector(marquee) : null;
   const gr = grid ? document.querySelector(grid) : null;
 

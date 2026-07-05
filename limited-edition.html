@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Limited Edition Originals | Henry Wilhelm Kirenga</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Limited edition, one-of-a-kind original paintings by Henry Wilhelm Kirenga — hand-signed, never reproduced.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/luxury.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header id="header">
+        <a href="index.html" class="brand">Henry <span>Kirenga</span><small>Visual Artist</small></a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="nav-cta" onclick="openPopup(); return false;">Commission</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero short center">
+        <div class="hero-bg" style="background-image:url('Image/legacy-in-the-making.webp');"></div>
+        <div class="hero-content">
+            <span class="eyebrow">Exclusive Originals</span>
+            <h1>Limited Edition<br><em>Original Artwork.</em></h1>
+            <p>One-of-a-kind, hand-signed originals — never reprinted. Once a piece is gone, it is gone forever.</p>
+        </div>
+    </section>
+
+    <!-- Showcase -->
+    <section class="limited-showcase">
+        <div class="lux-marquee limited-strip" id="limited-marquee"></div>
+
+        <div class="limited-band">
+            <div class="limited-bg" style="background-image:url('Image/queen-of-savanna.webp');"></div>
+            <div class="limited-inner reveal">
+                <span class="limited-pill">✦ Exclusive Originals</span>
+                <h2 data-cms="limited_title">Limited Edition Original Artwork</h2>
+                <p data-cms="limited_intro">Every piece here is a one-of-a-kind original — painted by hand, hand-signed, and never reprinted. Once it is sold, it is gone forever.</p>
+                <div class="limited-chips">
+                    <span>Hand-Signed &amp; Numbered</span>
+                    <span>Certificate of Authenticity</span>
+                    <span>One of One — Never Reproduced</span>
+                </div>
+                <a href="#" class="btn btn-gold" onclick="openPopup(); return false;">Reserve a Piece</a>
+            </div>
+        </div>
+
+        <div class="section-head center reveal" style="max-width:640px; margin:10px auto 34px; padding:0 6vw;">
+            <span class="eyebrow">The Collection</span>
+            <h2 style="font-size:clamp(1.8rem,4vw,2.8rem); color:var(--ink);">Available Limited Editions</h2>
+        </div>
+        <div class="lux-grid limited-works" id="limited-grid" aria-live="polite">
+            <p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:30px 0;">Loading limited edition works…</p>
+        </div>
+    </section>
+
+    <!-- Commission CTA -->
+    <section class="cta-band">
+        <div class="cta-band-bg" style="background-image:url('Image/golden-grace.webp');"></div>
+        <span class="eyebrow reveal">Bespoke Commissions</span>
+        <h2 class="reveal">Commission your own original.</h2>
+        <p class="reveal">Prefer something made just for you? Request a bespoke, hand-painted original for your space or collection.</p>
+        <div class="reveal"><a href="#" class="btn btn-gold" onclick="openPopup(); return false;">Request a Commission</a></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand">Henry <span>Kirenga</span></a>
+                <p data-cms="footer_about">Dar es Salaam's contemporary visual artist — celebrating African heritage through vibrant acrylic works and palette-knife texture.</p>
+            </div>
+            <div class="footer-col"><h4>Explore</h4>
+                <a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col"><h4>Contact</h4>
+                <p data-cms="location">Dar es Salaam, Tanzania</p>
+                <a href="mailto:henry@henrykirenga.co.tz" data-cms="email" data-cms-attr="href:email_mailto">henry@henrykirenga.co.tz</a>
+                <a href="tel:+255684555058" data-cms="phone" data-cms-attr="href:phone_tel">+255 684 555 058</a>
+                <a href="https://instagram.com/henrywilhelmarts" target="_blank" data-cms="instagram_handle" data-cms-attr="href:instagram_url">@henrywilhelmarts</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span id="year"></span> <span data-cms="artist_name">Henry Wilhelm Kirenga</span>. All rights reserved.</span>
+            <div class="socials">
+                <a href="https://instagram.com/henrywilhelmarts" target="_blank" data-cms-attr="href:instagram_url">Instagram</a>
+                <a href="https://wa.me/255684555058" target="_blank" data-cms-wa>WhatsApp</a>
+                <a href="mailto:henry@henrykirenga.co.tz" data-cms-attr="href:email_mailto">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="floating-btn" onclick="openPopup(); return false;">✦ Commission</a>
+
+    <!-- Artwork Modal -->
+    <div id="artwork-modal" class="artwork-modal">
+        <div class="modal-close" onclick="closeArtworkModal()">&times;</div>
+        <div class="modal-content">
+            <div class="modal-image-container"><img id="modal-artwork-image" class="modal-image" src="" alt=""></div>
+            <div class="modal-details">
+                <span class="eyebrow">Limited Edition Original</span>
+                <h2 id="modal-artwork-title" class="modal-title"></h2>
+                <p id="modal-artwork-description" class="modal-description"></p>
+                <div class="modal-meta">
+                    <p><strong>Medium</strong> <span id="modal-artwork-medium"></span></p>
+                    <p><strong>Size</strong> <span id="modal-artwork-size"></span></p>
+                    <p><strong>Year</strong> <span id="modal-artwork-year"></span></p>
+                </div>
+                <a id="whatsapp-inquiry" href="#" class="whatsapp-button" target="_blank">Inquire via WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commission Popup -->
+    <div id="commission-popup">
+        <div class="popup-card">
+            <button class="popup-close" onclick="closePopup()">✕</button>
+            <div id="form-content">
+                <span class="eyebrow">Bespoke</span>
+                <h2>Commission Custom Artwork</h2>
+                <p class="sub">Tell me what you have in mind and I'll reply within 24 hours.</p>
+                <form id="commission-form" action="https://formspree.io/f/myzppjgn" method="POST">
+                    <div class="field"><label>Full Name</label><input type="text" name="name" required></div>
+                    <div class="field"><label>Email</label><input type="email" name="email" required></div>
+                    <div class="field"><label>Artwork Size</label>
+                        <select name="size" required>
+                            <option value="" disabled selected>Select size</option>
+                            <option value="80x60">80cm × 60cm</option>
+                            <option value="70x100">70cm × 100cm</option>
+                            <option value="100x100">100cm × 100cm</option>
+                            <option value="custom">Custom Size</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-gold">Request Commission</button>
+                </form>
+            </div>
+            <div id="loading-spinner" style="display:none; text-align:center; padding:30px;">
+                <div class="spinner"></div><p style="margin-top:16px; color:var(--muted);">Submitting your request…</p>
+            </div>
+            <div id="success-message" style="display:none; text-align:center; padding:30px;">
+                <div style="font-size:44px; color:var(--gold);">✦</div>
+                <h2 style="margin:14px 0;">Request Sent</h2>
+                <p style="color:var(--muted);">I'll be in touch within 24 hours to discuss your commission.</p>
+                <button onclick="closePopup()" class="btn btn-dark" style="margin-top:24px;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>window.whatsappNumber = "255684555058";</script>
+    <script src="assets/luxury.js"></script>
+    <script type="module">
+      import { renderLimited, hydrateContent } from './assets/render.js';
+      hydrateContent();
+      renderLimited({ marquee: '#limited-marquee', grid: '#limited-grid', limit: 60 });
+    </script>
+</body>
+</html>
