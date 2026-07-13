@@ -14,3 +14,6 @@ Image/desktop.ini
 # build/tmp
 *.tmp
 dist/
+
+# accidental nested repo copy — do not track
+your-repo/
